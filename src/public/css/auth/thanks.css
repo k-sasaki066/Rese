@@ -1,0 +1,25 @@
+.thanks-container {
+    width: 40%;
+    margin: 64px auto 0;
+    padding: 72px 48px;
+    background-color: #ffffff;
+    border-radius: 5px;
+    box-shadow: 3px 3px 3px #9f9e9e;
+    overflow: hidden;
+    text-align: center;
+}
+
+.thanks-text {
+    font-size: 24px;
+}
+
+.thanks__login-button {
+    margin: 32px auto 0;
+}
+
+@media screen and (max-width: 768px) {
+    .thanks-container {
+        width: 70%;
+        padding: 72px 40px;
+    }
+}

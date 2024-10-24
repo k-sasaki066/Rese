@@ -1,0 +1,55 @@
+.register-container,
+.login-container {
+    width: 40%;
+    margin: 120px auto 0;
+    border-radius: 5px;
+    box-shadow: 3px 3px 3px #9f9e9e;
+    overflow: hidden;
+}
+
+.register-form__title,
+.login-form__title {
+    font-size: 18px;
+    padding: 16px 24px;
+    color: #fff;
+    background-color: #305dff;
+}
+
+.register-form,
+.login-form {
+    padding: 32px;
+    background-color: #fff;
+}
+
+.form-group {
+    margin-bottom: 16px;
+    display: flex;
+    gap: 12px;
+}
+
+.form-group__item {
+    width: 100%;
+}
+
+.form-group__input {
+    width: 100%;
+    border-bottom: 2px solid #000;
+}
+
+.register-form__submit,
+.login-form__submit {
+    margin: 0 0 0 auto;
+}
+
+.register-icon,
+.login-icon {
+    width: 28px;
+    height: 28px;
+}
+
+@media screen and (max-width: 768px) {
+    .register-container,
+    .login-container {
+        width: 70%;
+    }
+}

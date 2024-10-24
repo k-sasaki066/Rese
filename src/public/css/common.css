@@ -58,3 +58,20 @@ body {
     width: 90%;
     margin: 0 auto;
 }
+
+.common-btn {
+    display: block;
+    padding: 4px 16px;
+    border-radius: 3px;
+    background-color: #305dff;
+    color: #fff;
+    transition: .3s;
+}
+
+.common-btn:hover {
+    opacity: .7;
+}
+
+.error-message {
+    color: #e04c4c;
+}
