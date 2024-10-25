@@ -2,11 +2,14 @@ body {
     width: 100vw;
     height: 100vh;
     background-color: #e7e7e7;
+    max-width: 1344px;
+    padding: 0 48px;
+    margin: 0 auto;
 }
 
+/* ---header--- */
 .header {
-    margin: 32px auto 0;
-    width: 90%;
+    margin-top: 32px;
 }
 
 .header-container {
@@ -18,6 +21,7 @@ body {
     color: #305dff;
 }
 
+/* ---header menu--- */
 #drawer_toggle {
     position: relative;
     display: inline-block;
@@ -54,11 +58,7 @@ body {
     width: 6px;
 }
 
-.main-container {
-    width: 90%;
-    margin: 0 auto;
-}
-
+/* ---共通ボタン--- */
 .common-btn {
     display: block;
     padding: 4px 16px;
@@ -72,6 +72,7 @@ body {
     opacity: .7;
 }
 
+/* ---バリデーションメッセージ--- */
 .error-message {
     color: #e04c4c;
 }
