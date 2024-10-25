@@ -5,12 +5,12 @@
 @endsection
 
 @section('content')
-<div class="thanks-container">
+<div class="thanks-container common-shadow">
     <p class="thanks-text">
         会員登録ありがとうございます
     </p>
-    <button class="common-btn thanks__login-button">
+    <a class="common-btn thanks__login-button" href="">
         ログインする
-    </button>
+    </a>
 </div>
 @endsection

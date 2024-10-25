@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-<div class="register-container">
+<div class="register-container common-shadow">
     <p class="register-form__title">
         Registration
     </p>

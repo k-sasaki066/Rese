@@ -6,7 +6,7 @@
 
 @section('search')
 <div class="store-search__group">
-    <form class="store-search__form" action="" method="">
+    <form class="store-search__form common-shadow" action="" method="">
         <div class="store-search__item">
             <select class="store-search__input" name="area-search" id="">
                 <option value="" selected disabled>All area</option>
@@ -29,8 +29,8 @@
 
 @section('content')
 <div class="store-list__group">
-    <div class="store-list__item">
-        <img class="store-list__img" src="https://coachtech-matter.s3-ap-northeast-1.amazonaws.com/image/italian.jpg" alt="">
+    <div class="store-list__item common-shadow">
+        <img class="store-list__img" src="https://coachtech-matter.s3-ap-northeast-1.amazonaws.com/image/italian.jpg" alt="店舗画像">
         <div class="store-list__text">
             <p class="store-list__name">
                 らーめん極み
