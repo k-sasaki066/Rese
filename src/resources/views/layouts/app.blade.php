@@ -19,12 +19,11 @@
             </div>
             <h1 class="header__title">Rese</h1>
         </div>
+        @yield('search')
     </header>
 
     <main>
-        <div class="main-container">
-            @yield('content')
-        </div>
+        @yield('content')
     </main>
 </body>
 </html>
