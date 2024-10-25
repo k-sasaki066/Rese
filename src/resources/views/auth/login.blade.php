@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-<div class="login-container">
+<div class="login-container common-shadow">
     <p class="login-form__title">
         Login
     </p>
