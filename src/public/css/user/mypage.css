@@ -1,0 +1,86 @@
+.user__name {
+    margin-top: 32px;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.mypage__container {
+    display: flex;
+    justify-content: space-between;
+    gap: 32px;
+}
+
+.reservation-status__group {
+    margin-top: 48px;
+    min-width: 350px;
+    width: 500px;
+}
+
+.reservation-status__content {
+    margin-top: 32px;
+    background-color: #305dff;
+    padding: 32px;
+    color: #fff;
+}
+
+.reservation-status__text {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.reservation-status__number {
+    margin-left: -60%;
+}
+
+.reservation-status__icon {
+    width: 24px;
+    height: 24px;
+    vertical-align: bottom;
+}
+
+.reservation-status__table {
+    margin-top: 32px;
+    font-size: 14px;
+    width: 100%;
+}
+
+.reservation-cancel__btn-img {
+    width: 24px;
+    height: 24px;
+    vertical-align: bottom;
+}
+
+.reservation-status__table-header {
+    width: 30%;
+    text-align: left;
+    padding: 8px;
+}
+
+.reservation-status__table-item {
+    padding: 8px;
+}
+
+.favorite-store__list-content {
+    margin-top: 32px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.favorite-store__list-group {
+    margin-top: 48px;
+    max-width: 664px;
+}
+
+@media screen and (max-width: 768px) {
+    .mypage__container {
+        flex-direction: column;
+        gap: 32px;
+    }
+
+    .reservation-status__group {
+        width: 100%;
+    }
+}
