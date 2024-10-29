@@ -9,7 +9,7 @@
     justify-content: space-between;
     gap: 32px;
 }
-
+/* ---予約状況--- */
 .reservation-status__group {
     margin-top: 48px;
     min-width: 350px;
@@ -61,6 +61,7 @@
     padding: 8px;
 }
 
+/* ---お気に入り店舗--- */
 .favorite-store__list-content {
     margin-top: 32px;
     display: flex;
