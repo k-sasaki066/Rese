@@ -27,4 +27,9 @@ class ShopController extends Controller
 
         return view('user/detail', compact('shop'));
     }
+
+    public function getMypage()
+    {
+        return view('user/mypage');
+    }
 }

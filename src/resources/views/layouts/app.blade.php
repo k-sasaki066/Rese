@@ -28,7 +28,8 @@
                     </li>
                     @if (Auth::check())
                         <li class="header-nav__item">
-                            <form action="" method="">
+                            <form action="/logout" method="post">
+                                @csrf
                                 <button class="header-nav__link" type="submit">
                                     Logout
                                 </button>

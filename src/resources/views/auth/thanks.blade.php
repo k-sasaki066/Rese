@@ -9,7 +9,7 @@
     <p class="thanks-text">
         会員登録ありがとうございます
     </p>
-    <a class="common-btn thanks__login-button" href="">
+    <a class="common-btn thanks__login-button" href="/login">
         ログインする
     </a>
 </div>

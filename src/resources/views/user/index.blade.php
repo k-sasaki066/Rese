@@ -39,6 +39,12 @@
 @endsection
 
 @section('content')
+@if (session('result'))
+    <div class="flash_success-message">
+        {{ session('result') }}
+    </div>
+@endif
+
 <div class="store-list__group">
     @foreach($shops as $shop)
     <div class="store-list__item common-shadow">
