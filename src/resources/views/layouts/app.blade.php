@@ -33,9 +33,6 @@
                                     Logout
                                 </button>
                             </form>
-                            <!-- <a class="header-nav__link" href="">
-                                Logout
-                            </a> -->
                         </li><li class="header-nav__item">
                             <a class="header-nav__link" href="/mypage">
                                 Mypage

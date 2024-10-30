@@ -19,11 +19,13 @@
 }
 
 .back__btn {
+    text-decoration: none;
     padding: 0 10px;
     font-size: 20px;
     cursor: pointer;
     margin-right: 12px;
     background-color: #fff;
+    color: #000;
 }
 
 .store-name__text {

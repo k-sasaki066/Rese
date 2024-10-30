@@ -7,29 +7,29 @@
 @section('content')
 <div class="store-detail__group">
     <div class="store-name__group">
-        <button class="back__btn common-shadow">
+        <a class="back__btn common-shadow" href="/">
             <
-        </button>
+        </a>
         <h2 class="store-name__text">
-            仙人
+            {{ $shop['name'] }}
         </h2>
     </div>
 
     <div class="store-img__item">
-        <img class="store-img" src="https://coachtech-matter.s3-ap-northeast-1.amazonaws.com/image/sushi.jpg" alt="店舗画像">
+        <img class="store-img" src="{{ $shop['image_url'] }}" alt="店舗画像">
     </div>
 
     <div class="store-tag__group">
         <p class="store__area-tag">
-            #東京都
+            #{{ $shop['area']['name'] }}
         </p>
         <p class="store__genre-tag">
-            #寿司
+            #{{ $shop['genre']['name'] }}
         </p>
     </div>
 
     <p class="store-content__text">
-        料理長厳選の食材から作る寿司を用いたコースをぜひお楽しみください。食材・味・価格、お客様の満足度を徹底的に追及したお店です。特別な日のお食事、ビジネス接待まで気軽に使用することができます。
+        {{ $shop['detail'] }}
     </p>
 </div>
 
