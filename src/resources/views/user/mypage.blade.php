@@ -7,7 +7,7 @@
 
 @section('content')
 <p class="user__name">
-    testさん
+    {{ Auth::user()->name }}さん
 </p>
 <div class="mypage__container">
     <div class="reservation-status__group">

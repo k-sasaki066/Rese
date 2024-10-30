@@ -19,8 +19,14 @@ use App\Http\Controllers\AuthController;
 //     return view('welcome');
 // });
 
+Route::middleware('auth')->group(function () {
+    Route::get('/mypage', [ShopController::class, 'getMypage']);
+    Route::post('/logout', [AuthController::class,'postLogout']);
+});
 
 Route::get('/register', [AuthController::class, 'getRegister']);
-Route::get('/login', [AuthController::class, 'getLogin']);
+Route::post('/register', [AuthController::class, 'postRegister']);
+Route::get('/login', [AuthController::class, 'getLogin'])->name('login');
+Route::post('/login', [AuthController::class, 'postLogin']);
 Route::get('/', [ShopController::class, 'index']);
 Route::get('/detail/{shop_id}', [ShopController::class, 'detail']);

@@ -144,6 +144,23 @@ body {
     color: #e04c4c;
 }
 
+/* ---セッションメッセージ--- */
+.flash_error-message {
+    display: inline-block;
+    color: #fff;
+    border-radius: 3px;
+    background-color: #e54c4c;
+    padding: 8px 18px;
+}
+
+.flash_success-message {
+    display: inline-block;
+    color: #fff;
+    border-radius: 3px;
+    background-color: #32b23d;
+    padding: 8px 18px;
+}
+
 /* ---共通shadow--- */
 .common-shadow {
     border-radius: 5px;
