@@ -38,6 +38,9 @@
         <p class="reservation__title">
             予約
         </p>
+        @if(!Auth::check())
+        <p class="reservation__title-not-login">※予約機能を使用するにはログインが必要です</p>
+        @endif
 
         <div class="reservation-form__item">
             <input class="reservation-form__date-input" type="date" name="date">
@@ -98,7 +101,7 @@
                 </tr>
             </table>
         </div>
-        <button class="reservation-form__submit" type="submit">
+        <button class="reservation-form__submit" type="submit" @if(!Auth::check()) disabled @endif>
             予約する
         </button>
     </form>
