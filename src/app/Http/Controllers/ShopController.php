@@ -9,14 +9,18 @@ use App\Models\Genre;
 
 class ShopController extends Controller
 {
-    public function index(){
-        $areas = Area::all();
-        $genres = Genre::all();
-        $shops = Shop::with(['area', 'genre'])
-        ->get();
-        // dd($areas);
+    // public function index(){
+    //     $areas = Area::all();
+    //     $genres = Genre::all();
+    //     $shops = Shop::with(['area', 'genre'])
+    //     ->get();
+    //     // dd($areas);
 
-        return view('user/index', compact('shops', 'areas', 'genres'));
+    //     return view('user/index', compact('shops', 'areas', 'genres'));
+    // }
+
+    public function index() {
+        return view('user/index');
     }
 
     public function detail($shop_id){

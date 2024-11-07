@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css" />
     <link rel="stylesheet" href="{{ asset('css/common.css')}}">
     @yield('css')
+    @livewireStyles
 </head>
 
 <body>
@@ -60,5 +61,6 @@
     <main class="main">
         @yield('content')
     </main>
+@livewireScripts
 </body>
 </html>
