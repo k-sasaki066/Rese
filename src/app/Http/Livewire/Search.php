@@ -19,6 +19,7 @@ class Search extends Component
     public $genres;
     public $shop_id;
     public $favorites;
+    public $showModal = false;
 
     public function mount(){
         $this->areas = Area::all();
@@ -29,7 +30,7 @@ class Search extends Component
     }
 
     public function render() {
-        
+
         $this->search();
 
         return view('livewire.search');
@@ -123,5 +124,15 @@ class Search extends Component
         $user=Auth::user()->favorites()->where('shop_id', $shop_id)->delete();
         // dd($user);
         $this->getFavorite();
+    }
+
+    public function openModal()
+    {
+        $this->showModal = true;
+    }
+
+    public function closeModal()
+    {
+        $this->showModal = false;
     }
 }

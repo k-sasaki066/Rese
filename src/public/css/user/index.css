@@ -121,6 +121,55 @@
     cursor: pointer;
 }
 
+.modal__group {
+    position: fixed;
+    inset: 0;
+    overflow-y: auto;
+    z-index: 10;
+    background-color: #325583;
+    width: 50%;
+    height: 50%;
+    margin: auto;
+    padding: 20px;
+    box-shadow: 3px 3px 3px #d7d0cb;
+    border-radius: 3px;
+}
+
+.close-detail__modal {
+    text-align: right;
+}
+
+.close-detail__button-img {
+    width: 32px;
+    height: 32px;
+}
+
+.close-detail__button {
+    cursor: pointer;
+}
+
+.modal__content {
+    margin-top: 32px;
+    text-align: center;
+}
+
+.modal__content-text {
+    color: #fff;
+    font-size: 20px;
+}
+
+.modal-btn__group {
+    margin-top: 48px;
+}
+
+.modal-btn {
+    display: block;
+    margin: 0 auto 20px;
+    width: 180px;
+    text-decoration: none;
+
+}
+
 @media screen and (max-width: 768px) {
     .store-search__group {
         margin-top: 20px;
@@ -136,5 +185,9 @@
 
     .store-search__item {
         border-bottom: 1px solid #ddd;
+    }
+
+    .modal__group {
+        width: 60%;
     }
 }
