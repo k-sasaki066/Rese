@@ -31,3 +31,7 @@ Route::get('/login', [AuthController::class, 'getLogin'])->name('login');
 Route::post('/login', [AuthController::class, 'postLogin']);
 Route::get('/', [ShopController::class, 'index']);
 Route::get('/detail/{shop_id}', [ShopController::class, 'detail']);
+
+Route::middleware('auth')->group(function() {
+    Route::get('/user/done', [ShopController::class, 'done']);
+});

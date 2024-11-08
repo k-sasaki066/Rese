@@ -111,19 +111,17 @@ class Search extends Component
         // 既にいいねしている場合は何もせず、そうでない場合は新しいいいねを作成する
         if (!$existingFavorite) {
             $favorite = new Favorite();
-            $favorite->shop_id = $shop_id;
-            $favorite->user_id = $user_id;
-            $favorite->save();
+            $favorite->fill([
+                'shop_id'=>$shop_id,
+                'user_id'=>$user_id,
+                ])->save();
         }
-
-        $this->getFavorite();
     }
 
     public function delete($shop_id)
     {
         $user=Auth::user()->favorites()->where('shop_id', $shop_id)->delete();
         // dd($user);
-        $this->getFavorite();
     }
 
     public function openModal()

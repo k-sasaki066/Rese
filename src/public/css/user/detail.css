@@ -82,20 +82,32 @@
 .reservation-form__input {
     width: 100%;
     background-color: #fff;
-    color: #ddd;
+    /* color: #ddd; */
     border-radius: 3px;
     padding: 8px 12px;
     font-size: 14px;
 }
 
 .reservation-form__date-input {
+    position: relative;
     width: 50%;
     height: 30px;
     background-color: #fff;
-    color: #ddd;
     border-radius: 3px;
     padding: 8px 12px;
     font-size: 14px;
+}
+
+.reservation-form__date-input::-webkit-calendar-picker-indicator {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    width: auto;
+    height: auto;
+    background: transparent;
 }
 
 .reservation-form__select {
@@ -116,6 +128,10 @@
     border-radius: 3px;
     content: "";
     transform: translateY(-50%);
+}
+
+.error-message {
+    color: #721b1bdd;
 }
 
 /* ---予約確認--- */

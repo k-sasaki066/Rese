@@ -20,6 +20,9 @@ class CreateShopsTable extends Migration
             $table->string('name');
             $table->text('image_url');
             $table->string('detail');
+            $table->time('opening_time');
+            $table->time('closing_time');
+            $table->integer('max_number');
             $table->timestamps();
         });
     }
