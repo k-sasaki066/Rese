@@ -9,7 +9,7 @@
     <p class="thanks-text">
         ご予約ありがとうございます
     </p>
-    <a class="common-btn thanks__back-button" href="">
+    <a class="common-btn thanks__back-button" href="/">
         戻る
     </a>
 </div>
