@@ -6,6 +6,12 @@
 @endsection
 
 @section('content')
+@if (session('result'))
+    <div class="flash_success-message">
+        {{ session('result') }}
+    </div>
+@endif
+
 <p class="user__name">
     {{ Auth::user()->name }}さん
 </p>
@@ -15,18 +21,16 @@
             予約状況
         </h2>
 
+        @foreach($reservations as $reservation)
         <div class="reservation-status__content common-shadow">
-            
             <div class="reservation-status__text">
                 <img class="reservation-status__icon" src="../images/time.svg" alt="時計">
                 <p class="reservation-status__number">
-                    予約1
+                    予約{{$counter}}
                 </p>
-                <form class="reservation-cancel__form" action="" method="">
-                    <button class="reservation-cancel__btn">
-                        <img class="reservation-cancel__btn-img" src="../images/close-btn.svg" alt="">
-                    </button>
-                </form>
+                <a href="#{{ $reservation['id'] }}">
+                    <img class="reservation-cancel__btn-img" src="../images/close-btn.svg" alt="">
+                </a>
             </div>
 
             <table class="reservation-status__table">
@@ -35,7 +39,7 @@
                         Shop
                     </th>
                     <td class="reservation-status__table-item">
-                        仙人
+                        {{ $reservation['shop']['name'] }}
                     </td>
                 </tr>
                 <tr class="reservation-status__table-row">
@@ -43,7 +47,7 @@
                         Date
                     </th>
                     <td class="reservation-status__table-item">
-                        2024-11-01
+                        {{ $reservation['date'] }}
                     </td>
                 </tr>
                 <tr class="reservation-status__table-row">
@@ -51,7 +55,7 @@
                         Time
                     </th>
                     <td class="reservation-status__table-item">
-                        17:00
+                        {{ substr($reservation['time'], 0, 5) }}
                     </td>
                 </tr>
                 <tr class="reservation-status__table-row">
@@ -59,11 +63,64 @@
                         Number
                     </th>
                     <td class="reservation-status__table-item">
-                        2人
+                        {{ $reservation['number'] }}
                     </td>
                 </tr>
             </table>
         </div>
+
+        <div class="modal__group" id="{{ $reservation['id'] }}">
+            <a href="#!" class="modal-overlay"></a>
+            <div class="modal__inner">
+                <div class="close-detail__modal">
+                    <a class=".close-detail__button" href="#"><img class="close-detail__button-img" src="../images/close-btn.svg" alt="閉じる"></a>
+                </div>
+                <div class="modal__content">
+                    <p class="modal__content-text">この予約をキャンセルします。<br>よろしいですか？</p>
+                    <table class="reservation-status__table reservation-status__table-modal">
+                        <tr class="reservation-status__table-row">
+                            <th class="reservation-status__table-header">
+                                Shop
+                            </th>
+                            <td class="reservation-status__table-item">
+                                {{ $reservation['shop']['name'] }}
+                            </td>
+                        </tr>
+                        <tr class="reservation-status__table-row">
+                            <th class="reservation-status__table-header">
+                                Date
+                            </th>
+                            <td class="reservation-status__table-item">
+                                {{ $reservation['date'] }}
+                            </td>
+                        </tr>
+                        <tr class="reservation-status__table-row">
+                            <th class="reservation-status__table-header">
+                                Time
+                            </th>
+                            <td class="reservation-status__table-item">
+                                {{ substr($reservation['time'], 0, 5) }}
+                            </td>
+                        </tr>
+                        <tr class="reservation-status__table-row">
+                            <th class="reservation-status__table-header">
+                                Number
+                            </th>
+                            <td class="reservation-status__table-item">
+                                {{ $reservation['number'] }}
+                            </td>
+                        </tr>
+                    </table>
+                    <form class="reservation__delete-form" action="mypage/delete/{{$reservation['id']}}" method="post">
+                        @csrf
+                        @method('DELETE')
+                        <button class="common-btn delete-btn" type="submit">予約キャンセル</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <?php $counter++ ?>
+        @endforeach
     </div>
 
     <div class="favorite-store__list-group">
@@ -72,97 +129,35 @@
         </h2>
 
         <div class="favorite-store__list-content">
+            @foreach($shops as $shop)
+            @if(in_array($shop['id'], $favorites))
             <div class="store-list__item common-shadow">
-                <img class="store-list__img" src="https://coachtech-matter.s3-ap-northeast-1.amazonaws.com/image/italian.jpg" alt="店舗画像">
+                <img class="store-list__img" src="{{ $shop['image_url'] }}" alt="店舗画像">
                 <div class="store-list__text">
                     <p class="store-list__name">
-                        らーめん極み
+                        {{ $shop['name'] }}
                     </p>
                     <div class="store-list__tag">
                         <span class="store-list__area-tag">
-                        #東京都
+                        #{{ $shop['area']['name'] }}
                         </span>
                         <span class="store-list__genre-tag">
-                            #イタリアン
+                            #{{ $shop['genre']['name'] }}
                         </span>
                     </div>
                     <div class="store-list__form">
-                        <button class="common-btn store-list__detail-btn">
-                        詳しくみる
-                        </button>
-                        <img class="store-list__favorite" src="../images/heart.svg" alt="">
+                        <form class="store-list__detail-form" action="/detail/{{ $shop['id']}}" method="get">
+                        @csrf
+                            <button class="common-btn store-list__detail-btn" type="submit">
+                                詳しくみる
+                            </button>
+                        </form>
+                        <img class="store-list__favorite" src="../images/heart-red.svg" alt="">
                     </div>
                 </div>
             </div>
-
-            <div class="store-list__item common-shadow">
-                <img class="store-list__img" src="https://coachtech-matter.s3-ap-northeast-1.amazonaws.com/image/italian.jpg" alt="店舗画像">
-                <div class="store-list__text">
-                    <p class="store-list__name">
-                        らーめん極み
-                    </p>
-                    <div class="store-list__tag">
-                        <span class="store-list__area-tag">
-                        #東京都
-                        </span>
-                        <span class="store-list__genre-tag">
-                            #イタリアン
-                        </span>
-                    </div>
-                    <div class="store-list__form">
-                        <button class="common-btn store-list__detail-btn">
-                        詳しくみる
-                        </button>
-                        <img class="store-list__favorite" src="../images/heart.svg" alt="">
-                    </div>
-                </div>
-            </div>
-
-            <div class="store-list__item common-shadow">
-                <img class="store-list__img" src="https://coachtech-matter.s3-ap-northeast-1.amazonaws.com/image/italian.jpg" alt="店舗画像">
-                <div class="store-list__text">
-                    <p class="store-list__name">
-                        らーめん極み
-                    </p>
-                    <div class="store-list__tag">
-                        <span class="store-list__area-tag">
-                        #東京都
-                        </span>
-                        <span class="store-list__genre-tag">
-                            #イタリアン
-                        </span>
-                    </div>
-                    <div class="store-list__form">
-                        <button class="common-btn store-list__detail-btn">
-                        詳しくみる
-                        </button>
-                        <img class="store-list__favorite" src="../images/heart.svg" alt="">
-                    </div>
-                </div>
-            </div>
-
-            <div class="store-list__item common-shadow">
-                <img class="store-list__img" src="https://coachtech-matter.s3-ap-northeast-1.amazonaws.com/image/italian.jpg" alt="店舗画像">
-                <div class="store-list__text">
-                    <p class="store-list__name">
-                        らーめん極み
-                    </p>
-                    <div class="store-list__tag">
-                        <span class="store-list__area-tag">
-                        #東京都
-                        </span>
-                        <span class="store-list__genre-tag">
-                            #イタリアン
-                        </span>
-                    </div>
-                    <div class="store-list__form">
-                        <button class="common-btn store-list__detail-btn">
-                        詳しくみる
-                        </button>
-                        <img class="store-list__favorite" src="../images/heart.svg" alt="">
-                    </div>
-                </div>
-            </div>
+            @endif
+            @endforeach
         </div>
     </div>
 </div>
