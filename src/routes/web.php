@@ -22,6 +22,8 @@ use App\Http\Livewire\Search;
 
 Route::middleware('auth')->group(function () {
     Route::get('/mypage', [ShopController::class, 'getMypage']);
+    Route::delete('/mypage/delete/{reservation_id}', [ShopController::class, 'delete']);
+    Route::get('/user/done', [ShopController::class, 'done']);
     Route::post('/logout', [AuthController::class,'postLogout']);
 });
 
@@ -31,7 +33,3 @@ Route::get('/login', [AuthController::class, 'getLogin'])->name('login');
 Route::post('/login', [AuthController::class, 'postLogin']);
 Route::get('/', [ShopController::class, 'index']);
 Route::get('/detail/{shop_id}', [ShopController::class, 'detail']);
-
-Route::middleware('auth')->group(function() {
-    Route::get('/user/done', [ShopController::class, 'done']);
-});

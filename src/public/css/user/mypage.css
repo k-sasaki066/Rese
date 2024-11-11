@@ -12,7 +12,7 @@
 /* ---予約状況--- */
 .reservation-status__group {
     margin-top: 48px;
-    min-width: 350px;
+    min-width: 320px;
     width: 500px;
 }
 
@@ -62,6 +62,11 @@
 }
 
 /* ---お気に入り店舗--- */
+.favorite-store__list-group {
+    margin-top: 48px;
+    max-width: 664px;
+}
+
 .favorite-store__list-content {
     margin-top: 32px;
     display: flex;
@@ -70,9 +75,14 @@
     gap: 20px;
 }
 
-.favorite-store__list-group {
-    margin-top: 48px;
-    max-width: 664px;
+.reservation__delete-form {
+    margin-top: 28px;
+}
+
+.delete-btn {
+    display: inline-block;
+    margin: 0 auto;
+    background-color: #f65959;
 }
 
 @media screen and (max-width: 768px) {

@@ -71,7 +71,7 @@
                                 </button>
                             </form>
                         @else
-                            <form class="store-list__favorite-form" action="/"  wire:submit="favorite">
+                            <form class="store-list__favorite-form" action="/">
                                 @csrf
                                 <button wire:click="favorite({{ $shop['id'] }})">
                                     <img class="store-list__favorite" src="../images/heart.svg" alt="">
@@ -90,7 +90,7 @@
     </div>
 
     @if($showModal)
-        <div class="modal__group">
+        <div class="modal__inner">
             <div class="close-detail__modal">
                 <button class="close-detail__button" type="button" wire:click="closeModal()"><img class="close-detail__button-img" src="../images/close-btn.svg" alt="閉じる"></button>
             </div>

@@ -27,15 +27,16 @@ class Search extends Component
         $this->shops = Shop::all();
 
         $this->getFavorite();
+        $this->search();
     }
 
     public function render() {
 
-        $this->search();
 
         return view('livewire.search');
     }
 
+    // 検索フォームの値が更新するたびにsearchアクションを呼び出す
     public function updatedAreaSearch()
     {
         $this->search();
@@ -46,7 +47,12 @@ class Search extends Component
         $this->search();
     }
 
+    public function updatedWordSearch()
+    {
+        $this->search();
+    }
 
+    // お気に入り登録しているshop_idを取得
     public function getFavorite()
     {
         if(Auth::check()) {
@@ -56,6 +62,7 @@ class Search extends Component
         }
     }
 
+    // 検索機能
     public function search()
     {
         $areaSearch = $this->areaSearch;
@@ -87,14 +94,17 @@ class Search extends Component
         if(!empty($this->wordSearch)) {
             $this->shops = Shop::where('name', 'LIKE', '%' .$this->wordSearch .'%')->get();
         }
+        $this->getFavorite();
     }
 
+    // 検索ワードをurlに反映
     protected $queryString = [
         'areaSearch' => ['except' => ''],
         'genreSearch' => ['except' => ''],
         'wordSearch' => ['except' => '']
     ];
 
+    // お気に入り追加
     public function favorite($shop_id)
     {
         $user = Auth::user();
@@ -116,14 +126,17 @@ class Search extends Component
                 'user_id'=>$user_id,
                 ])->save();
         }
+        $this->getFavorite();
     }
 
+    // お気に入り削除
     public function delete($shop_id)
     {
         $user=Auth::user()->favorites()->where('shop_id', $shop_id)->delete();
         // dd($user);
     }
 
+    // モーダル画面
     public function openModal()
     {
         $this->showModal = true;

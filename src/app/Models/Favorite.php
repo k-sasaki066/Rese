@@ -14,8 +14,8 @@ class Favorite extends Model
         'shop_id',
     ];
 
-    public function shops() {
-        return $this->hasMany(Shop::class);
+    public function shop() {
+        return $this->belongsTo(Shop::class);
     }
 
     public function users() {
