@@ -48,17 +48,20 @@ class ShopController extends Controller
 
     public function done()
     {
-        return view('user/done');
+        // 直前のurlを取得
+        $prev = url()->previous();
+
+        return view('user/done', compact('prev'));
     }
 
     public function getMypage()
     {
         $user_id = Auth::user()->id;
-        $reservations = Reservation::with('shop')->where('user_id', $user_id)->get();
+        $reservations = Reservation::with('shop')->where('user_id', $user_id)->orderBy('date', 'asc')->get();
 
         $shops = Shop::with(['area', 'genre','favorites'])
         ->get();
-        $favorites = Auth::user()->favorites()->pluck('shop_id')->toArray();
+        $favorites = Auth::user()->favorites()->orderBy('shop_id', 'asc')->pluck('shop_id')->toArray();
 
         $counter = 1;
 
@@ -71,4 +74,5 @@ class ShopController extends Controller
 
         return redirect('/mypage')->with('result', '予約をキャンセルしました');
     }
+
 }

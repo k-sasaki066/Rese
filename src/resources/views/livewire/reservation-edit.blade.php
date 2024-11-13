@@ -1,26 +1,22 @@
 <div>
-    {{-- Close your eyes. Count to one. That is how long forever feels. --}}
-
+    {{-- In work, do what you enjoy. --}}
     <div class="reservation__group common-shadow">
-        <form class="reservation-form" action="/detail" wire:submit.prevent="reservation({{$shop['id']}})">
+        <form class="reservation-form" action="/detail" wire:submit.prevent="update({{$reservation['id']}})">
             @csrf
-            <p class="reservation__title">
-                予約
-            </p>
             @if(!Auth::check())
             <p class="reservation__title-not-login">※予約機能を使用するにはログインが必要です</p>
             @endif
 
-            <div class="reservation-form__item">
-                <input class="reservation-form__date-input" type="date" name="date" value="{{ old('date')}}" wire:model.live="date">
+            <div class="reservation-edit__item">
+                <input class="reservation-edit__date-input" type="date" name="date" value="{{ $date }}" wire:model.live="date">
                 <div class="error-message">
                     @error('date')
                     {{ $message }}
                     @enderror
                 </div>
 
-                <div class="reservation-form__select">
-                    <select class="reservation-form__input" name="time" wire:model.live="time">
+                <div class="reservation-edit__select">
+                    <select class="reservation-edit__input" name="time" wire:model.live="time">
                         <option value="">
                             来店時間を選択してください
                         </option>
@@ -35,8 +31,8 @@
                     @enderror
                 </div>
                 
-                <div class="reservation-form__select">
-                    <select class="reservation-form__input" name="number" value="{{ old('number') }}" wire:model.live="number">
+                <div class="reservation-edit__select">
+                    <select class="reservation-edit__input" name="number" value="" wire:model.live="number">
                         <option value="">
                             来店人数を選択してください
                         </option>
@@ -91,8 +87,8 @@
                     </tr>
                 </table>
             </div>
-            <button class="reservation-form__submit" type="submit" @if(!Auth::check()) disabled @endif>
-                予約する
+            <button class="reservation-form__submit" @if(!Auth::check()) disabled @endif wire:click="update({{ $reservation['id'] }})">
+                予約更新
             </button>
         </form>
     </div>

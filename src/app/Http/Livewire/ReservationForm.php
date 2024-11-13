@@ -18,6 +18,7 @@ class ReservationForm extends Component
     public $user_id;
     public $shop_id;
 
+    // ReservationRequestを取得
     protected function rules(): array
     {
         return (new ReservationRequest())->rules();
@@ -33,11 +34,23 @@ class ReservationForm extends Component
         return view('livewire.reservation-form');
     }
 
-    public function updated()
+    // 各項目を入力次第バリデーションする
+    public function updatedDate($date)
     {
-        $this->validate();
+        $this->validateOnly('date');
     }
 
+    public function updatedTime($time)
+    {
+        $this->validateOnly('time');
+    }
+
+    public function updatedNumber($number)
+    {
+        $this->validateOnly('number');
+    }
+
+    // 予約処理
     public function reservation($shop_id)
     {
         $user_id = Auth::user()->id;
