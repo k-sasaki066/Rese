@@ -67,6 +67,11 @@
                     </td>
                 </tr>
             </table>
+            <div class="reservation__edit-group">
+                <a class="common-btn reservation__edit-btn" href="#edit{{ $reservation['id'] }}">
+                    <img class="edit-icon" src="../images/edit.svg" alt="pen">edit
+                </a>
+            </div>
         </div>
 
         <div class="modal__group" id="{{ $reservation['id'] }}">
@@ -119,6 +124,21 @@
                 </div>
             </div>
         </div>
+
+        <div class="modal__group" id="edit{{ $reservation['id'] }}">
+            <a href="#!" class="modal-overlay"></a>
+            <div class="modal__inner">
+                <div class="close-detail__modal">
+                    <a class=".close-detail__button" href="#"><img class="close-detail__button-img" src="../images/close-btn.svg" alt="閉じる"></a>
+                </div>
+                <p class="modal__content-text">
+                        予約情報更新
+                    </p>
+                <div class="modal__content">
+                    @livewire('reservation-edit', ['reservation'=> $reservation ])
+                </div>
+            </div>
+        </div>
         <?php $counter++ ?>
         @endforeach
     </div>
@@ -152,7 +172,7 @@
                                 詳しくみる
                             </button>
                         </form>
-                        <img class="store-list__favorite" src="../images/heart-red.svg" alt="">
+                        @livewire('favorite-form', ['shop'=>$shop, 'favorites'=>$favorites])
                     </div>
                 </div>
             </div>

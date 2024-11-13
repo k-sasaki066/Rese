@@ -1,7 +1,7 @@
 <div>
     {{-- Do your work, then step back. --}}
     <div class="store-search__group">
-        <form class="store-search__form common-shadow" action="/" wire:submit="render">
+        <form class="store-search__form common-shadow" wire:submit="render">
             @csrf
             <div class="store-search__item">
                 <select class="store-search__input" wire:model.live.debounce.500ms="areaSearch" name="areaSearch">
@@ -33,12 +33,6 @@
         </form>
     </div>
 
-    @if (session('result'))
-        <div class="flash_success-message">
-            {{ session('result') }}
-        </div>
-    @endif
-
     <div class="store-list__group">
         @foreach($shops as $shop)
         <div class="store-list__item common-shadow">
@@ -64,14 +58,15 @@
                     </form>
                     @if(Auth::check())
                         @if(in_array($shop['id'], $favorites))
-                            <form class="store-list__favorite-form" action="/"  wire:submit="delete">
+                            <form class="store-list__favorite-form">
                                 @csrf
                                 <button wire:click="delete({{ $shop['id'] }})">
-                                    <img class="store-list__favorite" src="../images/heart-red.svg" alt="">
+                                    <img class="store-list__favorite"
+                                    src="../images/heart-red.svg" alt="">
                                 </button>
                             </form>
                         @else
-                            <form class="store-list__favorite-form" action="/">
+                            <form class="store-list__favorite-form">
                                 @csrf
                                 <button wire:click="favorite({{ $shop['id'] }})">
                                     <img class="store-list__favorite" src="../images/heart.svg" alt="">
@@ -79,9 +74,9 @@
                             </form>
                         @endif
                     @else
-                    <button class="login-information" wire:click="openModal()" type="submit">
-                        <img class="store-list__favorite" src="../images/heart.svg" alt="">
-                    </button>
+                        <button class="login-information" wire:click="openModal()">
+                            <img class="store-list__favorite" src="../images/heart.svg" alt="">
+                        </button>
                     @endif
                 </div>
             </div>
