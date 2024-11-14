@@ -32,25 +32,25 @@ class AuthController extends Controller
         return view('auth/register');
     }
 
-    public function getLogin()
-    {
-        return view('auth/login');
-    }
+    // public function getLogin()
+    // {
+    //     return view('auth/login');
+    // }
 
-    public function postLogin(LoginRequest $request)
-    {
-        if (Auth::attempt(['email' => $request['email'], 'password' => $request['password']])) {
-            return redirect('/')->with('result', 'ログインに成功しました');
-        } else {
-            return redirect('/login')->with('result', 'メールアドレスまたはパスワードが間違っております');
-        };
-    }
+    // public function postLogin(LoginRequest $request)
+    // {
+    //     if (Auth::attempt(['email' => $request['email'], 'password' => $request['password']])) {
+    //         return redirect('/')->with('result', 'ログインに成功しました');
+    //     } else {
+    //         return redirect('/login')->with('result', 'メールアドレスまたはパスワードが間違っております');
+    //     };
+    // }
 
-    public function postLogout(Request $request)
-    {
-        Auth::logout();
-        $request->session()->invalidate();
-        $request->session()->regenerateToken();
-        return redirect("/login");
-    }
+    // public function postLogout(Request $request)
+    // {
+    //     Auth::logout();
+    //     $request->session()->invalidate();
+    //     $request->session()->regenerateToken();
+    //     return redirect("/login");
+    // }
 }
