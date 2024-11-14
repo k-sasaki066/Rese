@@ -57,21 +57,18 @@
                         </button>
                     </form>
                     @if(Auth::check())
-                        @if(in_array($shop['id'], $favorites))
-                            <form class="store-list__favorite-form">
-                                @csrf
-                                <button wire:click="delete({{ $shop['id'] }})">
+                    <?php $favoriteIn = Auth::user()->favorites()->where('shop_id', $shop['id'])->exists();?>
+                        @if($favoriteIn)
+                                <button wire:click="delete({{ $shop['id'] }})"
+                                wire:model.live= "favoriteIn">
                                     <img class="store-list__favorite"
                                     src="../images/heart-red.svg" alt="">
                                 </button>
-                            </form>
-                        @else
-                            <form class="store-list__favorite-form">
-                                @csrf
-                                <button wire:click="favorite({{ $shop['id'] }})">
+                        @elseif(!$favoriteIn)
+                                <button wire:click="favorite({{ $shop['id'] }})"
+                                wire:model.live= "favoriteIn">
                                     <img class="store-list__favorite" src="../images/heart.svg" alt="">
                                 </button>
-                            </form>
                         @endif
                     @else
                         <button class="login-information" wire:click="openModal()">
