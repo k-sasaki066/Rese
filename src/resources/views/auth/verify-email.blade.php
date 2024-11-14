@@ -22,7 +22,7 @@
         <form class="verify-email__back-form" method="post" action="/logout">
             @csrf
             <button class="verify-email__back">
-                {{ __('戻る') }}
+                {{ __('ログアウト') }}
             </button>
         </form>
     </div>
