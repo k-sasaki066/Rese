@@ -150,7 +150,8 @@
 
         <div class="favorite-store__list-content">
             @foreach($shops as $shop)
-            @if(in_array($shop['id'], $favorites))
+            <?php $favoriteIn = Auth::user()->favorites()->where('shop_id', $shop['id'])->exists();?>
+            @if($favoriteIn)
             <div class="store-list__item common-shadow">
                 <img class="store-list__img" src="{{ $shop['image_url'] }}" alt="店舗画像">
                 <div class="store-list__text">

@@ -17,15 +17,14 @@ class Search extends Component
     public $shops;
     public $areas;
     public $genres;
-    public $favorites;
     public $showModal = false;
+    public $favoriteIn;
 
     public function mount(){
         $this->areas = Area::all();
         $this->genres = Genre::all();
         $this->shops = Shop::all();
 
-        $this->getFavorite();
         $this->search();
     }
 
@@ -49,16 +48,6 @@ class Search extends Component
     public function updatedWordSearch()
     {
         $this->search();
-    }
-
-    // お気に入り登録しているshop_idを取得
-    public function getFavorite()
-    {
-        if(Auth::check()) {
-            $this->favorites = Auth::user()->favorites()->orderBy('shop_id', 'asc')->pluck('shop_id')->toArray();
-        }else {
-            $this->favorites = '';
-        }
     }
 
     // 検索機能
@@ -105,6 +94,7 @@ class Search extends Component
     // お気に入り追加
     public function favorite($shop_id)
     {
+        $this->favoriteIn = true;
         $user = Auth::user();
 
         if ($user) {
@@ -123,15 +113,13 @@ class Search extends Component
                 'user_id'=>$user_id,
                 ])->save();
         }
-        $this->getFavorite();
     }
 
     // お気に入り削除
     public function delete($shop_id)
     {
         $user=Auth::user()->favorites()->where('shop_id', $shop_id)->delete();
-        // dd($user);
-        $this->getFavorite();
+        $this->favoriteIn = false;
     }
 
     // モーダル画面

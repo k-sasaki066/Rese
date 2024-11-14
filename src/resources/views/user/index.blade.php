@@ -6,6 +6,12 @@
 
 @section('content')
 
+@if (session('result'))
+    <div class="flash_success-message">
+        {{ session('result') }}
+    </div>
+@endif
+
 @livewire('search')
 
 @endsection
