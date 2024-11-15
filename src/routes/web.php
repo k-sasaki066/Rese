@@ -5,7 +5,6 @@ use App\Http\Controllers\ShopController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\RegisteredUserController;
 use App\Http\Livewire\Search;
-use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------

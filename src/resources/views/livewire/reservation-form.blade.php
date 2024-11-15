@@ -12,7 +12,7 @@
             @endif
 
             <div class="reservation-form__item">
-                <input class="reservation-form__date-input" type="date" name="date" value="{{ old('date')}}" wire:model.live="date">
+                <input class="reservation-form__date-input" type="date" name="date" value="{{ old('date')}}" min="{{ $min_date }}" max ="{{ $max_date }}" wire:model.live="date" @if(!Auth::check()) disabled @endif>
                 <div class="error-message">
                     @error('date')
                     {{ $message }}
@@ -20,7 +20,7 @@
                 </div>
 
                 <div class="reservation-form__select">
-                    <select class="reservation-form__input" name="time" wire:model.live="time">
+                    <select class="reservation-form__input" name="time" wire:model.live="time" @if(!Auth::check()) disabled @endif>
                         <option value="">
                             来店時間を選択してください
                         </option>
@@ -36,7 +36,7 @@
                 </div>
                 
                 <div class="reservation-form__select">
-                    <select class="reservation-form__input" name="number" value="{{ old('number') }}" wire:model.live="number">
+                    <select class="reservation-form__input" name="number" value="{{ old('number') }}" wire:model.live="number" @if(!Auth::check()) disabled @endif>
                         <option value="">
                             来店人数を選択してください
                         </option>

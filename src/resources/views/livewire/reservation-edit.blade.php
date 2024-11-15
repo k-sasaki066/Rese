@@ -8,7 +8,7 @@
             @endif
 
             <div class="reservation-edit__item">
-                <input class="reservation-edit__date-input" type="date" name="date" value="{{ $date }}" wire:model.live="date">
+                <input class="reservation-edit__date-input" type="date" name="date" value="{{ $date }}" min="{{$min_date }}" max="{{ $max_date }}" wire:model.live="date">
                 <div class="error-message">
                     @error('date')
                     {{ $message }}
