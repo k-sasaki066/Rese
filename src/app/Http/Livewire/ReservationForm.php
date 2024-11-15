@@ -6,6 +6,7 @@ use Livewire\Component;
 use App\Models\Reservation;
 use App\Http\Requests\ReservationRequest;
 use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
 
 class ReservationForm extends Component
 {
@@ -17,7 +18,14 @@ class ReservationForm extends Component
     public $number;
     public $user_id;
     public $shop_id;
+    public $min_date;
+    public $max_date;
 
+    public function mount()
+    {
+        $this->min_date = Carbon::now()->addDay()->format('Y-m-d');
+        $this->max_date = Carbon::now()->addMonth(2)->format('Y-m-d');
+    }
     // ReservationRequestを取得
     protected function rules(): array
     {

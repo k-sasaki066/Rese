@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use DateTime;
 use DatePeriod;
 use DateInterval;
+use Carbon\Carbon;
 
 class ReservationEdit extends Component
 {
@@ -21,6 +22,8 @@ class ReservationEdit extends Component
     public $date;
     public $time;
     public $number;
+    public $min_date;
+    public $max_date;
 
     public function mount()
     {
@@ -46,6 +49,9 @@ class ReservationEdit extends Component
             new DateInterval('PT30M'),
             new DateTime($this->shop['closing_time'])
         )));
+
+        $this->min_date = Carbon::now()->addDay()->format('Y-m-d');
+        $this->max_date = Carbon::now()->addMonth(2)->format('Y-m-d');
     }
 
     public function render()

@@ -20,7 +20,6 @@
         <h2 class="reservation-status__title">
             予約状況
         </h2>
-
         @foreach($reservations as $reservation)
         <div class="reservation-status__content common-shadow">
             <div class="reservation-status__text">
