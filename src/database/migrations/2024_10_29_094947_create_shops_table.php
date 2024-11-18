@@ -18,11 +18,16 @@ class CreateShopsTable extends Migration
             $table->foreignId('area_id')->constrained()->cascadeOnDelete();
             $table->foreignId('genre_id')->constrained()->cascadeOnDelete();
             $table->string('name');
-            $table->text('image_url');
-            $table->string('detail');
+            $table->string('address');
+            $table->string('building')->nullable();
+            $table->string('tel');
             $table->time('opening_time');
             $table->time('closing_time');
-            $table->integer('max_number');
+            $table->string('holiday');
+            $table->tinyInteger('max_number');
+            $table->integer('budget');
+            $table->text('image_url');
+            $table->string('detail');
             $table->timestamps();
         });
     }

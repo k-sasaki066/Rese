@@ -61,11 +61,10 @@ class ShopController extends Controller
 
         $shops = Shop::with(['area', 'genre','favorites'])
         ->get();
-        $favorites = Auth::user()->favorites()->orderBy('shop_id', 'asc')->pluck('shop_id')->toArray();
 
         $counter = 1;
 
-        return view('user/mypage', compact('reservations', 'shops', 'favorites','counter'));
+        return view('user/mypage', compact('reservations', 'shops', 'counter'));
     }
 
     public function delete($reservation_id)

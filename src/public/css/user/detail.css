@@ -51,6 +51,8 @@
 
 /* ---予約フォーム--- */
 .reservation__group {
+    display: grid;
+    grid-column: 2/3;
     margin-top: -32px;
     background-color: #305dff;
     display: flex;
@@ -65,8 +67,10 @@
 }
 
 .reservation__title-not-login {
+    display: inline;
     margin-top: 8px;
     color: #fff;
+    background: linear-gradient(transparent 80%, rgb(243, 175, 103) 75%);
 }
 
 .reservation-form {
@@ -185,7 +189,6 @@
     .main {
         display: grid;
         grid-template-columns: 1fr;
-        grid-template-rows: 1fr 1fr;
         gap: 48px 0;
     }
 
