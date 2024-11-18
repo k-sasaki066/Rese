@@ -30,3 +30,7 @@ Route::post('/register', [RegisteredUserController::class, 'store']);
 
 Route::get('/', [ShopController::class, 'index']);
 Route::get('/detail/{shop_id}', [ShopController::class, 'detail']);
+
+Route::get('/store', function () {
+    return view('store-editor/store-editor-form');
+});

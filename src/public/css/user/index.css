@@ -201,6 +201,10 @@
         justify-content: left;
     }
 
+    .word-search__item {
+        z-index: 0;
+    }
+
     .store-search__form {
         display: flex;
         flex-direction: column;

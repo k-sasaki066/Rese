@@ -172,7 +172,7 @@
                                 詳しくみる
                             </button>
                         </form>
-                        @livewire('favorite-form', ['shop'=>$shop, 'favorites'=>$favorites])
+                        @livewire('favorite-form', ['shop'=>$shop])
                     </div>
                 </div>
             </div>
