@@ -36,7 +36,7 @@ class ShopController extends Controller
 
         $option_times = array_map($formatter, iterator_to_array(new DatePeriod(
             new DateTime($shop['opening_time']),
-            new DateInterval('PT30M'),
+            new DateInterval('PT60M'),
             new DateTime($shop['closing_time'])
         )));
 

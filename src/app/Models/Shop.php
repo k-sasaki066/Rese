@@ -13,6 +13,13 @@ class Shop extends Model
         'area_id',
         'genre_id',
         'name',
+        'address',
+        'building',
+        'tel',
+        'opening_time',
+        'closing_time',
+        'holiday',
+        'budget',
         'image_url',
         'detail',
     ];

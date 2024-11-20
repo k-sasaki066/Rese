@@ -40,6 +40,16 @@
                                 Mypage
                             </a>
                         </li>
+                        </li><li class="header-nav__item">
+                            <a class="header-nav__link" href="/store">
+                                Store-edit
+                            </a>
+                        </li>
+                        </li><li class="header-nav__item">
+                            <a class="header-nav__link" href="/list">
+                                Reservation-list
+                            </a>
+                        </li>
                     @else
                         <li class="header-nav__item">
                             <a class="header-nav__link" href="/register">

@@ -46,7 +46,7 @@ class ReservationEdit extends Component
 
         $this->option_times = array_map($formatter, iterator_to_array(new DatePeriod(
             new DateTime($this->shop['opening_time']),
-            new DateInterval('PT30M'),
+            new DateInterval('PT60M'),
             new DateTime($this->shop['closing_time'])
         )));
 
