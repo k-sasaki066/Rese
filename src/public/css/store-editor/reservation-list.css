@@ -1,0 +1,51 @@
+/* ---日付検索--- */
+.reservation-list__date-form {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 32px;
+}
+
+.date-change__button {
+    display: inline-block;
+    border: 2px solid #4561d1;
+    color: #4561d1;
+    padding: 0 12px;
+    font-weight: bold;
+    font-size: 20px;
+    background-color: #fff;
+    transition: .3s;
+}
+
+.date-change__button:hover {
+    border: 2px solid #8d9acc;
+    color: #8d9acc;
+}
+
+.date-table__item-empty {
+    text-align: center;
+    padding: 8px 12px;
+}
+
+/* ---予約確認テーブル--- */
+.reservation-list__heading {
+    text-align: center;
+}
+
+.reservation-list__table {
+    width: 80%;
+    margin: 32px auto 0;
+    border-collapse: collapse;
+    border: 1px solid #929191;
+}
+
+.reservation-list__table-heading {
+    background-color: #d7d6d1;
+    padding: 8px 12px;
+}
+
+.reservation-list__table-item {
+    text-align: center;
+    border-bottom: 1px solid #929191;
+    padding: 8px 12px;
+}

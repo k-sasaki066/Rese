@@ -7,8 +7,8 @@
                 <select class="store-search__input" wire:model.live.debounce.500ms="areaSearch" name="areaSearch">
                     <option value="">All area</option>
                     @foreach($areas as $area)
-                    <option value="{{ $area['id'] }}" @if( old('areaSearch') ==  $area['id']) selected @endif>
-                        {{ $area['name'] }}
+                    <option value="{{ $area['area_id'] }}" @if( old('areaSearch') ==  $area['area_id']) selected @endif>
+                        {{ $area['area']['name'] }}
                     </option>
                     @endforeach
                 </select>
