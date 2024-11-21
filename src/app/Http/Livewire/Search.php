@@ -21,7 +21,6 @@ class Search extends Component
     public $favoriteIn;
 
     public function mount(){
-        $this->genres = Genre::all();
         $this->shops = Shop::all();
 
         $this->search();
@@ -29,6 +28,7 @@ class Search extends Component
 
     public function render() {
         $this->areas = shop::with('area')->groupBy('area_id')->get('area_id');
+        $this->genres = shop::with('genre')->groupBy('genre_id')->get('genre_id');
 
 
         return view('livewire.search');

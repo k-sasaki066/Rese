@@ -1,0 +1,15 @@
+.register-editor__container {
+    width: 40%;
+    margin: 120px auto 0;
+}
+
+.register-editor__form-title {
+    font-size: 18px;
+    padding: 16px 24px;
+    color: #fff;
+    background-color: #305dff;
+}
+
+.form-group__input {
+    padding: 0 12px;
+}

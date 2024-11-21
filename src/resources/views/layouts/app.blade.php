@@ -35,19 +35,30 @@
                                     Logout
                                 </button>
                             </form>
-                        </li><li class="header-nav__item">
+                        </li>
+                        <li class="header-nav__item">
                             <a class="header-nav__link" href="/mypage">
                                 Mypage
                             </a>
                         </li>
-                        </li><li class="header-nav__item">
+                        <li class="header-nav__item">
                             <a class="header-nav__link" href="/store">
                                 Store-edit
                             </a>
                         </li>
-                        </li><li class="header-nav__item">
+                        <li class="header-nav__item">
                             <a class="header-nav__link" href="/list">
                                 Reservation-list
+                            </a>
+                        </li>
+                        <li class="header-nav__item">
+                            <a class="header-nav__link" href="/editor/register">
+                                Register-for-Editor
+                            </a>
+                        </li>
+                        <li class="header-nav__item">
+                            <a class="header-nav__link" href="/editor/list">
+                                Administrator-list
                             </a>
                         </li>
                     @else

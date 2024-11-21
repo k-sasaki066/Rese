@@ -18,9 +18,9 @@
                 <select class="store-search__input" id="" wire:model.live.debounce.500ms="genreSearch" name="Search">
                     <option value="" selected>All genre</option>
                     @foreach($genres as $genre)
-                    <option value="{{ $genre['id'] }}"
-                    @if( old('genreSearch') ==  $genre['id']) selected @endif>
-                        {{ $genre['name'] }}
+                    <option value="{{ $genre['genre_id'] }}"
+                    @if( old('genreSearch') ==  $genre['genre_id']) selected @endif>
+                        {{ $genre['genre']['name'] }}
                     </option>
                     @endforeach
                 </select>

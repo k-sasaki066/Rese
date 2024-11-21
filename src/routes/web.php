@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\EditorController;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\RegisteredUserController;
 use App\Http\Livewire\Search;
 
@@ -36,3 +37,8 @@ Route::get('/store', [EditorController::class, 'index']);
 Route::post('/store/edit', [EditorController::class, 'edit']);
 Route::get('/list', [EditorController::class, 'list']);
 Route::get('/list/date', [EditorController::class, 'date']);
+Route::get('/editor/register', [AdminController::class, 'register']);
+Route::get('/editor/list', [AdminController::class, 'list']);
+
+Route::get('/admin/register', [AdminController::class, 'getRegister']);
+

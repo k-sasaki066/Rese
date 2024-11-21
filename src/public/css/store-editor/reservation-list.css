@@ -40,7 +40,8 @@
 }
 
 .reservation-list__table-heading {
-    background-color: #d7d6d1;
+    color: #fff;
+    background-color: #305dff;
     padding: 8px 12px;
 }
 

@@ -15,11 +15,19 @@ class GenresTableSeeder extends Seeder
     public function run()
     {
         $genres = [
+            "和食",
             "寿司",
             "焼肉",
-            "居酒屋",
-            "イタリアン",
+            "鍋",
+            "中華",
             "ラーメン",
+            "カレー",
+            "イタリアン",
+            "フレンチ",
+            "居酒屋",
+            "カフェ",
+            "スイーツ",
+            "その他",
         ];
 
         foreach ($genres as $genre) {
