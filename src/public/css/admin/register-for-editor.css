@@ -1,5 +1,5 @@
 .register-editor__container {
-    width: 40%;
+    width: 45%;
     margin: 120px auto 0;
 }
 
@@ -12,4 +12,39 @@
 
 .form-group__input {
     padding: 0 12px;
+}
+
+.form-group__select {
+    margin-bottom: 16px;
+}
+
+.register-editor__select {
+    width: 100%;
+    border-bottom: 2px solid #000;
+    padding: 0 12px 6px;
+}
+
+.form__select-inner {
+    position: relative;
+    width: 100%;
+}
+
+.form__select-inner::after {
+    position: absolute;
+    top: 50%;
+    right: 8%;
+    width: 0;
+    height: 0;
+    border-top: 6px solid #a1a09f;
+    border-right: 6px solid transparent;
+    border-left: 6px solid transparent;
+    content: "";
+    transform: translateY(-50%);
+}
+
+@media screen and (max-width: 768px) {
+
+    .register-editor__container {
+        width: 70%;
+    }
 }

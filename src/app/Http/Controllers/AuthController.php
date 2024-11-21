@@ -8,49 +8,62 @@ use App\Http\Requests\LoginRequest;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
+use Spatie\Permission\Models\Role;
+
+use Illuminate\Auth\Events\Registered;
+use Illuminate\Contracts\Auth\StatefulGuard;
+use Illuminate\Routing\Controller;
+use Illuminate\Support\Str;
+use Laravel\Fortify\Contracts\CreatesNewUsers;
+use Laravel\Fortify\Contracts\RegisterResponse;
+use Laravel\Fortify\Contracts\RegisterViewResponse;
+use Laravel\Fortify\Fortify;
 
 
 class AuthController extends Controller
 {
-    public function getRegister()
+    /**
+     * The guard implementation.
+     *
+     * @var \Illuminate\Contracts\Auth\StatefulGuard
+     */
+    protected $guard;
+
+    /**
+     * Create a new controller instance.
+     *
+     * @param  \Illuminate\Contracts\Auth\StatefulGuard  $guard
+     * @return void
+     */
+    public function __construct(StatefulGuard $guard)
     {
-        return view('auth/register');
+        $this->guard = $guard;
     }
 
-    public function postRegister(RegisterRequest $request)
+    public function getAdminRegister() {
+        return view('admin/register-for-admin');
+    }
+
+    public function postAdminRegister(RegisterRequest $request, CreatesNewUsers $creator): RegisterResponse
     {
-        try {
-            User::create([
-                'name' => $request['name'],
-                'email' => $request['email'],
-                'password' => Hash::make($request['password']),
+        // $user = User::create([
+        //     'name' => $request['name'],
+        //     'email' => $request['email'],
+        //     'password' => Hash::make($request['password']),
+        // ]);
+        // $user->assignRole('admin');
+
+        if (config('fortify.lowercase_usernames')) {
+            $request->merge([
+                Fortify::username() => Str::lower($request->{Fortify::username()}),
             ]);
-            return view('auth/thanks');
-        } catch (\Throwable $th) {
-            return redirect('auth/register')->with('result', 'エラーが発生しました');
         }
-        return view('auth/register');
+
+        event(new Registered($user = $creator->create($request->all())));
+        $user->assignRole('admin');
+
+        $this->guard->login($user);
+
+        return app(RegisterResponse::class);
     }
-
-    // public function getLogin()
-    // {
-    //     return view('auth/login');
-    // }
-
-    // public function postLogin(LoginRequest $request)
-    // {
-    //     if (Auth::attempt(['email' => $request['email'], 'password' => $request['password']])) {
-    //         return redirect('/')->with('result', 'ログインに成功しました');
-    //     } else {
-    //         return redirect('/login')->with('result', 'メールアドレスまたはパスワードが間違っております');
-    //     };
-    // }
-
-    // public function postLogout(Request $request)
-    // {
-    //     Auth::logout();
-    //     $request->session()->invalidate();
-    //     $request->session()->regenerateToken();
-    //     return redirect("/login");
-    // }
 }
