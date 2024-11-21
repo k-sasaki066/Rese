@@ -35,4 +35,8 @@ class Shop extends Model
     public function favorites() {
         return $this->hasMany(Favorite::class);
     }
+
+    public function user() {
+        return $this->belongsTo(User::class);
+    }
 }

@@ -77,7 +77,7 @@
                 平均予算
             </th>
             <td class="store-info__table-item">
-                {{ $shop['budget'] }}円
+                ¥{{ number_format($shop['budget']) }}
             </td>
         </tr>
     </table>
