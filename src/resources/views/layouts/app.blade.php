@@ -22,12 +22,45 @@
 
             <nav class="header-nav__menu" id="header-nav">
                 <ul class="header-nav__list">
-                    <li class="header-nav__item">
-                        <a class="header-nav__link" href="/">
-                            Home
-                        </a>
-                    </li>
                     @if (Auth::check())
+                        @if(Auth::user()->hasAnyRole(['admin', 'editor']))
+                            @role('editor')
+                            <li class="header-nav__item">
+                                <a class="header-nav__link" href="/store">
+                                    Store-edit
+                                </a>
+                            </li>
+                            <li class="header-nav__item">
+                                <a class="header-nav__link" href="/list">
+                                    Reservation-list
+                                </a>
+                            </li>
+                            @endrole
+
+                            @role('admin')
+                            <li class="header-nav__item">
+                                <a class="header-nav__link" href="/editor/register">
+                                    Register-for-Editor
+                                </a>
+                            </li>
+                            <li class="header-nav__item">
+                                <a class="header-nav__link" href="/editor/list">
+                                    Administrator-list
+                                </a>
+                            </li>
+                            @endrole
+                        @else
+                            <li class="header-nav__item">
+                                <a class="header-nav__link" href="/">
+                                    Home
+                                </a>
+                            </li>
+                            <li class="header-nav__item">
+                                <a class="header-nav__link" href="/mypage">
+                                    Mypage
+                                </a>
+                            </li>
+                        @endif
                         <li class="header-nav__item">
                             <form action="/logout" method="post">
                                 @csrf
@@ -36,32 +69,12 @@
                                 </button>
                             </form>
                         </li>
-                        <li class="header-nav__item">
-                            <a class="header-nav__link" href="/mypage">
-                                Mypage
-                            </a>
-                        </li>
-                        <li class="header-nav__item">
-                            <a class="header-nav__link" href="/store">
-                                Store-edit
-                            </a>
-                        </li>
-                        <li class="header-nav__item">
-                            <a class="header-nav__link" href="/list">
-                                Reservation-list
-                            </a>
-                        </li>
-                        <li class="header-nav__item">
-                            <a class="header-nav__link" href="/editor/register">
-                                Register-for-Editor
-                            </a>
-                        </li>
-                        <li class="header-nav__item">
-                            <a class="header-nav__link" href="/editor/list">
-                                Administrator-list
-                            </a>
-                        </li>
                     @else
+                        <li class="header-nav__item">
+                            <a class="header-nav__link" href="/">
+                                Home
+                            </a>
+                        </li>
                         <li class="header-nav__item">
                             <a class="header-nav__link" href="/register">
                                 Registration

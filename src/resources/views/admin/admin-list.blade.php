@@ -5,6 +5,12 @@
 @endsection
 
 @section('content')
+@if (session('result'))
+    <div class="flash_success-message">
+        {{ session('result') }}
+    </div>
+@endif
+
 <div class="admin-list__group">
     <h2 class="admin-list__heading">
         Administrator-list

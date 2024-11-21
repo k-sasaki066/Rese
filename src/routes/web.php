@@ -33,12 +33,26 @@ Route::post('/register', [RegisteredUserController::class, 'store']);
 Route::get('/', [ShopController::class, 'index']);
 Route::get('/detail/{shop_id}', [ShopController::class, 'detail']);
 
-Route::get('/store', [EditorController::class, 'index']);
-Route::post('/store/edit', [EditorController::class, 'edit']);
-Route::get('/list', [EditorController::class, 'list']);
-Route::get('/list/date', [EditorController::class, 'date']);
-Route::get('/editor/register', [AdminController::class, 'register']);
-Route::get('/editor/list', [AdminController::class, 'list']);
+Route::group(['middleware' => ['role:admin']], function () {
+    Route::get('/editor/register', [AdminController::class, 'getEditorRegister']);
+    Route::post('/editor/register', [AdminController::class, 'postEditorRegister']);
+    Route::get('/editor/list', [AdminController::class, 'list']);
+});
 
-Route::get('/admin/register', [AdminController::class, 'getRegister']);
+Route::group(['middleware' => ['role:editor']], function () {
+    Route::get('/store', [EditorController::class, 'index']);
+    Route::post('/store/edit', [EditorController::class, 'edit']);
+    Route::get('/list', [EditorController::class, 'list']);
+    Route::get('/list/date', [EditorController::class, 'date']);
+});
+// Route::get('/store', [EditorController::class, 'index']);
+// Route::post('/store/edit', [EditorController::class, 'edit']);
+// Route::get('/list', [EditorController::class, 'list']);
+// Route::get('/list/date', [EditorController::class, 'date']);
+// Route::get('/editor/register', [AdminController::class, 'getEditorRegister']);
+// Route::post('/editor/register', [AdminController::class, 'postEditorRegister']);
+// Route::get('/editor/list', [AdminController::class, 'list']);
+
+Route::get('/admin/register', [AuthController::class, 'getAdminRegister']);
+Route::post('/admin/register', [AuthController::class, 'postAdminRegister']);
 
