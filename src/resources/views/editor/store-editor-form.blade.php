@@ -1,7 +1,7 @@
 @extends('layouts/app')
 
 @section('css')
-<link rel="stylesheet" href="{{ asset('css/store-editor/store-editor-form.css')}}">
+<link rel="stylesheet" href="{{ asset('css/editor/store-editor-form.css')}}">
 @endsection
 
 @section('content')
@@ -9,7 +9,7 @@
     <h2 class="store-edit__heading">
         店舗情報作成・更新
     </h2>
-    <form class="store-edit__form" action="store/edit" method="post">
+    <form class="store-edit__form" action="/editor/shop/edit" method="post">
         @csrf
         <table class="store-edit__table">
             <tr class="store-edit__table-row">

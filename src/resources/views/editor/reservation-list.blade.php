@@ -1,7 +1,7 @@
 @extends('layouts/app')
 
 @section('css')
-<link rel="stylesheet" href="{{ asset('css/store-editor/reservation-list.css')}}">
+<link rel="stylesheet" href="{{ asset('css/editor/reservation-list.css')}}">
 @endsection
 
 @section('content')
@@ -9,7 +9,7 @@
     <h1 class="reservation-list__heading">
         Reservation-list
     </h1>
-    <form class="reservation-list__date-form" action="/list/date" method="get">
+    <form class="reservation-list__date-form" action="/editor/shop/date" method="get">
         @csrf
         <button class="date-change__button" name="previous-day"> < </button>
         <input type="hidden" name="display" value="{{ $display }}">

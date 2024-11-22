@@ -26,26 +26,26 @@
                         @if(Auth::user()->hasAnyRole(['admin', 'editor']))
                             @role('editor')
                             <li class="header-nav__item">
-                                <a class="header-nav__link" href="/store">
-                                    Store-edit
+                                <a class="header-nav__link" href="/editor/shop/edit">
+                                    店舗情報編集
                                 </a>
                             </li>
                             <li class="header-nav__item">
-                                <a class="header-nav__link" href="/list">
-                                    Reservation-list
+                                <a class="header-nav__link" href="/editor/shop/list">
+                                    予約リスト
                                 </a>
                             </li>
                             @endrole
 
                             @role('admin')
                             <li class="header-nav__item">
-                                <a class="header-nav__link" href="/editor/register">
-                                    Register-for-Editor
+                                <a class="header-nav__link" href="/admin/register/representative">
+                                    店舗代表者登録
                                 </a>
                             </li>
                             <li class="header-nav__item">
-                                <a class="header-nav__link" href="/editor/list">
-                                    Administrator-list
+                                <a class="header-nav__link" href="/admin/user/index">
+                                    管理者リスト
                                 </a>
                             </li>
                             @endrole

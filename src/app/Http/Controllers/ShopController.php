@@ -56,15 +56,21 @@ class ShopController extends Controller
 
     public function getMypage()
     {
-        $user_id = Auth::user()->id;
-        $reservations = Reservation::with('shop')->where('user_id', $user_id)->orderBy('date', 'asc')->get();
+        if(Auth::user()->hasRole('admin')) {
+            return view('admin/admin-menu');
+        }elseif(Auth::user()->hasRole('editor')) {
+            return view('editor/editor-menu');
+        }else {
+            $user_id = Auth::user()->id;
+            $reservations = Reservation::with('shop')->where('user_id', $user_id)->orderBy('date', 'asc')->get();
 
-        $shops = Shop::with(['area', 'genre','favorites'])
-        ->get();
+            $shops = Shop::with(['area', 'genre','favorites'])
+            ->get();
 
-        $counter = 1;
+            $counter = 1;
 
-        return view('user/mypage', compact('reservations', 'shops', 'counter'));
+            return view('user/mypage', compact('reservations', 'shops', 'counter'));
+        }
     }
 
     public function delete($reservation_id)
