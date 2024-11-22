@@ -29,7 +29,7 @@ class EditorController extends Controller
         $areas = Area::all();
         $genres = Genre::all();
 
-        return view('store-editor/store-editor-form', compact('option_times', 'areas', 'genres'));
+        return view('editor/store-editor-form', compact('option_times', 'areas', 'genres'));
     }
 
     public function edit(EditorRequest $request) {
@@ -37,14 +37,14 @@ class EditorController extends Controller
         $storeForm = $request->all();
         $areaName = Area::find($storeForm['area_id']);
 
-        return view('store-editor/confirm', compact('storeForm', 'areaName'));
+        return view('editor/confirm', compact('storeForm', 'areaName'));
     }
 
     public function list() {
         $display = Carbon::now()->format('Y-m-d');
-        $reservations = Reservation::with('user')->where('shop_id', 1)->whereDate('date', $display)->orderBy('time', 'asc')->simplePaginate(10);
+        $reservations = Reservation::with('user')->where('shop_id', 1)->whereDate('date', $display)->orderBy('time', 'asc')->get();
         
-        return view('store-editor/reservation-list', compact('display', 'reservations'));
+        return view('editor/reservation-list', compact('display', 'reservations'));
     }
 
     public function date(Request $request) {
@@ -62,6 +62,6 @@ class EditorController extends Controller
 
         $reservations = Reservation::with('user')->where('shop_id', 1)->whereDate('date', $display)->orderBy('time', 'asc')->simplePaginate(10);
 
-        return view('store-editor/reservation-list', compact('display', 'reservations'));
+        return view('editor/reservation-list', compact('display', 'reservations'));
     }
 }

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\RegisterRequest;
 use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\Shop;
 
@@ -34,10 +35,12 @@ class AdminController extends Controller
             ])->save();
         }
 
-        return redirect('/editor/list')->with('result', '店舗管理者を登録しました');
+        return redirect('/admin/user/index')->with('result', '店舗管理者を登録しました');
     }
 
     public function list() {
-        return view('admin/admin-list');
+        $users = User::with('roles', 'shop')->paginate(10);
+        // dd($users);
+        return view('admin/admin-list', compact('users'));
     }
 }

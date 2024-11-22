@@ -17,7 +17,7 @@
         店舗代表者登録
     </p>
 
-    <form class="register-form" action="/editor/register" method="post">
+    <form class="register-form" action="/admin/register/representative" method="post">
         @csrf
         <div class="form-group">
             <div class="form-group__item">

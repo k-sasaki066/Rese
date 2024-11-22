@@ -27,46 +27,58 @@
                 Email
             </th>
             <th class="admin-list__table-heading">
-                Shop
-            </th>
-            <th class="admin-list__table-heading">
                 Role
             </th>
+            <th class="admin-list__table-heading">
+                担当店舗
+            </th>
         </tr>
+
+        @php
+            $list_item =($users->currentPage()-1)*$users->perPage()+1;
+        @endphp
+
+        @foreach($users as $user)
         <tr class="admin-list__table-row">
             <td class="admin-list__table-item">
-                1
+                {{ $list_item }}
             </td>
             <td class="admin-list__table-item">
-                test
+                {{ $user['name'] }}
             </td>
             <td class="admin-list__table-item">
-                test@test.com
+                {{ $user['email'] }}
             </td>
-            <td class="admin-list__table-item">
-                test
-            </td>
-            <td class="admin-list__table-item">
-                test
-            </td>
+            @forelse ($user->roles as $role)
+                <td class="admin-list__table-item">
+                    {{ $role->name }}
+                </td>
+            @empty
+                <td class="admin-list__table-item">
+                    user
+                </td>
+            @endforelse
+            @if ($user->shop !== null)
+                <td class="admin-list__table-item">
+                    {{ $user['shop']['name'] }}
+                </td>
+            @else
+                <td class="admin-list__table-item">
+                    -
+                </td>
+            @endif
         </tr>
-        <tr class="admin-list__table-row">
-            <td class="admin-list__table-item">
-                1
-            </td>
-            <td class="admin-list__table-item">
-                test
-            </td>
-            <td class="admin-list__table-item">
-                test@test.com
-            </td>
-            <td class="admin-list__table-item">
-                test
-            </td>
-            <td class="admin-list__table-item">
-                test
-            </td>
-        </tr>
+
+        @php
+            $list_item+=1;
+        @endphp
+
+        @endforeach
     </table>
+    
+    <div class="pagination__group">
+        {{ $users->appends(request()->query())->links('vendor.pagination.custom') }}
+    </div>
+
 </div>
 @endsection

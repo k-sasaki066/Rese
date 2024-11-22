@@ -1,8 +1,8 @@
 @extends('layouts/app')
 
 @section('css')
-<link rel="stylesheet" href="{{ asset('css/store-editor/confirm.css')}}">
-<link rel="stylesheet" href="{{ asset('css/store-editor/store-editor-form.css')}}">
+<link rel="stylesheet" href="{{ asset('css/editor/confirm.css')}}">
+<link rel="stylesheet" href="{{ asset('css/editor/store-editor-form.css')}}">
 @endsection
 
 @section('content')

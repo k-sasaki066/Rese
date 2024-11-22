@@ -7,6 +7,8 @@
     margin: 32px auto 0;
     border-collapse: collapse;
     border: 1px solid #929191;
+    white-space: nowrap;
+    overflow-x: auto;
 }
 
 .admin-list__table-heading {
@@ -16,5 +18,15 @@
 }
 
 .admin-list__table-item {
-    padding: 8px 16px;
+    text-align: center;
+    padding: 12px 20px;
+    border-bottom: 1px solid #929191;
+}
+
+.admin-list__table-item:first-of-type {
+    width: 70px;
+}
+
+.pagination__group {
+    margin-top: 32px;
 }
