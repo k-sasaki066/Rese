@@ -42,7 +42,7 @@
         @else
 
         @php
-            $list_item =($reservations->currentPage()-1)*$reservations->perPage()+1;
+            $list_item = 1;
         @endphp
 
         @foreach($reservations as $reservation)
