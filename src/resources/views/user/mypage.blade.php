@@ -66,11 +66,19 @@
                     </td>
                 </tr>
             </table>
+            @if($reservation['date'] !== $today)
             <div class="reservation__edit-group">
                 <a class="common-btn reservation__edit-btn" href="#edit{{ $reservation['id'] }}">
                     <img class="edit-icon" src="../images/edit.svg" alt="pen">edit
                 </a>
             </div>
+            @else
+            <div class="reservation__edit-group">
+                <p class="common-btn reservation__confirmed-btn">
+                    確定
+                </p>
+            </div>
+            @endif
         </div>
 
         <div class="modal__group" id="{{ $reservation['id'] }}">

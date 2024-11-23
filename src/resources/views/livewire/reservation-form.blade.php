@@ -91,6 +91,11 @@
                     </tr>
                 </table>
             </div>
+            @if (session('result'))
+                <div class="flash_error-message">
+                    {{ session('result') }}
+                </div>
+            @endif
             <button class="reservation-form__submit" type="submit" @if(!Auth::check()) disabled @endif>
                 予約する
             </button>

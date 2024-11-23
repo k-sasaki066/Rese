@@ -11,6 +11,7 @@ use DateTime;
 use DatePeriod;
 use DateInterval;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 
 class ReservationEdit extends Component
 {
@@ -24,6 +25,7 @@ class ReservationEdit extends Component
     public $number;
     public $min_date;
     public $max_date;
+    protected $totals;
 
     public function mount()
     {
@@ -39,7 +41,7 @@ class ReservationEdit extends Component
             $this->option_numbers[] = $i;
         }
 
-        // 予約可能時間を30分間隔で取得
+        // 予約可能時間を60分間隔で取得
         $formatter = function($datetime){
             return $datetime->format('H:i');
         };
@@ -91,14 +93,54 @@ class ReservationEdit extends Component
     {
         $user_id = Auth::user()->id;
         $this->validate();
-        Reservation::find($reservation_id)
-        ->update([
-            'date' => $this->date,
-            'time' => $this->time,
-            'number' => $this->number,
-        ]);
 
-        return redirect('/mypage')->with('result', '予約情報を更新しました');
+        // 予約状況を取得（同日、同時間帯の合計人数を算出）
+        $this->totals = DB::table('reservations')
+            ->where('shop_id', $this->shop->id)
+            ->where('date', $this->date)
+            ->where('time', $this->time.':00')
+            ->select('time')
+            ->selectRaw('SUM(number) as actual_number')
+            ->groupBy('time')
+            ->first();
+
+        // 入力したデータに対してログインユーザーの予約状況を取得
+        $user = Reservation::where('user_id', $user_id)
+        ->where('date', $this->date)
+        ->where('time', $this->time.':00')
+        ->first();
+
+        if($this->reservation->date == $this->date && substr($this->reservation->time,0,5) == $this->time && $this->reservation->number !== $this->number) {
+            if($this->totals !== null) {
+                $num = (($this->shop->max_number - $this->totals->actual_number) + $this->reservation->number);
+            } else {
+                $num = $this->shop->max_number;
+            }
+        } else {
+            if($user !== null) {
+                return back()->withInput()->with('error', '既に同じ時間帯で別の予約が成立しています。予約状況をご確認ください');
+            }
+
+            // 予約可能人数を算出
+            if($this->totals !== null) {
+                $num = $this->shop->max_number - $this->totals->actual_number;
+            } else {
+                $num = $this->shop->max_number;
+            }
+        }
+
+        // 予約可能人数と入力データを比較
+        if($num - $this->number >= 0) {
+            Reservation::find($reservation_id)
+            ->update([
+                'date' => $this->date,
+                'time' => $this->time,
+                'number' => $this->number,
+            ]);
+
+            return redirect('/mypage')->with('result', '予約情報を更新しました');
+        }else {
+            return back()->withInput()->with('error', '申し訳ございません。上限人数に達しているため予約情報を変更できません');
+        }
     }
-
 }

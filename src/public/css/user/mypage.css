@@ -51,14 +51,6 @@
     vertical-align: bottom;
 }
 
-.reservation__edit-btn {
-    margin: 8px auto 0;
-    color: #fff;
-    border: 1px solid #fff;
-    background-color: #4b6cf1;
-    font-size: 14px;
-}
-
 .reservation-status__table-header {
     width: 30%;
     text-align: left;
@@ -76,6 +68,19 @@
 .reservation__edit-btn {
     text-decoration: none;
     display: inline-block;
+    margin: 8px auto 0;
+    color: #fff;
+    border: 1px solid #fff;
+    background-color: #4b6cf1;
+    font-size: 14px;
+}
+
+.reservation__confirmed-btn {
+    display: inline-block;
+    margin: 8px auto 0;
+    color: #fff;
+    background-color: #e68332;
+    font-size: 14px;
 }
 
 .edit-icon {

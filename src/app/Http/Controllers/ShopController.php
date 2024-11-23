@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Auth;
 use DateTime;
 use DatePeriod;
 use DateInterval;
+use Carbon\Carbon;
 
 class ShopController extends Controller
 {
@@ -69,7 +70,9 @@ class ShopController extends Controller
 
             $counter = 1;
 
-            return view('user/mypage', compact('reservations', 'shops', 'counter'));
+            $today = Carbon::now()->format('Y-m-d');
+
+            return view('user/mypage', compact('reservations', 'shops', 'counter', 'today'));
         }
     }
 

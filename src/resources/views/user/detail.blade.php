@@ -83,6 +83,8 @@
     </table>
 </div>
 
-@livewire('reservation-form', ['option_times'=>$option_times, 'option_numbers'=>$option_numbers, 'shop'=>$shop])
+@livewire('reservation-form', ['option_times'=>$option_times,
+'option_numbers'=>$option_numbers,
+'shop'=>$shop])
 
 @endsection

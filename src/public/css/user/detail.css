@@ -252,4 +252,8 @@
     .store-info__table {
         width: 100%;
     }
+
+    .reservation-form__date-input {
+        width: 100%;
+    }
 }

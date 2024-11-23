@@ -87,6 +87,11 @@
                     </tr>
                 </table>
             </div>
+            @if (session('error'))
+                <div class="flash_error-message">
+                    {{ session('error') }}
+                </div>
+            @endif
             <button class="reservation-form__submit" @if(!Auth::check()) disabled @endif wire:click="update({{ $reservation['id'] }})">
                 予約更新
             </button>
