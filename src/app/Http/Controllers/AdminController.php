@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\Shop;
+use App\Models\Shop_representative;
 
 class AdminController extends Controller
 {
@@ -20,7 +21,6 @@ class AdminController extends Controller
     }
 
     public function postEditorRegister(RegisterRequest $request) {
-
         $editor = User::create([
             'name' => $request['name'],
             'email' => $request['email'],
@@ -28,10 +28,13 @@ class AdminController extends Controller
         ]);
         $editor->assignRole('editor');
 
+        $user_id = User::where('email', $request['email'])->first()->id;
+
         if($request['shop_id'] !== 'new') {
-            $shop = Shop::find($request['shop_id']);
+            $shop = new Shop_representative();
             $shop->fill([
-                'user_id'=>$editor->id,
+                'user_id'=>$user_id,
+                'shop_id'=>$request['shop_id'],
             ])->save();
         }
 
@@ -39,8 +42,9 @@ class AdminController extends Controller
     }
 
     public function list() {
-        $users = User::with('roles', 'shop')->paginate(10);
-        // dd($users);
-        return view('admin/admin-list', compact('users'));
+        $users = User::with('roles', 'shopRepresentative')->paginate(10);
+        $shops = Shop::select(['id', 'name'])->get();
+// dd($shops);
+        return view('admin/admin-list', compact('users', 'shops'));
     }
 }

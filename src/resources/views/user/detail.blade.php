@@ -59,9 +59,12 @@
                 営業時間
             </th>
             <td class="store-info__table-item">
-                {{ substr($shop['opening_time'],0,5) }}〜{{ substr($shop['closing_time'],0,5) }}
+                {{ substr($shop['opening_time'],0,5) }} 〜 {{ substr($shop['closing_time'],0,5) }}
                 <br>
-                定休日 月曜日
+                定休日：
+                @foreach($holidays as $holiday)
+                {{ $holiday }}
+                @endforeach
             </td>
         </tr>
         <tr class="store-info__table-row">

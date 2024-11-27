@@ -13,6 +13,9 @@
                     @error('date')
                     {{ $message }}
                     @enderror
+                    @if (session('date'))
+                    {{ session('date') }}
+                    @endif
                 </div>
 
                 <div class="reservation-edit__select">

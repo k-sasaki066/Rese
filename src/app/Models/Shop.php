@@ -12,13 +12,13 @@ class Shop extends Model
     protected $fillable = [
         'area_id',
         'genre_id',
-        'user_id',
         'name',
         'address',
         'building',
         'tel',
         'opening_time',
         'closing_time',
+        'max_number',
         'holiday',
         'budget',
         'image_url',
@@ -37,7 +37,8 @@ class Shop extends Model
         return $this->hasMany(Favorite::class);
     }
 
-    public function user() {
-        return $this->belongsTo(User::class);
+    public function shopRepresentative()
+    {
+        return $this->hasOne(Shop_representative::class);
     }
 }

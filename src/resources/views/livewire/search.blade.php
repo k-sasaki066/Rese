@@ -36,7 +36,7 @@
     <div class="store-list__group">
         @foreach($shops as $shop)
         <div class="store-list__item common-shadow">
-            <img class="store-list__img" src="{{ $shop['image_url'] }}" alt="店舗画像">
+            <img class="store-list__img" src="{{$shop['image_url']}}" alt="店舗画像">
             <div class="store-list__text">
                 <p class="store-list__name">
                     {{ $shop['name'] }}

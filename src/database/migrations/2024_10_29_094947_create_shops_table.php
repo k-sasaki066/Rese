@@ -17,7 +17,6 @@ class CreateShopsTable extends Migration
             $table->id();
             $table->foreignId('area_id')->nullable()->constrained()->nullOnDelete();
             $table->foreignId('genre_id')->nullable()->constrained()->nullOnDelete();
-            $table->foreignId('user_id')->nullable()->constrained()->nullOnDelete();
             $table->string('name');
             $table->string('address');
             $table->string('building')->nullable();
