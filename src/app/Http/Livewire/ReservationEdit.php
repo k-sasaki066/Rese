@@ -117,6 +117,23 @@ class ReservationEdit extends Component
                 $num = $this->shop->max_number;
             }
         } else {
+            // 店舗定休日を取得
+            $holidays = unserialize($this->shop->holiday);
+            // 入力データから曜日を取得
+            $day = new Carbon($this->date);
+            $compare = $day->isoFormat('ddd');
+            // 店舗定休日に含まれているか判定
+            $result = in_array($compare, $holidays);
+            $isHoliday = $day->isHoliday();
+            if($result == true) {
+                return back()->withInput()->with('date', '定休日のため予約できません');
+            }
+            if(in_array('祝日', $holidays)) {
+                if($isHoliday == true) {
+                return back()->withInput()->with('date', '定休日のため予約できません');
+                }
+            }
+
             if($user !== null) {
                 return back()->withInput()->with('error', '既に同じ時間帯で別の予約が成立しています。予約状況をご確認ください');
             }
@@ -144,3 +161,4 @@ class ReservationEdit extends Component
         }
     }
 }
+

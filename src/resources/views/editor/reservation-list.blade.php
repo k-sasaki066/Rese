@@ -33,7 +33,7 @@
                 Number
             </th>
         </tr>
-        @if($reservations -> isEmpty())
+        @if(empty($reservations) || $reservations -> isEmpty())
             <tr class="reservation-list__table-row">
                 <td class="date-table__item-empty" colspan="4">
                     該当データはありません

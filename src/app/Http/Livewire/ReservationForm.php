@@ -67,6 +67,23 @@ class ReservationForm extends Component
         $user_id = Auth::user()->id;
         $this->validate();
         
+        // 店舗定休日を取得
+        $holidays = unserialize($this->shop->holiday);
+        // 入力データから曜日を取得
+        $day = new Carbon($this->date);
+        $compare = $day->isoFormat('ddd');
+        // 店舗定休日に含まれているか判定
+        $result = in_array($compare, $holidays);
+        $isHoliday = $day->isHoliday();
+        if($result == true) {
+            return back()->withInput()->with('date', '定休日のため予約できません');
+        }
+        if(in_array('祝日', $holidays)) {
+            if($isHoliday == true) {
+            return back()->withInput()->with('date', '定休日のため予約できません');
+        }
+    }
+
         // 入力したデータに対してログインユーザーの予約状況を取得
         $user = Reservation::where('user_id', $user_id)
         ->where('date', $this->date)

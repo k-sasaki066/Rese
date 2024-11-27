@@ -52,7 +52,8 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasMany(Favorite::class);
     }
 
-    public function shop() {
-        return $this->hasOne(Shop::class);
+    public function shopRepresentative()
+    {
+        return $this->hasOne(Shop_representative::class);
     }
 }

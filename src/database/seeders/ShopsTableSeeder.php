@@ -28,7 +28,7 @@ class ShopsTableSeeder extends Seeder
                 'building' => '千駄ヶ谷ビル1F',
                 'tel' => '123-456-7890',
                 'budget' => '3000',
-                'holiday' => '17',
+                'holiday' => 'a:2:{i:0;s:3:"月";i:1;s:3:"火";}',
             ],
             [
                 'name' => '牛助',
@@ -43,7 +43,7 @@ class ShopsTableSeeder extends Seeder
                 'building' => '千駄ヶ谷ビル3F',
                 'tel' => '123-456-7890',
                 'budget' => '5000',
-                'holiday' => '2',
+                'holiday' => 'a:1:{i:0;s:3:"火";}',
             ],
             [
                 'name' => '戦慄',
@@ -58,7 +58,7 @@ class ShopsTableSeeder extends Seeder
                 'building' => '千駄ヶ谷ビル1F',
                 'tel' => '123-456-3333',
                 'budget' => '4000',
-                'holiday' => '3',
+                'holiday' => 'a:1:{i:0;s:3:"水";}',
             ],
             [
                 'name' => 'ルーク',
@@ -73,7 +73,7 @@ class ShopsTableSeeder extends Seeder
                 'building' => '千駄ヶ谷ビル1F',
                 'tel' => '123-456-7890',
                 'budget' => '3000',
-                'holiday' => '17',
+                'holiday' => 'a:1:{i:0;s:3:"木";}',
             ],
             [
                 'name' => '志摩屋',
@@ -88,7 +88,7 @@ class ShopsTableSeeder extends Seeder
                 'building' => '',
                 'tel' => '123-456-5555',
                 'budget' => '4000',
-                'holiday' => '23',
+                'holiday' => 'a:2:{i:0;s:3:"月";i:1;s:3:"火";}',
             ],
             [
                 'name' => '香',
@@ -103,7 +103,7 @@ class ShopsTableSeeder extends Seeder
                 'building' => '谷ビル1F',
                 'tel' => '123-456-6666',
                 'budget' => '5000',
-                'holiday' => '4',
+                'holiday' => 'a:2:{i:0;s:3:"月";i:1;s:3:"金";}',
             ],
             [
                 'name' => 'JJ',
@@ -118,7 +118,7 @@ class ShopsTableSeeder extends Seeder
                 'building' => '大阪ビル2F',
                 'tel' => '123-456-7777',
                 'budget' => '5000',
-                'holiday' => '3',
+                'holiday' => 'a:1:{i:0;s:3:"木";}',
             ],
             [
                 'name' => 'らーめん極み',
@@ -133,7 +133,7 @@ class ShopsTableSeeder extends Seeder
                 'building' => '千駄ヶ谷ビル3F',
                 'tel' => '123-456-8888',
                 'budget' => '5000',
-                'holiday' => '8',
+                'holiday' => 'a:1:{i:0;s:6:"祝日";}',
             ],
             [
                 'name' => '鳥雨',
@@ -148,7 +148,7 @@ class ShopsTableSeeder extends Seeder
                 'building' => '蒲田ビル1F',
                 'tel' => '123-456-9999',
                 'budget' => '3000',
-                'holiday' => '17',
+                'holiday' => 'a:1:{i:0;s:3:"木";}',
             ],
             [
                 'name' => '築地色合',
@@ -163,7 +163,7 @@ class ShopsTableSeeder extends Seeder
                 'building' => '',
                 'tel' => '123-456-0000',
                 'budget' => '3000',
-                'holiday' => '23',
+                'holiday' => 'a:1:{i:0;s:3:"月";}',
             ],
             [
                 'name' => '晴海',
@@ -178,7 +178,7 @@ class ShopsTableSeeder extends Seeder
                 'building' => '渋谷ビル1F',
                 'tel' => '123-456-1111',
                 'budget' => '4000',
-                'holiday' => '34',
+                'holiday' => 'a:1:{i:0;s:3:"木";}',
             ],
             [
                 'name' => '三子',
@@ -193,7 +193,7 @@ class ShopsTableSeeder extends Seeder
                 'building' => '泉ビル1F',
                 'tel' => '123-456-1212',
                 'budget' => '6000',
-                'holiday' => '9',
+                'holiday' => 'a:1:{i:0;s:6:"無休";}',
             ],
             [
                 'name' => '八戒',
@@ -208,7 +208,7 @@ class ShopsTableSeeder extends Seeder
                 'building' => '千ビル1F',
                 'tel' => '123-456-1313',
                 'budget' => '2000',
-                'holiday' => '3',
+                'holiday' => 'a:1:{i:0;s:3:"水";}',
             ],
             [
                 'name' => '福助',
@@ -223,7 +223,7 @@ class ShopsTableSeeder extends Seeder
                 'building' => '勝ビル1F',
                 'tel' => '123-456-1414',
                 'budget' => '1500',
-                'holiday' => '1',
+                'holiday' => 'a:1:{i:0;s:3:"月";}',
             ],
             [
                 'name' => 'ラー北',
@@ -238,7 +238,7 @@ class ShopsTableSeeder extends Seeder
                 'building' => '田端ビル1F',
                 'tel' => '123-456-1515',
                 'budget' => '3000',
-                'holiday' => '1',
+                'holiday' => 'a:1:{i:0;s:3:"火";}',
             ],
             [
                 'name' => '翔',
@@ -253,7 +253,7 @@ class ShopsTableSeeder extends Seeder
                 'building' => '道頓堀ビル1F',
                 'tel' => '123-456-1616',
                 'budget' => '2500',
-                'holiday' => '2',
+                'holiday' => 'a:1:{i:0;s:3:"水";}',
             ],
             [
                 'name' => '経緯',
@@ -268,7 +268,7 @@ class ShopsTableSeeder extends Seeder
                 'building' => '',
                 'tel' => '123-456-1717',
                 'budget' => '3000',
-                'holiday' => '4',
+                'holiday' => 'a:1:{i:0;s:3:"木";}',
             ],
             [
                 'name' => '漆',
@@ -283,7 +283,7 @@ class ShopsTableSeeder extends Seeder
                 'building' => '千駄ビル1F',
                 'tel' => '123-456-1818',
                 'budget' => '2000',
-                'holiday' => '3',
+                'holiday' => 'a:1:{i:0;s:3:"月";}',
             ],
             [
                 'name' => 'THE TOOL',
@@ -298,7 +298,7 @@ class ShopsTableSeeder extends Seeder
                 'building' => '茅ビル1F',
                 'tel' => '123-456-1919',
                 'budget' => '1500',
-                'holiday' => '17',
+                'holiday' => 'a:1:{i:0;s:3:"水";}',
             ],
             [
                 'name' => '木船',
@@ -313,7 +313,7 @@ class ShopsTableSeeder extends Seeder
                 'building' => '福ビル1F',
                 'tel' => '123-456-2020',
                 'budget' => '3000',
-                'holiday' => '1',
+                'holiday' => 'a:1:{i:0;s:3:"木";}',
             ],
         ];
 

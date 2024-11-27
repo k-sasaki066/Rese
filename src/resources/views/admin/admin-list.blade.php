@@ -58,9 +58,12 @@
                     user
                 </td>
             @endforelse
-            @if ($user->shop !== null)
+            @if ($user->shopRepresentative !== null)
                 <td class="admin-list__table-item">
-                    {{ $user['shop']['name'] }}
+                    @php
+                    $shop = $shops->where('id', $user['shopRepresentative']['shop_id'])->first();
+                    @endphp
+                    {{ $shop['name'] }}
                 </td>
             @else
                 <td class="admin-list__table-item">
@@ -75,7 +78,7 @@
 
         @endforeach
     </table>
-    
+
     <div class="pagination__group">
         {{ $users->appends(request()->query())->links('vendor.pagination.custom') }}
     </div>

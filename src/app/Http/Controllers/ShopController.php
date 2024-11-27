@@ -24,6 +24,7 @@ class ShopController extends Controller
     public function detail($shop_id){
         $shop = Shop::with(['area', 'genre'])
         ->find($shop_id);
+        $holidays = unserialize($shop->holiday);
 
         // 店舗ごとの予約可能人数取得
         for($i=1; $i <= $shop['max_number'] ; $i++) {
@@ -43,8 +44,7 @@ class ShopController extends Controller
 
         // 直前のurlを取得
         $prev = url()->previous();
-
-        return view('user/detail', compact('shop', 'option_numbers', 'option_times', 'prev'));
+        return view('user/detail', compact('shop', 'option_numbers', 'option_times', 'prev', 'holidays'));
     }
 
     public function done()
@@ -63,14 +63,16 @@ class ShopController extends Controller
             return view('editor/editor-menu');
         }else {
             $user_id = Auth::user()->id;
-            $reservations = Reservation::with('shop')->where('user_id', $user_id)->orderBy('date', 'asc')->get();
+            $today = Carbon::now()->format('Y-m-d');
+            $reservations = Reservation::with('shop')
+            ->where('user_id', $user_id)
+            ->whereDate('date', '>=', $today)
+            ->get();
 
             $shops = Shop::with(['area', 'genre','favorites'])
             ->get();
 
             $counter = 1;
-
-            $today = Carbon::now()->format('Y-m-d');
 
             return view('user/mypage', compact('reservations', 'shops', 'counter', 'today'));
         }
