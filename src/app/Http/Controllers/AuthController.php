@@ -46,13 +46,6 @@ class AuthController extends Controller
 
     public function postAdminRegister(RegisterRequest $request, CreatesNewUsers $creator): RegisterResponse
     {
-        // $user = User::create([
-        //     'name' => $request['name'],
-        //     'email' => $request['email'],
-        //     'password' => Hash::make($request['password']),
-        // ]);
-        // $user->assignRole('admin');
-
         if (config('fortify.lowercase_usernames')) {
             $request->merge([
                 Fortify::username() => Str::lower($request->{Fortify::username()}),

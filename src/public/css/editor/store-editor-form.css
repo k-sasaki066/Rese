@@ -1,3 +1,4 @@
+
 .store-edit__heading,
 .store-confirm__heading {
     text-align: center;
@@ -20,7 +21,7 @@
 .store-edit__table-heading,
 .store-confirm__table-heading {
     max-width: 240px;
-    min-width: 150px;
+    min-width: 120px;
     border-right: 1px solid #929191;
     background-color: #e6e5e3;
 }
@@ -61,6 +62,24 @@
     width: 50%;
 }
 
+.store-registration__img-container {
+    max-width: 300px;
+    min-width: 115px;
+}
+
+.store-registration__img {
+    width: 100%;
+    height: auto;
+}
+
+.store-registration__change {
+    margin-top: 32px;
+}
+
+.store-registration__change-text {
+    color: rgb(237, 124, 79);
+}
+
 .store-edit__area,
 .store-edit__genre {
     width: 100%;
@@ -84,8 +103,86 @@
     transform: translateY(-50%);
 }
 
+.store-edit__btn-group {
+    margin-top: 32px;
+    text-align: center;
+}
+
 .store-edit__btn {
-    margin: 32px auto 0;
+    text-decoration: none;
+    display: inline-block;
+    padding: 4px 16px;
+    border-radius: 3px;
+    background-color: #305dff;
+    color: #fff;
+    transition: .3s;
+}
+
+/* ---modal--- */
+.modal__group {
+    position: fixed;
+    top: 0;
+    left: 0;
+    visibility: hidden;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+}
+
+.modal__inner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 50%;
+    background-color: #325583;
+    box-shadow: 4px 4px 4px rgba(139, 121, 105, 0.25);
+    transform: translate(-50%, -50%);
+    padding: 32px;
+}
+
+.modal__group:target {
+    visibility: visible;
+    opacity: 1;
+}
+
+.modal-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(235, 232, 232, 0.5);
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.close-detail__modal {
+    text-align: right;
+}
+
+.close-detail__button-img {
+    width: 32px;
+    height: 32px;
+}
+
+.close-detail__button {
+    cursor: pointer;
+}
+
+.modal__content {
+    margin-top: 32px;
+    text-align: center;
+}
+
+.modal__content-text {
+    color: #fff;
+    font-size: 20px;
+}
+
+.modal-btn {
+    display: block;
+    margin: 40px auto;
+    width: 180px;
+    text-decoration: none;
 }
 
 @media screen and (max-width: 768px) {

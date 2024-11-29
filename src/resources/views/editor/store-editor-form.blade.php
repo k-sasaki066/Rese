@@ -61,23 +61,12 @@
                 </th>
                 <td class="store-edit__table-item">
                     <div class="store-edit__tel">
-                        <input class="store-edit__input" type="tel" name="tel1" 
-                        value="{{ ($shop == null) ? old('tel1') : substr($shop->tel, 0,3) }}" placeholder="例：012">
-                        <span>-</span>
-                        <input class="store-edit__input" type="tel" name="tel2" 
-                        value="{{ ($shop == null) ? old('tel2') : substr($shop->tel, 4,3) }}" placeholder="例：345">
-                        <span>-</span>
-                        <input class="store-edit__input" type="tel" name="tel3" 
-                        value="{{ ($shop == null) ? old('tel1') : substr($shop->tel, 8,4) }}" placeholder="例：6789">
+                        <input class="store-edit__input" type="tel" name="tel" value="{{ ($shop == null) ? old('tel') : $shop->tel }}"" placeholder="例：012-345-6789">
                     </div>
                     <div class="error-message">
-                    @if ($errors->has('tel1'))
-                    {{$errors->first('tel1')}}
-                    @elseif($errors->has('tel2'))
-                    {{$errors->first('tel2')}}
-                    @else
-                    {{$errors->first('tel3')}}
-                    @endif
+                    @error('tel')
+                    {{ $message }}
+                    @enderror
                     </div>
                 </td>
             </tr>
@@ -215,11 +204,29 @@
                     店舗画像<span class="store-edit__required">※</span>
                 </th>
                 <td class="store-edit__table-item">
+                    @if($shop == null)
                     <input class="store-edit__input" type="file" name="image_url" value="{{ ($shop == null) ? old('image_url') : $shop->image_url }}">
+                    @else
+                    <div class="store-registration__group">
+                        <div class="store-registration__img-group">
+                            <p class="store-registration__img-text">現在登録している画像</p>
+                            <div class="store-registration__img-container">
+                                <img class="store-registration__img" src="{{$shop->image_url}}" alt="">
+                            </div>
+                        </div>
+                        <div class="store-registration__change">
+                            <p class="store-registration__change-text">画像を変更する場合はこちらから</p>
+                            <input class="store-edit__input" type="file" name="change" value="{{ old('change') }}">
+                        </div>
+                    </div>
+                    @endif
                     <div class="error-message">
                     @error('image_url')
                     {{ $message }}
                     @enderror
+                    @if (session('img'))
+                    {{ session('img') }}
+                    @endif
                     </div>
                 </td>
             </tr>
@@ -280,8 +287,22 @@
                 </td>
             </tr>
         </table>
-        <button class="store-edit__btn common-btn">保存</button>
-    </form>
+        <div class="store-edit__btn-group">
+            <a class="store-edit__btn" href="#editor">保存</a>
+        </div>
+
+        <div class="modal__group" id="editor">
+            <a class="modal-overlay" href="#!"></a>
+            <div class="modal__inner">
+                <div class="close-detail__modal">
+                    <a href="#!" class="close-detail__button"><img class="close-detail__button-img" src="../../images/close-btn.svg" alt="閉じる"></a>
+                </div>
+                <div class="modal__content">
+                    <p class="modal__content-text">店舗情報を更新します。よろしいですか？</p>
+                    <button class="common-btn modal-btn" type="submit">更新</button>
+                </div>
+            </div>
+        </div>
     </form>
 </div>
 @endsection

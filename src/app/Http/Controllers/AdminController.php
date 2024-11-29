@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Requests\RegisterRequest;
+use App\Http\Requests\EditorRegisterRequest;
 use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
@@ -20,7 +20,7 @@ class AdminController extends Controller
         return view('admin/register-for-editor', compact('shops'));
     }
 
-    public function postEditorRegister(RegisterRequest $request) {
+    public function postEditorRegister(EditorRegisterRequest $request) {
         $editor = User::create([
             'name' => $request['name'],
             'email' => $request['email'],
@@ -42,9 +42,9 @@ class AdminController extends Controller
     }
 
     public function list() {
-        $users = User::with('roles', 'shopRepresentative')->paginate(10);
-        $shops = Shop::select(['id', 'name'])->get();
-// dd($shops);
-        return view('admin/admin-list', compact('users', 'shops'));
+        // $users = User::with('roles', 'shopRepresentative')->paginate(10);
+        // $shops = Shop::select(['id', 'name'])->get();
+// dd($users);
+        return view('admin/admin-list');
     }
 }
