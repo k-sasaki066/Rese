@@ -18,55 +18,57 @@
         </h2>
         <button class="date-change__button" name="next-day"> > </button>
     </form>
-    <table class="reservation-list__table">
-        <tr class="reservation-list__table-row">
-            <th class="reservation-list__table-heading">
-                No.
-            </th>
-            <th class="reservation-list__table-heading">
-                Time
-            </th>
-            <th class="reservation-list__table-heading">
-                Name
-            </th>
-            <th class="reservation-list__table-heading">
-                Number
-            </th>
-        </tr>
-        @if(empty($reservations) || $reservations -> isEmpty())
+    <div class="reservation-list__table-container">
+        <table class="reservation-list__table">
             <tr class="reservation-list__table-row">
-                <td class="date-table__item-empty" colspan="4">
-                    該当データはありません
+                <th class="reservation-list__table-heading">
+                    No.
+                </th>
+                <th class="reservation-list__table-heading">
+                    Time
+                </th>
+                <th class="reservation-list__table-heading">
+                    Name
+                </th>
+                <th class="reservation-list__table-heading">
+                    Number
+                </th>
+            </tr>
+            @if(empty($reservations) || $reservations -> isEmpty())
+                <tr class="reservation-list__table-row">
+                    <td class="date-table__item-empty" colspan="4">
+                        該当データはありません
+                    </td>
+                </tr>
+            @else
+
+            @php
+                $list_item = 1;
+            @endphp
+
+            @foreach($reservations as $reservation)
+            <tr class="reservation-list__table-row">
+                <td class="reservation-list__table-item">
+                    {{ $list_item }}
+                </td>
+                <td class="reservation-list__table-item">
+                    {{ substr($reservation['time'], 0,5) }}
+                </td>
+                <td class="reservation-list__table-item">
+                    {{ $reservation['user']['name'] }}
+                </td>
+                <td class="reservation-list__table-item">
+                    {{ $reservation['number'] }}
                 </td>
             </tr>
-        @else
 
-        @php
-            $list_item = 1;
-        @endphp
+            @php
+                $list_item+=1;
+            @endphp
 
-        @foreach($reservations as $reservation)
-        <tr class="reservation-list__table-row">
-            <td class="reservation-list__table-item">
-                {{ $list_item }}
-            </td>
-            <td class="reservation-list__table-item">
-                {{ substr($reservation['time'], 0,5) }}
-            </td>
-            <td class="reservation-list__table-item">
-                {{ $reservation['user']['name'] }}
-            </td>
-            <td class="reservation-list__table-item">
-                {{ $reservation['number'] }}
-            </td>
-        </tr>
-
-        @php
-            $list_item+=1;
-        @endphp
-
-        @endforeach
-        @endif
-    </table>
+            @endforeach
+            @endif
+        </table>
+    </div>
 </div>
 @endsection

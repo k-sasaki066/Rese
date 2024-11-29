@@ -7,6 +7,7 @@ use App\Models\Shop;
 use App\Models\Area;
 use App\Models\Genre;
 use App\Models\Reservation;
+use App\Models\Shop_representative;
 use App\Http\Requests\EditorRequest;
 use Illuminate\Support\Facades\Auth;
 use DateTime;
@@ -42,55 +43,84 @@ class EditorController extends Controller
     }
 
     public function edit(EditorRequest $request) {
-
+// dd($request);
         $holiday = serialize($request->holiday);
-
-        if(request('image_url')) {
-            $original = $request->file('image_url')->getClientOriginalName();
-            $image_name = Carbon::now()->format('Ymd_His').'_'.$original;
-            request()->file('image_url')->move('storage/images', $image_name);
-        }
 
         $info = Auth::user()->shopRepresentative;
         if($info == null) {
+            if($request->file('image_url')) {
+                $original = $request->file('image_url')->getClientOriginalName();
+                $image_name = Carbon::now()->format('Ymd_His').'_'.$original;
+                request()->file('image_url')->move('storage/images', $image_name);
+            }else {
+                return back()->withInput()->with('img', '画像を選択してください');
+            }
+
             Shop::create([
                 'area_id'=>$request->area_id,
                 'genre_id'=>$request->genre_id,
                 'name'=>$request->name,
                 'address'=>$request->address,
                 'building'=>$request->building,
-                'tel'=>$request->tel1.'-'.$request->tel2.'-'.$request->tel3,
+                'tel'=>$request->tel,
                 'opening_time'=>$request->opening_time,
                 'closing_time'=>$request->closing_time,
                 'holiday'=>$holiday,
                 'max_number'=>$request->max_number,
                 'budget'=>$request->budget,
-                'image_url'=>$image_name,
+                'image_url'=>'http://localhost/storage/images/'.$image_name,
                 'detail'=>$request->detail,
+            ]);
+
+            $shop_id = Shop::where('name', $request->name)->where('tel',$request->tel)->first()->id;
+
+            Shop_representative::create([
+                'user_id'=>Auth::user()->id,
+                'shop_id'=>$shop_id,
             ]);
         }else {
             $shop_id = $info->shop_id;
             $shop = Shop::find($shop_id);
 
-            $shop->update([
+            if($request->file('change')) {
+                $original = $request->file('change')->getClientOriginalName();
+                $image_name = Carbon::now()->format('Ymd_His').'_'.$original;
+                request()->file('change')->move('storage/images', $image_name);
+
+                $shop->update([
                 'area_id'=>$request->area_id,
                 'genre_id'=>$request->genre_id,
                 'name'=>$request->name,
                 'address'=>$request->address,
                 'building'=>$request->building,
-                'tel'=>$request->tel1.'-'.$request->tel2.'-'.$request->tel3,
+                'tel'=>$request->tel,
                 'opening_time'=>$request->opening_time,
                 'closing_time'=>$request->closing_time,
                 'holiday'=>$holiday,
                 'max_number'=>$request->max_number,
                 'budget'=>$request->budget,
-                'image_url'=>$image_name,
+                'image_url'=>'http://localhost/storage/images/'.$image_name,
                 'detail'=>$request->detail,
-            ]);
+                ]);
+            }else {
+                $shop->update([
+                    'area_id'=>$request->area_id,
+                    'genre_id'=>$request->genre_id,
+                    'name'=>$request->name,
+                    'address'=>$request->address,
+                    'building'=>$request->building,
+                    'tel'=>$request->tel,
+                    'opening_time'=>$request->opening_time,
+                    'closing_time'=>$request->closing_time,
+                    'holiday'=>$holiday,
+                    'max_number'=>$request->max_number,
+                    'budget'=>$request->budget,
+                    'detail'=>$request->detail,
+                ]);
+
+            }
 
         }
-
-
         return redirect('/mypage')->with('result', '店舗情報を更新しました');
     }
 
@@ -112,7 +142,7 @@ class EditorController extends Controller
         $info = Auth::user()->shopRepresentative;
         $date = Carbon::parse($request->display);
         $display = $request->display;
-        
+
         if($request->has('previous-day')) {
             $display = $date->copy()->subDay()->format('Y-m-d');
         }

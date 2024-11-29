@@ -48,5 +48,6 @@
     .register-container,
     .login-container {
         width: 70%;
+        min-width: 280px;
     }
 }

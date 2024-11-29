@@ -20,6 +20,7 @@
     <form class="register-form" action="/admin/register/representative" method="post">
         @csrf
         <div class="form-group">
+            <img class="register-icon" src="../../images/username.svg" alt="name">
             <div class="form-group__item">
                 <input class="form-group__input" type="text" name="name" placeholder="Username" value="{{ old('name') }}">
                 <div class="error-message">
@@ -31,6 +32,7 @@
         </div>
 
         <div class="form-group">
+            <img class="register-icon" src="../../images/email.svg" alt="email">
             <div class="form-group__item">
                 <input class="form-group__input" type="text" name="email" placeholder="Email" value="{{ old('email') }}">
                 <div class="error-message">
@@ -42,6 +44,7 @@
         </div>
 
         <div class="form-group">
+            <img class="register-icon" src="../../images/password.svg" alt="password">
             <div class="form-group__item">
                 <input class="form-group__input" type="password" name="password" placeholder="Password" value="{{ old('password') }}">
                 <div class="error-message">
@@ -53,6 +56,7 @@
         </div>
 
         <div class="form-group__select">
+            <img class="register-icon" src="../../images/shop.svg" alt="shop">
             <div class="form-group__item form__select-inner">
                 <select class="register-editor__select" name="shop_id" id="">
                     <option value="">店舗を選択してください</option>
@@ -61,11 +65,11 @@
                         <option value="{{ $shop['id'] }}" {{ old('shop_id')==$shop['id'] ? 'selected' : '' }}>{{ $shop['name'] }}</option>
                     @endforeach
                 </select>
-            </div>
-            <div class="error-message">
+                <div class="error-message">
                 @error('shop_id')
                 {{ $message }}
                 @enderror
+                </div>
             </div>
         </div>
 

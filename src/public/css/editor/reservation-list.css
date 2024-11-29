@@ -1,9 +1,13 @@
+.reservation-list__heading {
+    margin-top: 16px;
+}
+
 /* ---日付検索--- */
 .reservation-list__date-form {
     display: flex;
     justify-content: center;
     gap: 40px;
-    margin-top: 32px;
+    margin-top: 40px;
 }
 
 .date-change__button {
@@ -32,9 +36,16 @@
     text-align: center;
 }
 
-.reservation-list__table {
+.reservation-list__table-container {
     width: 80%;
     margin: 32px auto 0;
+    height: auto;
+    overflow-x: scroll;
+}
+
+.reservation-list__table {
+    width: 100%;
+    white-space: nowrap;
     border-collapse: collapse;
     border: 1px solid #929191;
 }
@@ -49,4 +60,14 @@
     text-align: center;
     border-bottom: 1px solid #929191;
     padding: 8px 12px;
+}
+
+@media screen and (max-width: 768px) {
+    .reservation-list__table-container {
+        width: 100%;
+    }
+
+    .reservation-list__date-form {
+        gap: 18px;
+    }
 }

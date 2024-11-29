@@ -19,9 +19,10 @@ class Search extends Component
     public $genres;
     public $showModal = false;
     public $favoriteIn;
+    protected $query;
 
     public function mount(){
-        $this->shops = Shop::all();
+        // $this->shops = Shop::all();
 
         $this->search();
     }
@@ -53,35 +54,33 @@ class Search extends Component
     // 検索機能
     public function search()
     {
+        $this->query = Shop::with(['area', 'genre']);
+        $this->getAreaSearch();
+        $this->getGenreSearch();
+        $this->getWordSearch();
+        $this->shops = $this->query->get();
+    }
+
+    public function getAreaSearch() {
         $areaSearch = $this->areaSearch;
+        if(!empty($areaSearch)) {
+            $this->query->where('area_id', $areaSearch);
+        }
+    }
+
+    public function getGenreSearch() {
         $genreSearch = $this->genreSearch;
+        if(!empty($genreSearch)) {
+            $this->query->where('genre_id', $genreSearch);
+        }
+    }
+
+    public function getWordSearch() {
         $wordSearch = $this->wordSearch;
-        // dd($areaSearch);
-
-        if(empty($areaSearch) && empty($genreSearch) && empty($wordSearch)) {
-            $this->shops = Shop::with(['area', 'genre'])
-            ->get();
+        if(!empty($wordSearch)) {
+            $this->query->where('name', 'LIKE', '%' .$this->wordSearch .'%');
         }
 
-        if (!empty($areaSearch) && empty($genreSearch)) {
-            $this->shops = Shop::where('area_id', $areaSearch)
-            ->get();
-        }
-
-        if (empty($areaSearch) && !empty($genreSearch)) {
-            $this->shops = Shop::where('genre_id', $genreSearch)
-            ->get();
-        }
-
-        if (!empty($areaSearch) && !empty($genreSearch)) {
-            $this->shops = Shop::where('area_id', $areaSearch)
-            ->where('genre_id', $genreSearch)
-            ->get();
-        }
-
-        if(!empty($this->wordSearch)) {
-            $this->shops = Shop::where('name', 'LIKE', '%' .$this->wordSearch .'%')->get();
-        }
     }
 
     // 検索ワードをurlに反映
