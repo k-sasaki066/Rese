@@ -105,10 +105,10 @@ class ReservationEdit extends Component
             ->first();
 
         // 入力したデータに対してログインユーザーの予約状況を取得
-        $user = Reservation::where('user_id', $user_id)
-        ->where('date', $this->date)
-        ->where('time', $this->time.':00')
-        ->first();
+        // $user = Reservation::where('user_id', $user_id)
+        // ->where('date', $this->date)
+        // ->where('time', $this->time.':00')
+        // ->first();
 
         if($this->reservation->date == $this->date && substr($this->reservation->time,0,5) == $this->time && $this->reservation->number !== $this->number) {
             if($this->totals !== null) {
@@ -116,7 +116,17 @@ class ReservationEdit extends Component
             } else {
                 $num = $this->shop->max_number;
             }
+
+        } elseif($this->reservation->date == $this->date && substr($this->reservation->time,0,5) == $this->time && $this->reservation->number == $this->number){
+            return back()->withInput();
+
         } else {
+            // 入力したデータに対してログインユーザーの予約状況を取得
+            $user = Reservation::where('user_id', $user_id)
+            ->where('date', $this->date)
+            ->where('time', $this->time.':00')
+            ->first();
+            // dd($user);
             // 店舗定休日を取得
             $holidays = unserialize($this->shop->holiday);
             // 入力データから曜日を取得
@@ -125,6 +135,7 @@ class ReservationEdit extends Component
             // 店舗定休日に含まれているか判定
             $result = in_array($compare, $holidays);
             $isHoliday = $day->isHoliday();
+
             if($result == true) {
                 return back()->withInput()->with('date', '定休日のため予約できません');
             }

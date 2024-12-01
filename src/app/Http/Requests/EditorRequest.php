@@ -26,7 +26,7 @@ class EditorRequest extends FormRequest
         return [
             'name'=>['required'],
             'address'=>['required'],
-            'tel'=>['required', 'max:15', 'regex:/^0[0-9]{1,4}-[0-9]{1,4}-[0-9]{3,4}\z/'],
+            'tel'=>['required', 'max:15', 'regex:/^[0-9]{1,4}-[0-9]{1,4}-[0-9]{3,4}\z/'],
             'opening_time'=>['required'],
             'closing_time'=>['required'],
             'holiday'=>['required'],

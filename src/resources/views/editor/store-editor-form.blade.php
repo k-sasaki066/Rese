@@ -117,47 +117,47 @@
                 <td class="store-edit__table-item">
                     <div class="store-edit__holiday">
                         <label class="store-edit__holiday-label" for="mon">
-                            <input class="store-edit__day-input" type="checkbox" name="holiday[]" id="mon" value="月"  @if($shop !== null){{in_array('月', $holiday) ? 'checked' : ''}}@endif>
+                            <input class="store-edit__day-input" type="checkbox" name="holiday[]" id="mon" value="月"  @if($shop !== null){{in_array('月', $holiday) ? 'checked' : ''}}@else {{ (is_array(old('holiday')) && in_array('月', old('holiday'))) ? 'checked' : '' }} @endif>
                             <span class="store-edit__day-text">月</span>
                         </label>
 
                         <label class="store-edit__holiday-label" for="tue">
-                            <input class="store-edit__day-input" type="checkbox" name="holiday[]" id="tue" value="火" @if($shop !== null){{in_array('火', $holiday) ? 'checked' : ''}}@endif>
+                            <input class="store-edit__day-input" type="checkbox" name="holiday[]" id="tue" value="火" @if($shop !== null){{in_array('火', $holiday) ? 'checked' : ''}} @else {{ (is_array(old('holiday')) && in_array('火', old('holiday'))) ? 'checked' : '' }}@endif>
                             <span class="store-edit__day-text">火</span>
                         </label>
 
                         <label class="store-edit__holiday-label" for="wed">
-                            <input class="store-edit__holiday-input" type="checkbox" name="holiday[]" id="wed" value="水" @if($shop !== null){{in_array('水', $holiday) ? 'checked' : ''}}@endif>
+                            <input class="store-edit__holiday-input" type="checkbox" name="holiday[]" id="wed" value="水" @if($shop !== null){{in_array('水', $holiday) ? 'checked' : ''}} @else {{ (is_array(old('holiday')) && in_array('水', old('holiday'))) ? 'checked' : '' }}@endif>
                             <span class="store-edit__day-text">水</span>
                         </label>
 
                         <label class="store-edit__holiday-label" for="thu">
-                            <input class="store-edit__day-input" type="checkbox" name="holiday[]" id="thu" value="木" @if($shop !== null){{in_array('木', $holiday) ? 'checked' : ''}}@endif>
+                            <input class="store-edit__day-input" type="checkbox" name="holiday[]" id="thu" value="木" @if($shop !== null){{in_array('木', $holiday) ? 'checked' : ''}} @else {{ (is_array(old('holiday')) && in_array('木', old('holiday'))) ? 'checked' : '' }} @endif>
                             <span class="store-edit__day-text">木</span>
                         </label>
 
                         <label class="store-edit__holiday-label" for="fri">
-                            <input class="store-edit__day-input" type="checkbox" name="holiday[]" id="fri" value="金" @if($shop !== null){{in_array('金', $holiday) ? 'checked' : ''}}@endif>
+                            <input class="store-edit__day-input" type="checkbox" name="holiday[]" id="fri" value="金" @if($shop !== null){{in_array('金', $holiday) ? 'checked' : ''}} @else {{ (is_array(old('holiday')) && in_array('金', old('holiday'))) ? 'checked' : '' }}@endif>
                             <span class="store-edit__day-text">金</span>
                         </label>
 
                         <label class="store-edit__holiday-label" for="sat">
-                            <input class="store-edit__day-input" type="checkbox" name="holiday[]" id="sat" value="土" @if($shop !== null){{in_array('土', $holiday) ? 'checked' : ''}}@endif>
+                            <input class="store-edit__day-input" type="checkbox" name="holiday[]" id="sat" value="土" @if($shop !== null){{in_array('土', $holiday) ? 'checked' : ''}} @else {{ (is_array(old('holiday')) && in_array('土', old('holiday'))) ? 'checked' : '' }} @endif>
                             <span class="store-edit__day-text">土</span>
                         </label>
 
                         <label class="store-edit__holiday-label" for="sun">
-                            <input class="store-edit__day-input" type="checkbox" name="holiday[]" id="sun" value="日" @if($shop !== null){{in_array('日', $holiday) ? 'checked' : ''}}@endif>
+                            <input class="store-edit__day-input" type="checkbox" name="holiday[]" id="sun" value="日" @if($shop !== null){{in_array('日', $holiday) ? 'checked' : ''}} @else {{ (is_array(old('holiday')) && in_array('日', old('holiday'))) ? 'checked' : '' }}@endif>
                             <span class="store-edit__day-text">日</span>
                         </label>
 
                         <label class="store-edit__holiday-label" for="national">
-                            <input class="store-edit__day-input" type="checkbox" name="holiday[]" id="national" value="祝日" @if($shop !== null){{in_array('祝日', $holiday) ? 'checked' : ''}}@endif>
+                            <input class="store-edit__day-input" type="checkbox" name="holiday[]" id="national" value="祝日" @if($shop !== null){{in_array('祝日', $holiday) ? 'checked' : ''}} @else {{ (is_array(old('holiday')) && in_array('祝日', old('holiday'))) ? 'checked' : '' }}@endif>
                             <span class="store-edit__day-text">祝日</span>
                         </label>
 
                         <label class="store-edit__holiday-label" for="all-open">
-                            <input class="store-edit__day-input" type="checkbox" name="holiday[]" id="all-open" value="無休" @if($shop !== null){{in_array('無休', $holiday) ? 'checked' : ''}}@endif>
+                            <input class="store-edit__day-input" type="checkbox" name="holiday[]" id="all-open" value="無休" @if($shop !== null){{in_array('無休', $holiday) ? 'checked' : ''}} @else {{ (is_array(old('holiday')) && in_array('無休', old('holiday'))) ? 'checked' : '' }}@endif>
                             <span class="store-edit__day-text">年中無休</span>
                         </label>
                     </div>

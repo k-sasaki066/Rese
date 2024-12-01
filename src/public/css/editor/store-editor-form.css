@@ -1,25 +1,21 @@
 
-.store-edit__heading,
-.store-confirm__heading {
+.store-edit__heading {
     text-align: center;
     margin-top: 32px;
 }
 
-.store-edit__table,
-.store-confirm__table {
+.store-edit__table {
     width: 100%;
     border: 1px solid #929191;
     border-collapse: collapse;
     margin-top: 32px;
 }
 
-.store-edit__table-row,
-.store-confirm__table-row {
+.store-edit__table-row {
     border-bottom: 1px solid #929191;
 }
 
-.store-edit__table-heading,
-.store-confirm__table-heading {
+.store-edit__table-heading {
     max-width: 240px;
     min-width: 120px;
     border-right: 1px solid #929191;

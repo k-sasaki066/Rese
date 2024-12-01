@@ -31,7 +31,7 @@ class ShopController extends Controller
             $option_numbers[] = $i;
         }
 
-        // 予約可能時間を30分間隔で取得
+        // 予約可能時間を60分間隔で取得
         $formatter = function($datetime){
             return $datetime->format('H:i');
         };
@@ -67,6 +67,8 @@ class ShopController extends Controller
             $reservations = Reservation::with('shop')
             ->where('user_id', $user_id)
             ->whereDate('date', '>=', $today)
+            ->orderBy('date', 'asc')
+            ->orderBy('time', 'asc')
             ->get();
 
             $shops = Shop::with(['area', 'genre','favorites'])
