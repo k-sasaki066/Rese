@@ -42,9 +42,7 @@ class AdminController extends Controller
     }
 
     public function list() {
-        // $users = User::with('roles', 'shopRepresentative')->paginate(10);
-        // $shops = Shop::select(['id', 'name'])->get();
-// dd($users);
+        
         return view('admin/admin-list');
     }
 }

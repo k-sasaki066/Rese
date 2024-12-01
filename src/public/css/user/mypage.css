@@ -241,6 +241,7 @@
     cursor: not-allowed;
 }
 
+/* ---modal--- */
 .modal__group {
     position: fixed;
     top: 0;
