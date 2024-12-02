@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateShopRepresentativesTable extends Migration
+class CreateRatingsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,13 @@ class CreateShopRepresentativesTable extends Migration
      */
     public function up()
     {
-        Schema::create('shop_representatives', function (Blueprint $table) {
+        Schema::create('ratings', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->foreignId('shop_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('reservation_id')->constrained()->cascadeOnDelete();
+            $table->unsignedTinyInteger('rating');
+            $table->string('comment');
             $table->timestamps();
         });
     }
@@ -28,6 +31,6 @@ class CreateShopRepresentativesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('shop_representatives');
+        Schema::dropIfExists('ratings');
     }
 }

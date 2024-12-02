@@ -40,6 +40,10 @@
     text-align: center;
 }
 
+.history-table__row {
+    border-bottom: 1px solid #929191;
+}
+
 .history-table__heading:first-of-type,
 .history-table__item:first-of-type {
     width: 100px;
@@ -183,8 +187,8 @@
 }
 
 .form-rating__star:hover,
-.form-rating__star:hover~.form-rating__star,
-.form-rating__input:checked~.form-rating__star {
+.form-rating__star:hover ~ .form-rating__star,
+.form-rating__input:checked ~ .form-rating__star {
     /* 「~」でホバー時を動的に、チェック時にそれ以下の数字をもつスターの色も変化 */
     color: #eeee05;
 }
