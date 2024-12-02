@@ -87,7 +87,7 @@
 }
 
 .admin-list__table-container::-webkit-scrollbar {
-    height: 5px;
+    height: 2px;
 }
 
 .admin-list__table-container::-webkit-scrollbar-track {

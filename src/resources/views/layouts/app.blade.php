@@ -60,6 +60,11 @@
                                     Mypage
                                 </a>
                             </li>
+                            <li class="header-nav__item">
+                                <a class="header-nav__link" href="/user/history">
+                                    visit-history
+                                </a>
+                            </li>
                         @endif
                         <li class="header-nav__item">
                             <form action="/logout" method="post">

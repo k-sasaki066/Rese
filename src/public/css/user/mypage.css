@@ -300,17 +300,6 @@
     font-size: 20px;
 }
 
-.modal-btn__group {
-    margin-top: 48px;
-}
-
-.modal-btn {
-    display: block;
-    margin: 0 auto 20px;
-    width: 180px;
-    text-decoration: none;
-}
-
 @media screen and (max-width: 768px) {
     .mypage__container {
         display: flex;
