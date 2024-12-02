@@ -6,6 +6,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\EditorController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\RegisteredUserController;
+use App\Http\Controllers\RatingController;
 use App\Http\Livewire\Search;
 
 /*
@@ -26,6 +27,8 @@ Route::middleware('auth', 'verified')->group(function () {
     Route::get('/mypage', [ShopController::class, 'getMypage']);
     Route::delete('/mypage/delete/{reservation_id}', [ShopController::class, 'delete']);
     Route::get('/user/done', [ShopController::class, 'done']);
+    Route::get('/user/history', [RatingController::class, 'history']);
+    Route::post('/user/history', [RatingController::class, 'postRating']);
 });
 
 Route::post('/register', [RegisteredUserController::class, 'store']);

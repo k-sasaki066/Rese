@@ -1,0 +1,221 @@
+.history-table__text {
+    margin-top: 32px;
+    text-align: center;
+}
+
+.history-table__group {
+    margin: 32px auto 0;
+    width: 90%;
+    height: auto;
+    overflow-x: scroll;
+}
+
+.history-table__group::-webkit-scrollbar {
+    height: 2px;
+}
+
+.history-table__group::-webkit-scrollbar-track {
+    background: #333;
+}
+
+.history-table__group::-webkit-scrollbar-thumb {
+    background: #999;
+}
+
+.history-table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid #929191;
+    white-space: nowrap;
+}
+
+.history-table__heading {
+    padding: 8px 16px;
+    color: #fff;
+    background-color: #305dff;
+}
+
+.history-table__item {
+    padding: 8px 16px;
+    text-align: center;
+}
+
+.history-table__heading:first-of-type,
+.history-table__item:first-of-type {
+    width: 100px;
+}
+
+.history-table__heading:nth-child(2),
+.history-table__item:nth-child(2) {
+    width: 200px;
+}
+
+.history-table__heading:nth-child(3),
+.history-table__item:nth-child(3) {
+    width: 200px;
+}
+
+.history-table__heading:last-of-type,
+.history-table__item:last-of-type {
+    width: 200px;
+}
+
+.rating-post__modal {
+    text-decoration: none;
+    display: inline-block;
+    padding: 8px 12px;
+    background-color:  #ec894b;
+    color: #fff;
+    border-radius: 3px;
+    transition: .5s;
+}
+
+.rating-post__modal:hover {
+    opacity: .8;
+}
+
+/* ---modal--- */
+.modal__group {
+    position: fixed;
+    top: 0;
+    left: 0;
+    visibility: hidden;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+}
+
+.modal__inner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 50%;
+    background-color: #325583;
+    box-shadow: 4px 4px 4px rgba(139, 121, 105, 0.25);
+    transform: translate(-50%, -50%);
+    padding: 32px;
+}
+
+.modal__group:target {
+    visibility: visible;
+    opacity: 1;
+}
+
+.modal-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(235, 232, 232, 0.5);
+}
+
+.close-detail__modal {
+    text-align: right;
+}
+
+.close-detail__button-img {
+    width: 32px;
+    height: 32px;
+}
+
+.close-detail__button {
+    cursor: pointer;
+}
+
+.modal__content {
+    margin-top: 32px;
+    text-align: center;
+}
+
+.modal__content-text {
+    color: #fff;
+    font-size: 20px;
+}
+
+.form__rating-post {
+    margin: 32px auto 0;
+}
+
+.form-rating__group {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    align-items: center;
+    color: #fff;
+    text-align: left;
+}
+
+.error-message {
+    text-align: left;
+}
+
+.form-rating__group:not(:first-of-type) {
+    margin-top: 12px;
+}
+
+.form-rating__label {
+    grid-column: 1/2;
+}
+
+.form-rating__store {
+    padding: 0 10px;
+}
+
+.form-rating {
+    align-items: center;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: left;
+}
+
+.form-rating__input {
+    display: none;
+}
+
+.form-rating__star {
+    color: #ccc;
+    cursor: pointer;
+    font-size: 24px;
+    padding: 0 10px;
+    position: relative;
+    transition: color 0.3s;
+}
+
+.form-rating__star:hover,
+.form-rating__star:hover~.form-rating__star,
+.form-rating__input:checked~.form-rating__star {
+    /* 「~」でホバー時を動的に、チェック時にそれ以下の数字をもつスターの色も変化 */
+    color: #eeee05;
+}
+
+.form-rating__comment {
+    margin: 24px auto 0;
+}
+
+.form-rating__comment-test {
+    background-color: #fcfafa;
+    border: 1px solid #cac8c8;
+    border-radius: 3px;
+    width: 100%;
+    padding: 4px;
+}
+
+.delete-btn {
+    margin: 24px auto 0;
+}
+
+@media screen and (max-width: 768px) {
+
+    .modal__inner {
+        width: 80%;
+        padding: 30px;
+    }
+
+    .form-rating__star {
+        font-size: 20px;
+        padding: 0 6px;
+        position: relative;
+        transition: color 0.3s;
+    }
+}

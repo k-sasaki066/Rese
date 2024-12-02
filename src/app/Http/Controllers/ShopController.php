@@ -86,5 +86,4 @@ class ShopController extends Controller
 
         return redirect('/mypage')->with('result', '予約をキャンセルしました');
     }
-
 }
