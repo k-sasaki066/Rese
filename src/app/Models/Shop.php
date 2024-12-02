@@ -41,4 +41,8 @@ class Shop extends Model
     {
         return $this->hasOne(Shop_representative::class);
     }
+
+    public function ratings() {
+        return $this->hasMany(Rating::class);
+    }
 }
