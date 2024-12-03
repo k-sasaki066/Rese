@@ -36,7 +36,7 @@
 }
 
 .history-table__item {
-    padding: 8px 16px;
+    padding: 16px;
     text-align: center;
 }
 
@@ -67,11 +67,15 @@
 .rating-post__modal {
     text-decoration: none;
     display: inline-block;
-    padding: 8px 12px;
+    padding: 6px 12px;
     background-color:  #ec894b;
     color: #fff;
     border-radius: 3px;
     transition: .5s;
+}
+
+.rating-post__completion {
+    padding: 6px 0;
 }
 
 .rating-post__modal:hover {

@@ -14,7 +14,7 @@
                     {{ $message }}
                     @enderror
                     @if (session('date'))
-                    {{ session('date') }}
+                    {{ session('date'.$reservation_id) }}
                     @endif
                 </div>
 

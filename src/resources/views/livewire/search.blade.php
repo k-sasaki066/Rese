@@ -76,6 +76,17 @@
                         </button>
                     @endif
                 </div>
+                <div class="store-list__rating">
+                    <span class="star-rating" data-rate="{{ ($shop['rating_avg'] == null) ? 0 : substr($shop['rating_avg'], 0,1) }}">
+                    </span>
+                    <p class="star-rating__avg">
+                        @if($shop['rating_avg'] == null)
+                        0
+                        @else
+                        {{ substr($shop['rating_avg'], 0,3) }}
+                        @endif
+                    </p>
+                </div>
             </div>
         </div>
         @endforeach
