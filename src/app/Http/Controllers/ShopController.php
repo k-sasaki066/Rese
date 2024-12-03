@@ -8,6 +8,7 @@ use App\Models\Area;
 use App\Models\Genre;
 use App\Models\Reservation;
 use App\Models\Favorite;
+use App\Models\Rating;
 use App\Http\Requests\ReservationRequest;
 use Illuminate\Support\Facades\Auth;
 use DateTime;
@@ -44,7 +45,12 @@ class ShopController extends Controller
 
         // 直前のurlを取得
         $prev = url()->previous();
-        return view('user/detail', compact('shop', 'option_numbers', 'option_times', 'prev', 'holidays'));
+
+        $record = Rating::with('reservation', 'user')->where('shop_id', $shop_id)->orderBy('created_at', 'desc');
+        $ratings = $record->get();
+        $rating_count = $record->count();
+
+        return view('user/detail', compact('shop', 'option_numbers', 'option_times', 'prev', 'holidays', 'ratings', 'rating_count'));
     }
 
     public function done()

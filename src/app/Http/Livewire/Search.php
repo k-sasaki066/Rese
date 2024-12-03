@@ -22,7 +22,6 @@ class Search extends Component
     protected $query;
 
     public function mount(){
-        // $this->shops = Shop::all();
 
         $this->search();
     }
@@ -54,11 +53,29 @@ class Search extends Component
     // 検索機能
     public function search()
     {
-        $this->query = Shop::with(['area', 'genre']);
+        $this->query = Shop::with('area', 'genre')
+            ->leftJoin('ratings', 'shops.id', '=', 'ratings.shop_id')
+            ->select(
+                'shops.id',
+                'area_id',
+                'genre_id',
+                'name',
+                'image_url',
+            )
+            ->selectRaw(
+                'AVG(rating) as rating_avg'
+            )
+            ->groupBy(
+                'shops.id',
+                'area_id',
+                'genre_id',
+                'name',
+                'image_url',
+            );
         $this->getAreaSearch();
         $this->getGenreSearch();
         $this->getWordSearch();
-        $this->shops = $this->query->get();
+        $this->shops = $this->query->get(['shops.*']);
     }
 
     public function getAreaSearch() {
@@ -112,6 +129,7 @@ class Search extends Component
                 'user_id'=>$user_id,
                 ])->save();
         }
+        $this->search();
     }
 
     // お気に入り削除
@@ -119,6 +137,7 @@ class Search extends Component
     {
         $user=Auth::user()->favorites()->where('shop_id', $shop_id)->delete();
         $this->favoriteIn = false;
+        $this->search();
     }
 
     // モーダル画面

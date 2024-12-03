@@ -43,7 +43,7 @@
                     @if($reservation->rating == null)
                     <a class="rating-post__modal" href="#{{ $reservation['id'] }}">レビューを投稿する</a>
                     @else
-                    <p>投稿済み</p>
+                    <p class="rating-post__completion">投稿済み</p>
                     @endif
                 </td>
             </tr>

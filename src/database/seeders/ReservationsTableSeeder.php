@@ -53,8 +53,22 @@ class ReservationsTableSeeder extends Seeder
             [
                 'user_id'=>'3',
                 'shop_id'=>'1',
-                'date'=>'2024-12-02',
+                'date'=>'2024-11-02',
                 'time'=>'18:00:00',
+                'number'=>'2',
+            ],
+            [
+                'user_id'=>'3',
+                'shop_id'=>'1',
+                'date'=>'2024-11-29',
+                'time'=>'18:00:00',
+                'number'=>'4',
+            ],
+            [
+                'user_id'=>'3',
+                'shop_id'=>'1',
+                'date'=>'2024-12-02',
+                'time'=>'17:00:00',
                 'number'=>'2',
             ],
         ];

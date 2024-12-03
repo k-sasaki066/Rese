@@ -73,7 +73,7 @@
 
 .store-list__item {
     width: 300px;
-    height: 280px;
+    height: 300px;
     background-color: #fff;
 }
 
@@ -119,6 +119,62 @@
     width: 32px;
     height: 32px;
     cursor: pointer;
+}
+
+/* ---店舗評価--- */
+.store-list__rating {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.star-rating {
+    font-size: 16px;
+}
+
+.star-rating::before,
+.star-rating::after {
+    content: "★★★★★";
+    color: #e1e1e1;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+}
+
+.star-rating::after {
+    color: #ffb448;
+    overflow: hidden;
+}
+
+.star-rating[data-rate="0"]::after {
+    width: 0px;
+}
+
+.star-rating[data-rate="1"]::after {
+    width: 16px;
+}
+
+.star-rating[data-rate="2"]::after {
+    width: 32px;
+}
+
+.star-rating[data-rate="3"]::after {
+    width: 48px;
+}
+
+.star-rating[data-rate="4"]::after {
+    width: 64px;
+}
+
+.star-rating[data-rate="5"]::after {
+    width: 80px;
+}
+
+.star-rating__avg {
+    margin-left: 84px;
+    font-size: 14px;
+    color: #325583;
 }
 
 /* ---modal--- */

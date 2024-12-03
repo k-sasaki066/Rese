@@ -7,7 +7,7 @@
 @section('content')
 <div class="store-detail__group">
     <div class="store-name__group">
-        <a class="back__btn common-shadow" href="{{ $prev }}">
+        <a class="back__btn common-shadow" href="/">
             <
         </a>
         <h2 class="store-name__text">
@@ -89,5 +89,32 @@
 @livewire('reservation-form', ['option_times'=>$option_times,
 'option_numbers'=>$option_numbers,
 'shop'=>$shop])
+
+<div class="store-rating__group">
+    <div class="store-rating__heading">
+        <h3>レビュー</h3>
+        <span class="store-rating__count">全{{ $rating_count }}件</span>
+    </div>
+
+    @foreach($ratings as $rating)
+    <div class="store-rating__item">
+        <div class="rating__user">
+            <img class="rating__user-img" src="../images/username.svg" alt="user">
+            <p class="rating__user-name">{{ $rating['user']['name'] }}</p>
+            <div class="rating__star-group">
+                <span class="rating__star" data-rate="{{ $rating['rating'] }}">
+            </div>
+        </div>
+        <div class="rating__comment-group">
+            <p class="rating__comment-date">
+                {{ substr($rating['reservation']['date'], 0,7) }}訪問
+            </p>
+            <p class="rating__comment-text">
+                {{ $rating['comment'] }}
+            </p>
+        </div>
+    </div>
+    @endforeach
+</div>
 
 @endsection
