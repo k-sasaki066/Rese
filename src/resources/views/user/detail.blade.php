@@ -7,7 +7,7 @@
 @section('content')
 <div class="store-detail__group">
     <div class="store-name__group">
-        <a class="back__btn common-shadow" href="/">
+        <a class="back__btn common-shadow" href="{{ $prev }}">
             <
         </a>
         <h2 class="store-name__text">
