@@ -45,7 +45,12 @@
                             </li>
                             <li class="header-nav__item">
                                 <a class="header-nav__link" href="/admin/user/index">
-                                    管理者リスト
+                                    ユーザーリスト
+                                </a>
+                            </li>
+                            <li class="header-nav__item">
+                                <a class="header-nav__link" href="">
+                                    メール送信
                                 </a>
                             </li>
                             @endrole

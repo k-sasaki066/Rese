@@ -20,8 +20,8 @@ class RatingController extends Controller
         $user_id = Auth::user()->id;
         $reservations = Reservation::with('shop', 'rating')->where('user_id', $user_id)
         ->whereDate('date', '<', $today)
-        ->orderBy('date', 'asc')
-        ->orderBy('time', 'asc')
+        ->orderBy('date', 'desc')
+        ->orderBy('time', 'desc')
         ->get();
 
         return view('user/visit-history', compact('counter', 'reservations'));

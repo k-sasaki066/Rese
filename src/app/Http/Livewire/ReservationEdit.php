@@ -25,6 +25,7 @@ class ReservationEdit extends Component
     public $number;
     public $min_date;
     public $max_date;
+    public $user;
     protected $totals;
 
     public function mount()
@@ -104,12 +105,6 @@ class ReservationEdit extends Component
             ->groupBy('time')
             ->first();
 
-        // 入力したデータに対してログインユーザーの予約状況を取得
-        // $user = Reservation::where('user_id', $user_id)
-        // ->where('date', $this->date)
-        // ->where('time', $this->time.':00')
-        // ->first();
-
         if($this->reservation->date == $this->date && substr($this->reservation->time,0,5) == $this->time && $this->reservation->number !== $this->number) {
             if($this->totals !== null) {
                 $num = (($this->shop->max_number - $this->totals->actual_number) + $this->reservation->number);
@@ -120,13 +115,14 @@ class ReservationEdit extends Component
         } elseif($this->reservation->date == $this->date && substr($this->reservation->time,0,5) == $this->time && $this->reservation->number == $this->number){
             return back()->withInput();
 
-        } else {
+        } else{
             // 入力したデータに対してログインユーザーの予約状況を取得
-            $user = Reservation::where('user_id', $user_id)
+            $this->user = Reservation::where('user_id', $user_id)
+            ->where([['date', '!=', $this->reservation->date], ['time', '!=', $this->reservation->time.':00']])
             ->where('date', $this->date)
             ->where('time', $this->time.':00')
-            ->first();
-
+            ->exists();
+            // dd($user);
             // 店舗定休日を取得
             $holidays = unserialize($this->shop->holiday);
             // 入力データから曜日を取得
@@ -145,8 +141,8 @@ class ReservationEdit extends Component
                 }
             }
 
-            if($user !== null) {
-                return back()->withInput()->with('error', '既に同じ時間帯で別の予約が成立しています。予約状況をご確認ください');
+            if($this->user == true) {
+                return back()->withInput();
             }
 
             // 予約可能人数を算出
@@ -172,4 +168,5 @@ class ReservationEdit extends Component
         }
     }
 }
+
 
