@@ -29,13 +29,6 @@ class RatingController extends Controller
 
     public function postRating(Request $request) {
 
-        $validator = Validator::make($request->all(),[
-            'email' => 'required|unique:users|email',
-            'age' => 'required|numeric',
-            'password' => 'required|min:7|confirmed'
-        ], $messages = [
-            'required' => 'The :attribute field is required.',
-        ]);
         // ルールの設定
         $validator = Validator::make($request->all(), [
             'rating' => 'required | integer | min:1 | max:5',
@@ -50,7 +43,7 @@ class RatingController extends Controller
 
         // バリデーションエラー発生時にリダイレクトする
         if ($validator->fails()) {
-                return redirect( 'user/history'.'#' .$request->reservation_id)
+                return redirect( '/history'.'#' .$request->reservation_id)
                 ->withErrors($validator)
                 ->withInput();
             }
@@ -68,6 +61,6 @@ class RatingController extends Controller
             'comment'=>$validated['comment'],
         ]);
 
-        return redirect('/user/history')->with('result', 'レビューを投稿しました');
+        return redirect('/history')->with('result', 'レビューを投稿しました');
     }
 }

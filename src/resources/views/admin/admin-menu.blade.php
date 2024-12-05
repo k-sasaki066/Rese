@@ -18,7 +18,7 @@
     <div class="admin-menu__link-group">
         <a class="admin-menu__item" href="/admin/register/representative">店舗代表者登録</a>
         <a class="admin-menu__item" href="/admin/user/index">ユーザーリスト</a>
-        <a class="admin-menu__item" href="">メール送信</a>
+        <a class="admin-menu__item" href="/admin/email">メール送信</a>
     </div>
 </div>
 @endsection

@@ -59,7 +59,7 @@
                 </div>
                 <div class="modal__content">
                     <p class="modal__content-text">レビュー投稿</p>
-                    <form class="form__rating-post" action="/user/history" method="post">
+                    <form class="form__rating-post" action="/history" method="post">
                     @csrf
                         <div class="form-rating__container">
                             <div class="form-rating__group">

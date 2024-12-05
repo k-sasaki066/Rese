@@ -27,8 +27,8 @@ Route::middleware('auth', 'verified')->group(function () {
     Route::get('/mypage', [ShopController::class, 'getMypage']);
     Route::delete('/mypage/delete/{reservation_id}', [ShopController::class, 'delete']);
     Route::get('/user/done', [ShopController::class, 'done']);
-    Route::get('/user/history', [RatingController::class, 'history']);
-    Route::post('/user/history', [RatingController::class, 'postRating']);
+    Route::get('/history', [RatingController::class, 'history']);
+    Route::post('/history', [RatingController::class, 'postRating']);
 });
 
 Route::post('/register', [RegisteredUserController::class, 'store']);
@@ -40,6 +40,8 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/admin/register/representative', [AdminController::class, 'getEditorRegister']);
     Route::post('/admin/register/representative', [AdminController::class, 'postEditorRegister']);
     Route::get('/admin/user/index', [AdminController::class, 'list']);
+    Route::get('/admin/email', [AdminController::class, 'getSendView']);
+    Route::post('/admin/email', [AdminController::class, 'sendNotification']);
 });
 
 Route::middleware(['auth', 'role:editor'])->group(function () {
