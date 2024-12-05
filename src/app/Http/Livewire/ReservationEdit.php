@@ -122,7 +122,7 @@ class ReservationEdit extends Component
             ->where('date', $this->date)
             ->where('time', $this->time.':00')
             ->exists();
-            // dd($user);
+
             // 店舗定休日を取得
             $holidays = unserialize($this->shop->holiday);
             // 入力データから曜日を取得

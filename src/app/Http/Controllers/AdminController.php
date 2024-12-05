@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\Shop;
 use App\Models\Shop_representative;
+use App\Notifications\AdminNotification;
+use Illuminate\Support\Facades\Mail;
 
 class AdminController extends Controller
 {
@@ -44,5 +46,31 @@ class AdminController extends Controller
     public function list() {
         
         return view('admin/admin-list');
+    }
+
+    public function getSendView() {
+        
+        return view('admin/email-notification');
+    }
+
+    public function sendNotification(Request $request)
+    {
+        $address = $request->input('address');
+        $text = $request->input('text');
+
+        if ($address === 'all') {
+            $users = User::all();
+        } elseif ($address === 'user') {
+            $users = User::doesntHave('roles')->get();
+        } else {
+            $role = Role::findByName($address);
+            $users = $role ? $role->users : collect();
+        }
+
+        foreach ($users as $user) {
+            $user->notify(new AdminNotification($user, $text));
+        }
+
+        return back()->with('result', '送信完了しました。');
     }
 }

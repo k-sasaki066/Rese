@@ -300,6 +300,8 @@
     font-size: 20px;
 }
 
+
+
 @media screen and (max-width: 768px) {
     .mypage__container {
         display: flex;

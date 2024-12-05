@@ -49,7 +49,7 @@
                                 </a>
                             </li>
                             <li class="header-nav__item">
-                                <a class="header-nav__link" href="">
+                                <a class="header-nav__link" href="/admin/email">
                                     メール送信
                                 </a>
                             </li>
@@ -66,7 +66,7 @@
                                 </a>
                             </li>
                             <li class="header-nav__item">
-                                <a class="header-nav__link" href="/user/history">
+                                <a class="header-nav__link" href="/history">
                                     visit-history
                                 </a>
                             </li>

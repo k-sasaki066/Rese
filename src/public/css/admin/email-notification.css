@@ -1,0 +1,147 @@
+.notification__container {
+    text-align: center;
+}
+
+.notification__header {
+    margin-top: 32px;
+}
+
+.notification__content-group {
+    margin: 32px auto 0;
+    width: 70%;
+    background-color: #5b7eab;
+}
+
+.notification__form {
+    width: 80%;
+    margin: 32px auto;
+}
+
+.notification__address {
+    position: relative;
+}
+
+.notification__address-select {
+    background-color: #fff;
+    width: 100%;
+    padding: 8px;
+}
+
+.notification__address::after {
+    position: absolute;
+    top: 50%;
+    right: 5%;
+    width: 0;
+    height: 0;
+    border-top: 8px solid #ddd;
+    border-right: 8px solid transparent;
+    border-left: 8px solid transparent;
+    border-radius: 3px;
+    content: "";
+    transform: translateY(-50%);
+}
+
+.notification__content-textarea {
+    width: 100%;
+    margin-top: 12px;
+}
+
+.notification__textarea-input {
+    background-color: #fff;
+    width: 100%;
+    padding: 8px;
+}
+
+.notification-form__button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    margin-top: 24px;
+}
+
+.send__button {
+    text-decoration: none;
+}
+
+.back__button {
+    color: #fff;
+}
+
+/* ---modal--- */
+.modal__group {
+    position: fixed;
+    top: 0;
+    left: 0;
+    visibility: hidden;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+}
+
+.modal__inner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 50%;
+    background-color: #325583;
+    box-shadow: 4px 4px 4px rgba(139, 121, 105, 0.25);
+    transform: translate(-50%, -50%);
+    padding: 32px;
+}
+
+.modal__group:target {
+    visibility: visible;
+    opacity: 1;
+}
+
+.modal-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(235, 232, 232, 0.5);
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.close-detail__modal {
+    text-align: right;
+}
+
+.close-detail__button-img {
+    width: 32px;
+    height: 32px;
+}
+
+.close-detail__button {
+    cursor: pointer;
+}
+
+.modal__content {
+    margin-top: 32px;
+    text-align: center;
+}
+
+.modal__content-text {
+    color: #fff;
+    font-size: 20px;
+}
+
+.modal-btn {
+    display: block;
+    margin: 40px auto;
+    width: 180px;
+    text-decoration: none;
+}
+
+@media screen and (max-width: 768px) {
+    .notification__content-group {
+        width: 90%;
+        background-color: #5b7eab;
+    }
+
+    .notification__form {
+        width: 85%;
+    }
+}
