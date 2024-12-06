@@ -144,10 +144,12 @@ class Search extends Component
     public function openModal()
     {
         $this->showModal = true;
+        $this->search();
     }
 
     public function closeModal()
     {
         $this->showModal = false;
+        $this->search();
     }
 }

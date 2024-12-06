@@ -77,8 +77,26 @@ class ShopController extends Controller
             ->orderBy('time', 'asc')
             ->get();
 
-            $shops = Shop::with(['area', 'genre','favorites'])
-            ->get();
+            $shops = Shop::with('area', 'genre', 'favorites')
+            ->leftJoin('ratings', 'shops.id', '=', 'ratings.shop_id')
+            ->select(
+                'shops.id',
+                'area_id',
+                'genre_id',
+                'name',
+                'image_url',
+            )
+            ->selectRaw(
+                'AVG(rating) as rating_avg'
+            )
+            ->groupBy(
+                'shops.id',
+                'area_id',
+                'genre_id',
+                'name',
+                'image_url',
+            )
+            ->get(['shops.*']);
 
             $counter = 1;
 
