@@ -22,7 +22,7 @@
 
 .admin-search__item {
     position: relative;
-    min-width: 100px;
+    min-width: 150px;
     font-size: 12px;
     padding: 12px;
 }
