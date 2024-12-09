@@ -11,7 +11,7 @@ use App\Models\User;
 use App\Models\Shop;
 use App\Models\Shop_representative;
 use App\Notifications\AdminNotification;
-use Illuminate\Support\Facades\Mail;
+use App\Notifications\EditorChangePassword;
 
 class AdminController extends Controller
 {
@@ -38,7 +38,13 @@ class AdminController extends Controller
                 'user_id'=>$user_id,
                 'shop_id'=>$request['shop_id'],
             ])->save();
+            $shop_name = Shop::find($request['shop_id'])->name;
+        }else {
+            $shop_name = '新規で登録';
         }
+
+        $editor->password = $request['password'];
+        $editor->notify(new EditorChangePassword($editor, $shop_name));
 
         return redirect('/admin/user/index')->with('result', '店舗管理者を登録しました');
     }
@@ -49,7 +55,7 @@ class AdminController extends Controller
     }
 
     public function getSendView() {
-        
+
         return view('admin/email-notification');
     }
 

@@ -39,12 +39,4 @@ class RatingRequest extends FormRequest
             'comment.required' => 'コメントを入力してください',
         ];
     }
-
-    // protected function getRedirectUrl($shop_id)
-    // {
-    //     // 直前のurlを取得
-    //     $prev = url()->previous();
-    //     // dd($prev);
-    //     return $prev.'#1';
-    // }
 }
