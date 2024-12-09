@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\RegisterRequest;
 use App\Http\Requests\LoginRequest;
+use App\Http\Requests\ChangePasswordRequest;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
@@ -58,5 +59,20 @@ class AuthController extends Controller
         $this->guard->login($user);
 
         return app(RegisterResponse::class);
+    }
+
+    public function getChangePassword() {
+        return view('auth/change-password');
+    }
+
+    public function postChangePassword(ChangePasswordRequest $request) {
+        $user = Auth::user();
+        if($request['email'] == $user['email'] && password_verify($request['oldPassword'], $user['password']) == true) {
+            $user->update([
+                'password' => Hash::make($request['newPassword'])
+            ]);
+        }
+
+        return redirect('/mypage')->with('result', '本パスワードの登録が完了しました。');
     }
 }

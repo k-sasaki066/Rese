@@ -36,7 +36,7 @@ Route::post('/register', [RegisteredUserController::class, 'store']);
 Route::get('/', [ShopController::class, 'index']);
 Route::get('/detail/{shop_id}', [ShopController::class, 'detail']);
 
-Route::middleware(['auth', 'role:admin'])->group(function () {
+Route::middleware(['auth', 'role:admin', 'verified'])->group(function () {
     Route::get('/admin/register/representative', [AdminController::class, 'getEditorRegister']);
     Route::post('/admin/register/representative', [AdminController::class, 'postEditorRegister']);
     Route::get('/admin/user/index', [AdminController::class, 'list']);
@@ -44,11 +44,13 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::post('/admin/email', [AdminController::class, 'sendNotification']);
 });
 
-Route::middleware(['auth', 'role:editor'])->group(function () {
+Route::middleware(['auth', 'role:editor', 'verified'])->group(function () {
     Route::get('/editor/shop/edit', [EditorController::class, 'index']);
     Route::post('/editor/shop/edit', [EditorController::class, 'edit']);
     Route::get('/editor/shop/list', [EditorController::class, 'list']);
     Route::get('/editor/shop/date', [EditorController::class, 'date']);
+    Route::get('/editor/change', [AuthController::class, 'getChangePassword']);
+    Route::patch('/editor/change', [AuthController::class, 'postChangePassword']);
 });
 
 Route::get('/admin/register', [AuthController::class, 'getAdminRegister']);
