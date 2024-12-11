@@ -83,6 +83,34 @@
                 ¥{{ number_format($shop['budget']) }}
             </td>
         </tr>
+        <tr class="store-info__table-row">
+            <th class="store-info__table-header">
+                メニュー
+            </th>
+            <td class="store-info__table-item">
+                <ul class="store-info__table-list">
+                    @foreach($shop['menus'] as $menu)
+                    <li class="store-info__table-list--item">{{ $menu['name']."　" .'¥' .number_format($menu['price']) }}</li>
+                    @endforeach
+                </ul>
+            </td>
+        </tr>
+    </table>
+
+    <h3>メニュー情報</h3>
+    <table class="store-info__table">
+        @foreach($shop['menus'] as $menu)
+        <tr class="store-info__table-row">
+            <th class="store-info__table-header">
+                {{ $menu['name']}}
+                <br>
+                {{'¥' .number_format($menu['price'])}}
+            </th>
+            <td class="store-info__table-item">
+                {{ $menu['detail'] }}
+            </td>
+        </tr>
+        @endforeach
     </table>
 </div>
 

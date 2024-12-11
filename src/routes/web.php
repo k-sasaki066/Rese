@@ -7,6 +7,7 @@ use App\Http\Controllers\EditorController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\RegisteredUserController;
 use App\Http\Controllers\RatingController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Livewire\Search;
 
 /*
@@ -29,6 +30,9 @@ Route::middleware('auth', 'verified')->group(function () {
     Route::get('/user/done', [ShopController::class, 'done']);
     Route::get('/history', [RatingController::class, 'history']);
     Route::post('/history', [RatingController::class, 'postRating']);
+    Route::get('/payment/{reservation_id}', [PaymentController::class, 'getPayment'])->name('payment');
+    Route::post('/payment/{reservation_id}', [PaymentController::class, 'charge']);
+
 });
 
 Route::post('/register', [RegisteredUserController::class, 'store']);

@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 use App\Models\Reservation;
+use App\Models\Menu;
 use App\Http\Requests\ReservationRequest;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
@@ -17,6 +18,8 @@ class ReservationForm extends Component
     public $date;
     public $time;
     public $number;
+    public $menu_name;
+    public $payment;
     public $user_id;
     public $shop_id;
     public $min_date;
@@ -112,19 +115,39 @@ class ReservationForm extends Component
         }
 
         // 予約可能人数と入力データを比較
-        if($num - $this->number >= 0) {
-            Reservation::create([
+        if($num - $this->number < 0) {
+            return back()->withInput()->with('result', '申し訳ございません。すでに予約でいっぱいのため別の日、別の時間帯をご利用ください');
+        }elseif($num - $this->number >= 0) {
+            $menu_id = Menu::where('name', $this->menu_name)->first();
+            if($this->payment == '現地決済') {
+
+                $reservation = Reservation::create([
                 'user_id' => $user_id,
                 'shop_id' => $shop_id,
                 'date' => $this->date,
                 'time' => $this->time,
                 'number' => $this->number,
-            ]);
+                'menu_id' => $menu_id['id'],
+                'payment' => '1',
+                ]);
 
-        return redirect('user/done');
+                return redirect('/user/done');
+            }else {
 
-        }else {
-        return back()->withInput()->with('result', '申し訳ございません。すでに予約でいっぱいのため別の日、別の時間帯をご利用ください');
-        };
+                $reservation = Reservation::create([
+                    'user_id' => $user_id,
+                    'shop_id' => $shop_id,
+                    'date' => $this->date,
+                    'time' => $this->time,
+                    'number' => $this->number,
+                    'menu_id' => $menu_id['id'],
+                    'payment' => '2',
+                ]);
+                return redirect(route('payment', [
+                    'reservation_id' => $reservation['id'],
+                ]));
+                // return redirect('/payment');
+            }
+        }
     }
 }

@@ -1,0 +1,30 @@
+.payment-detail__group {
+    width: 60%;
+    margin: 48px auto 0;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+}
+
+.payment-detail__heading {
+    padding: 8px 12px;
+    background-color: #305dff;
+    color: #fff;
+}
+
+.payment-detail__amount {
+    padding: 60px 12px;
+}
+
+.payment-detail__amount-text {
+    font-size: 20px;
+}
+
+.payment-detail__amount-total {
+    margin-top: 40px;
+    font-size: 22px;
+}
+
+.payment-form__container {
+    margin-top: 32px;
+    text-align: center;
+}

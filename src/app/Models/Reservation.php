@@ -15,6 +15,8 @@ class Reservation extends Model
         'date',
         'time',
         'number',
+        'menu_id',
+        'payment',
     ];
 
     public function user() {
@@ -27,5 +29,9 @@ class Reservation extends Model
 
     public function rating() {
         return $this->hasOne(Rating::class);
+    }
+
+    public function menu() {
+        return $this->belongsTo(Menu::class);
     }
 }

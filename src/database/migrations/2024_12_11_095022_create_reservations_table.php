@@ -20,6 +20,8 @@ class CreateReservationsTable extends Migration
             $table->date('date');
             $table->time('time');
             $table->integer('number');
+            $table->foreignId('menu_id')->constrained()->cascadeOnDelete();
+            $table->integer('payment')->comment('1:現地決済. 2:クレジット');
             $table->timestamps();
         });
     }
