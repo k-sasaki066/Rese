@@ -53,6 +53,38 @@
                     {{ $message }}
                     @enderror
                 </div>
+
+                <div class="reservation-menu__group">
+                    <p class="reservation-menu__heading">メニュー</p>
+                    @foreach($shop['menus'] as $menu)
+                    <div class="payment-form__item">
+                        <input class="payment-form__name" type="radio" name="menu_name" value="{{ $menu['name'] }}" wire:model.live="menu_name">
+                        <label class="payment-form__item-label" for="">{{ $menu['name']."　" .'¥' .number_format($menu['price']) }}</label>
+                    </div>
+                    @endforeach
+                </div>
+                <div class="error-message">
+                    @error('menu_name')
+                    {{ $message }}
+                    @enderror
+                </div>
+
+                <div class="reservation-payment__group">
+                    <p class="reservation-payment__heading">支払い方法</p>
+                    <div class="payment-form__item">
+                        <input class="payment-form__name" type="radio" name="payment" value="現地決済" wire:model.live="payment">
+                        <label class="payment-form__item-label" for="">現地決済</label>
+                    </div>
+                    <div class="payment-form__item">
+                        <input class="payment-form__name" type="radio" name="payment" value="クレジットカード決済" wire:model.live="payment">
+                        <label class="payment-form__item-label" for="">クレジットカード決済</label>
+                    </div>
+                </div>
+                <div class="error-message">
+                    @error('payment')
+                    {{ $message }}
+                    @enderror
+                </div>
             </div>
 
             <div class="reservation-confirm__group">
@@ -92,8 +124,27 @@
                             {{ $number }}
                         </td>
                     </tr>
+
+                    <tr class="reservation-confirm__table-row">
+                        <th class="reservation-confirm__table-header">
+                            Menu
+                        </th>
+                        <td class="reservation-confirm__table-item">
+                            {{ $menu_name }}
+                        </td>
+                    </tr>
+
+                    <tr class="reservation-confirm__table-row">
+                        <th class="reservation-confirm__table-header">
+                            支払い方法
+                        </th>
+                        <td class="reservation-confirm__table-item">
+                            {{ $payment }}
+                        </td>
+                    </tr>
                 </table>
             </div>
+
             @if (session('result'))
                 <div class="flash_error-message">
                     {{ session('result') }}

@@ -23,7 +23,7 @@ class ShopController extends Controller
     }
 
     public function detail($shop_id){
-        $shop = Shop::with(['area', 'genre'])
+        $shop = Shop::with(['area', 'genre', 'menus'])
         ->find($shop_id);
         $holidays = unserialize($shop->holiday);
 

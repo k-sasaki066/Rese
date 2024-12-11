@@ -28,6 +28,8 @@ class ReservationsTableSeeder extends Seeder
                         'date' => $i->format('Y-m-d'),
                         'time' => $t.':00',
                         'number' => mt_rand(1,5),
+                        'menu_id' => mt_rand(1,9),
+                        'payment' => mt_rand(1,2),
                         'created_at' => $i->format('Y-m-d 08:00:00'),
                         'updated_at' => $i->format('Y-m-d 17:30:00'),
                     ]);

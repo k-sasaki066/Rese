@@ -5,6 +5,12 @@
 @endsection
 
 @section('content')
+@if (session('result'))
+    <div class="flash_success-message">
+        {{ session('result') }}
+    </div>
+@endif
+
 <div class="thanks-container common-shadow">
     <p class="thanks-text">
         ご予約ありがとうございます

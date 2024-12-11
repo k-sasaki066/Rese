@@ -45,4 +45,8 @@ class Shop extends Model
     public function ratings() {
         return $this->hasMany(Rating::class);
     }
+
+    public function menus() {
+        return $this->hasMany(Menu::class);
+    }
 }

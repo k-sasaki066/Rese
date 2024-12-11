@@ -22,7 +22,7 @@
 
 .back__btn {
     text-decoration: none;
-    padding: 0 10px;
+    padding: 4px 10px;
     font-size: 20px;
     cursor: pointer;
     margin-right: 12px;
@@ -61,6 +61,7 @@
 .store-info__table {
     border-collapse: collapse;
     width: 80%;
+    margin-bottom: 16px;
 }
 
 .store-info__table-header,
@@ -72,11 +73,16 @@
 .store-info__table-header {
     background-color: #d7d6d1;
     padding: 0 16px;
+    width: 30%;
     min-width: 100px;
 }
 
 .store-info__table-item {
     padding: 8px 16px;
+}
+
+.store-info__table-list {
+    list-style: none;
 }
 
 /* ---予約フォーム--- */
@@ -88,7 +94,7 @@
     background-color: #305dff;
     display: flex;
     flex-direction: column;
-    height: 750px;
+    height: 880px;
 }
 
 .reservation__title {
@@ -162,6 +168,20 @@
     border-radius: 3px;
     content: "";
     transform: translateY(-50%);
+}
+
+.reservation-menu__group,
+.reservation-payment__group {
+    margin-top: 16px;
+}
+
+.reservation-menu__heading,
+.reservation-payment__heading {
+    color: #d8d5d5;
+}
+
+.payment-form__item {
+    margin-top: 4px;
 }
 
 .error-message {
@@ -315,7 +335,7 @@
     }
 
     .reservation__group {
-        height: 560px;
+        height: 880px;
         margin-top: 0;
         grid-column: 1/1;
         grid-row: 3/4;
@@ -327,7 +347,7 @@
     }
 
     .reservation-form__submit {
-        top: 96%;
+        top: 97%;
     }
 
     .store-detail__group {
