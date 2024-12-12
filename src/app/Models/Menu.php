@@ -13,6 +13,7 @@ class Menu extends Model
         'shop_id',
         'name',
         'price',
+        'detail',
     ];
 
     public function shop() {

@@ -3,13 +3,17 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
 use App\Models\Shop;
 use App\Models\Area;
 use App\Models\Genre;
+use App\Models\Menu;
 use App\Models\Reservation;
 use App\Models\Shop_representative;
 use App\Http\Requests\EditorRequest;
+use App\Http\Requests\MenuRequest;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 use DateTime;
 use DatePeriod;
 use DateInterval;
@@ -159,5 +163,61 @@ class EditorController extends Controller
         }
 
         return view('editor/reservation-list', compact('display', 'reservations'));
+    }
+
+    public function getMenu() {
+        $user = User::with('shopRepresentative')->find(Auth::user()->id);
+        $shop_id = $user['shopRepresentative']['shop_id'];
+
+        $menus = Menu::where('shop_id', $shop_id)->get();
+
+        return view('editor/menu-editor-form', compact('shop_id', 'menus'));
+    }
+
+    public function postMenu(MenuRequest $request) {
+        Menu::create([
+            'shop_id' => $request->shop_id,
+            'name' => $request->name,
+            'price' => $request->price,
+            'detail' => $request->detail,
+        ]);
+        return redirect('/editor/shop/menu')->with('result', 'メニューを登録しました');
+    }
+
+    public function updateMenu(Request $request, $menu_id) {
+        // ルールの設定
+        $validator = Validator::make($request->all(), [
+            'editName' => 'required',
+            'editPrice' => 'required | regex:/^[0-9]+$/',
+            'editDetail' => 'required',
+        ], $messages = [
+            'editName.required'=>'メニュー名を入力してください',
+            'editPrice.required'=>'価格を入力してください',
+            'editPrice.regex'=>'価格は半角数字のみで入力してください',
+            'editDetail.required'=>'説明を入力してください',
+        ]);
+
+        // バリデーションエラー発生時にリダイレクトする
+        if ($validator->fails()) {
+                return redirect( '/editor/shop/menu'.'#' .'update' .$request->menu_id)
+                ->withErrors($validator)
+                ->withInput();
+            }
+
+        // バリデーション済みデータの取得
+        $validated = $validator->validated();
+
+        Menu::find($menu_id)->update([
+            'name' => $validated['editName'],
+            'price' => $validated['editPrice'],
+            'detail' => $validated['editDetail'],
+        ]);
+
+        return redirect('/editor/shop/menu')->with('result', 'メニューを更新しました');
+    }
+
+    public function deleteMenu($menu_id) {
+        Menu::find($menu_id)->delete();
+        return redirect('/editor/shop/menu')->with('result', 'メニューを削除しました');
     }
 }

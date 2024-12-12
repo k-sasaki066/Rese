@@ -8,6 +8,7 @@ use App\Models\Menu;
 use Illuminate\Support\Facades\Auth;
 use Stripe\Stripe;
 use Stripe\Charge;
+use Stripe\Customer;
 
 class PaymentController extends Controller
 {
@@ -27,7 +28,7 @@ class PaymentController extends Controller
             $charge = Charge::create(array(
                 'amount' => 100,
                 'currency' => 'jpy',
-                'source'=> request()->input('stripeToken'),
+                'source'=> $request->stripeToken,
             ));
         } catch (Exception $e) {
             return back()->with('result', '決済に失敗しました！('. $e->getMessage() . ')');

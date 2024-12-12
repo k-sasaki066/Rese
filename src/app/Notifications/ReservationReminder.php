@@ -43,11 +43,11 @@ class ReservationReminder extends Notification
      */
     public function toMail($notifiable)
     {
-        // $signedUrl = URL::signedRoute('reservation.confirm',['reservation' => $this->reservation->id]);
-        // $qrCode = QrCode::size(200)->generate($signedUrl);
+        $signedUrl = URL::signedRoute('reservation.confirm',['reservation_id' => $this->reservation->id]);
+        $qrCode = QrCode::size(200)->generate($signedUrl);
         return (new MailMessage)
             ->subject('予約リマインダー')
-            ->markdown('email.reminder-template', ['reservation' => $this->reservation]);
+            ->markdown('email.reminder-template', ['reservation' => $this->reservation, 'qrCode' => $qrCode]);
     }
 
     /**

@@ -28,3 +28,9 @@
     margin-top: 32px;
     text-align: center;
 }
+
+@media screen and (max-width: 768px) {
+    .payment-detail__group {
+        width: 80%;
+    }
+}

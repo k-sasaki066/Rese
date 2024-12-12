@@ -17,6 +17,7 @@
     </h2>
     <div class="admin-menu__link-group">
         <a class="admin-menu__item" href="/editor/shop/edit">店舗情報編集</a>
+        <a class="admin-menu__item" href="/editor/shop/menu">メニュー登録</a>
         <a class="admin-menu__item" href="/editor/shop/list">予約リスト</a>
     </div>
 </div>

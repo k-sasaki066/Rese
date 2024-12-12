@@ -56,12 +56,16 @@
 
                 <div class="reservation-menu__group">
                     <p class="reservation-menu__heading">メニュー</p>
+                    @if($shop['menus']->isEmpty())
+                    <p>メニューの登録がありません</p>
+                    @else
                     @foreach($shop['menus'] as $menu)
                     <div class="payment-form__item">
                         <input class="payment-form__name" type="radio" name="menu_name" value="{{ $menu['name'] }}" wire:model.live="menu_name">
                         <label class="payment-form__item-label" for="">{{ $menu['name']."　" .'¥' .number_format($menu['price']) }}</label>
                     </div>
                     @endforeach
+                    @endif
                 </div>
                 <div class="error-message">
                     @error('menu_name')
@@ -150,7 +154,7 @@
                     {{ session('result') }}
                 </div>
             @endif
-            <button class="reservation-form__submit" type="submit" @if(!Auth::check()) disabled @endif>
+            <button class="reservation-form__submit" type="submit" @if(!Auth::check() || $shop['menus']->isEmpty()) disabled @endif>
                 予約する
             </button>
         </form>
