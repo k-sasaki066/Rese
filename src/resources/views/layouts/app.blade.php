@@ -31,6 +31,11 @@
                                 </a>
                             </li>
                             <li class="header-nav__item">
+                                <a class="header-nav__link" href="/editor/shop/menu">
+                                    メニュー登録
+                                </a>
+                            </li>
+                            <li class="header-nav__item">
                                 <a class="header-nav__link" href="/editor/shop/list">
                                     予約リスト
                                 </a>

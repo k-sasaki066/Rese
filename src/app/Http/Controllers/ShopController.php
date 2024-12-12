@@ -110,4 +110,20 @@ class ShopController extends Controller
 
         return redirect('/mypage')->with('result', '予約をキャンセルしました');
     }
+
+    public function confirm($reservation_id)
+    {
+        $reservation = Reservation::find($reservation_id);
+        // $reservation->status = '来店';
+        // $reservation->save();
+
+        return view('editor/visit-confirm');
+    }
+
+    public function scan($reservation_id)
+    {
+        $reservation = Reservation::with('user')->find($reservation_id);
+
+        return view('editor/visit-confirm', compact('reservation'));
+    }
 }

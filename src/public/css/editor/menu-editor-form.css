@@ -1,0 +1,136 @@
+/* ---登録済みmenu--- */
+.menu-list__group {
+    margin-top: 48px;
+    border-top: 1px dotted #929191;
+}
+
+.menu-list__heading {
+    text-align: center;
+    margin-top: 32px;
+}
+
+.menu-list__table-container {
+    width: 100%;
+    height: auto;
+    overflow-x: scroll;
+    margin: 32px auto 0;
+}
+
+.menu-list__table-container::-webkit-scrollbar {
+    height: 2px;
+}
+
+.menu-list__table-container::-webkit-scrollbar-track {
+    background: #333;
+}
+
+.menu-list__table-container::-webkit-scrollbar-thumb {
+    background: #999;
+}
+
+.menu-list__table {
+    width: auto;
+    border: 1px solid #929191;
+    border-collapse: collapse;
+    margin-top: 32px;
+}
+
+.menu-list__table-row {
+    border-bottom: 1px solid #929191;
+}
+
+.menu-list__table-heading {
+    width: 30%;
+    min-width: 130px;
+    border-right: 1px solid #929191;
+    background-color: #e6e5e3;
+}
+
+.menu-list__table-item {
+    padding: 8px 16px;
+    width: 55%;
+    min-width: 600px;
+}
+
+.menu-info__text {
+    margin-top: 32px;
+    text-align: center;
+}
+
+.menu-btn__group {
+    margin: 0 auto;
+}
+
+.menu-list__table-btn {
+    padding: 8px 16px;
+    width: 15%;
+    min-width: 100px;
+}
+
+.menu-update__btn {
+    text-decoration: none;
+    text-align: center;
+    background-color: rgb(82, 174, 84);
+    margin-bottom: 8px;
+}
+
+.menu-delete__btn {
+    text-decoration: none;
+    background-color: #c66464;
+    text-align: center;
+}
+/* ---modal--- */
+
+.modal-delete__text,
+.modal-update__text {
+    margin-top: 32px;
+    color: #fff;
+    font-size: 20px;
+}
+
+.modal-table {
+    margin-top: 48px;
+    width: 100%;
+    color: #fff;
+    border: 1px solid #fff;
+}
+
+.modal-table__header,
+.modal-table__item {
+    padding: 8px;
+}
+
+.modal-table__item {
+    text-align: left;
+}
+
+.modal-table__header {
+    width: 20%;
+}
+
+.modal-input {
+    color: #dedada;
+}
+
+.modal-delete__btn {
+    display: block;
+    margin: 16px auto;
+    width: 180px;
+    text-decoration: none;
+    background-color: #c66464;
+}
+
+.modal-update__btn {
+    display: block;
+    margin: 16px auto;
+    width: 180px;
+    text-decoration: none;
+    background-color: rgb(82, 174, 84);
+}
+
+@media screen and (max-width: 768px) {
+    .menu-list__table-container {
+        width: 100%;
+    }
+}
+

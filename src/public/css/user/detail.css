@@ -236,6 +236,7 @@
     cursor: not-allowed;
 }
 
+/* ---レビュー--- */
 .store-rating__group {
     display: grid;
     grid-column: 1/3;

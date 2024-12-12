@@ -1,0 +1,48 @@
+.confirm-container {
+    width: 70%;
+    margin: 64px auto 0;
+    padding: 72px 48px;
+    background-color: #ffffff;
+    text-align: center;
+}
+
+.thanks-text {
+    font-size: 24px;
+}
+
+.reservation-info__item {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    margin-bottom: 8px;
+    font-size: 20px;
+}
+
+.reservation-info__group {
+    margin-top: 40px;
+    width: 100%;
+}
+
+.thanks__login-button,
+.thanks__back-button {
+    display: inline-block;
+    margin: 32px auto 0;
+    text-decoration: none;
+}
+
+@media screen and (max-width: 768px) {
+    .confirm-container {
+        width: 80%;
+        padding: 72px 30px;
+    }
+
+    .reservation-info__item {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 12px;
+        font-size: 18px;
+    }
+
+    .reservation-info__item-span {
+        background-color: aliceblue;
+    }
+}

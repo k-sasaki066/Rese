@@ -51,6 +51,10 @@ Route::middleware(['auth', 'role:admin', 'verified'])->group(function () {
 Route::middleware(['auth', 'role:editor', 'verified'])->group(function () {
     Route::get('/editor/shop/edit', [EditorController::class, 'index']);
     Route::post('/editor/shop/edit', [EditorController::class, 'edit']);
+    Route::get('/editor/shop/menu', [EditorController::class, 'getMenu']);
+    Route::post('/editor/shop/menu', [EditorController::class, 'postMenu']);
+    Route::patch('/editor/shop/menu/update{menu_id}', [EditorController::class, 'updateMenu']);
+    Route::delete('/editor/shop/menu/delete{menu_id}', [EditorController::class, 'deleteMenu']);
     Route::get('/editor/shop/list', [EditorController::class, 'list']);
     Route::get('/editor/shop/date', [EditorController::class, 'date']);
     Route::get('/editor/change', [AuthController::class, 'getChangePassword']);
@@ -59,4 +63,7 @@ Route::middleware(['auth', 'role:editor', 'verified'])->group(function () {
 
 Route::get('/admin/register', [AuthController::class, 'getAdminRegister']);
 Route::post('/admin/register', [AuthController::class, 'postAdminRegister']);
+
+Route::get('/reservation/confirm/{reservation_id}', [ShopController::class, 'confirm'])->middleware('signed')->name('reservation.confirm');
+Route::get('/reservation/scan{reservation_id}', [ShopController::class, 'scan']);
 
