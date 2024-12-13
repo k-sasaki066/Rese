@@ -19,8 +19,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('command:sendReminder')
-        ->dailyAt('08:00');
+        $schedule->command('command:sendReminder')->timezone('Asia/Tokyo')->dailyAt('08:00');
     }
 
     /**

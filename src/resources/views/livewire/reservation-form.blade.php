@@ -81,7 +81,7 @@
                     </div>
                     <div class="payment-form__item">
                         <input class="payment-form__name" type="radio" name="payment" value="クレジットカード決済" wire:model.live="payment">
-                        <label class="payment-form__item-label" for="">クレジットカード決済</label>
+                        <label class="payment-form__item-label" for="">クレジットカード事前決済</label>
                     </div>
                 </div>
                 <div class="error-message">

@@ -24,15 +24,18 @@ class PaymentController extends Controller
     public function charge(Request $request)
     {
         Stripe::setApiKey(config('services.stripe.secret'));//シークレットキー
+
         try {
             $charge = Charge::create(array(
-                'amount' => 100,
+                'amount' => $request->amount,
                 'currency' => 'jpy',
-                'source'=> $request->stripeToken,
+                'description' => 'Example charge',
+                'source'=> $request->token,
             ));
+            return redirect('/user/done')->with('result', '決済が完了しました！');
+
         } catch (Exception $e) {
             return back()->with('result', '決済に失敗しました！('. $e->getMessage() . ')');
         }
-        return redirect('/user/done')->with('result', '決済が完了しました！');
     }
 }
