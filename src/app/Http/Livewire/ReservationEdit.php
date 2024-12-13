@@ -5,7 +5,7 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use App\Models\Reservation;
 use App\Models\shop;
-use App\Http\Requests\ReservationRequest;
+use App\Http\Requests\ReservationEditRequest;
 use Illuminate\Support\Facades\Auth;
 use DateTime;
 use DatePeriod;
@@ -65,12 +65,12 @@ class ReservationEdit extends Component
     // ReservationRequestを取得
     protected function rules(): array
     {
-        return (new ReservationRequest())->rules();
+        return (new ReservationEditRequest())->rules();
     }
 
     protected function messages(): array
     {
-        return (new ReservationRequest())->messages();
+        return (new ReservationEditRequest())->messages();
     }
 
     // 各項目を入力次第バリデーションする
