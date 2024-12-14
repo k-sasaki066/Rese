@@ -1,3 +1,8 @@
+
+.header__title {
+    margin: 0;
+}
+
 .payment-detail__group {
     width: 60%;
     margin: 48px auto 0;
@@ -6,22 +11,25 @@
 }
 
 .payment-detail__heading {
+    font-size: 20px;
     padding: 8px 12px;
     background-color: #305dff;
     color: #fff;
 }
 
 .payment-detail__amount {
-    padding: 60px 12px;
+    padding: 60px 16px;
 }
 
 .payment-detail__amount-text {
     font-size: 20px;
+    text-align: center;
 }
 
 .payment-detail__amount-total {
     margin-top: 40px;
     font-size: 22px;
+    text-align: center;
 }
 
 .payment-form__container {
@@ -29,8 +37,12 @@
     text-align: center;
 }
 
+.input {
+    background: #f3aeae;
+}
+
 @media screen and (max-width: 768px) {
     .payment-detail__group {
-        width: 80%;
+        width: 85%;
     }
 }

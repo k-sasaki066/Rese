@@ -129,6 +129,7 @@ class ReservationForm extends Component
                 'number' => $this->number,
                 'menu_id' => $menu_id['id'],
                 'payment' => '1',
+                'status' => '1',
                 ]);
 
                 return redirect('/user/done');
@@ -142,11 +143,11 @@ class ReservationForm extends Component
                     'number' => $this->number,
                     'menu_id' => $menu_id['id'],
                     'payment' => '2',
+                    'status' => '1',
                 ]);
                 return redirect(route('payment', [
                     'reservation_id' => $reservation['id'],
                 ]));
-                // return redirect('/payment');
             }
         }
     }

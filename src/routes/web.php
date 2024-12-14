@@ -31,7 +31,7 @@ Route::middleware('auth', 'verified')->group(function () {
     Route::get('/history', [RatingController::class, 'history']);
     Route::post('/history', [RatingController::class, 'postRating']);
     Route::get('/payment/{reservation_id}', [PaymentController::class, 'getPayment'])->name('payment');
-    Route::post('/payment/charge', [PaymentController::class, 'charge']);
+    Route::post('/payment/charge{total}', [PaymentController::class, 'charge']);
 
 });
 
