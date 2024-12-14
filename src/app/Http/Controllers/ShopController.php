@@ -114,15 +114,8 @@ class ShopController extends Controller
     public function confirm($reservation_id)
     {
         $reservation = Reservation::with('user')->find($reservation_id);
-        // $reservation->status = '来店';
-        // $reservation->save();
-
-        return view('editor/visit-confirm', compact('reservation'));
-    }
-
-    public function scan($reservation_id)
-    {
-        $reservation = Reservation::with('user')->find($reservation_id);
+        $reservation->status = '2';
+        $reservation->save();
 
         return view('editor/visit-confirm', compact('reservation'));
     }

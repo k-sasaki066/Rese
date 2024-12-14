@@ -41,8 +41,8 @@ class sendReminder extends Command
     public function handle()
     {
         $today = Carbon::today()->format('Y-m-d');
-        // $reservations = Reservation::with('user')->where('id', 1)->get();
         $reservations = Reservation::with('user')->where('date', $today)->get();
+        
         foreach($reservations as $reservation) {
             ($reservation->user)->notify(new ReservationReminder ($reservation));
         }

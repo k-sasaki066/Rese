@@ -21,17 +21,23 @@ class PaymentController extends Controller
         return view('user/payment', compact('reservation', 'total'));
     }
 
-    public function charge(Request $request)
+    public function charge(Request $request, $total)
     {
-        Stripe::setApiKey(config('services.stripe.secret'));//シークレットキー
+        Stripe::setApiKey(config('services.stripe.secret'));
+        //シークレットキー
+        $user = Auth::user();
+
+        if (!$user->stripe_id) {
+            $user->createAsStripeCustomer();
+        }
 
         try {
-            $charge = Charge::create(array(
-                'amount' => $request->amount,
+            \Stripe\Charge::create([
+                'source' => $request->stripeToken,
+                'amount' => $total,
                 'currency' => 'jpy',
                 'description' => 'Example charge',
-                'source'=> $request->token,
-            ));
+            ]);
             return redirect('/user/done')->with('result', '決済が完了しました！');
 
         } catch (Exception $e) {

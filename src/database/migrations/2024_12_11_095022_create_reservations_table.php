@@ -22,6 +22,7 @@ class CreateReservationsTable extends Migration
             $table->integer('number');
             $table->foreignId('menu_id')->constrained()->cascadeOnDelete();
             $table->integer('payment')->comment('1:現地決済. 2:クレジット');
+            $table->tinyInteger('status')->default(1)->comment('1:予約. 2:来店');
             $table->timestamps();
         });
     }
