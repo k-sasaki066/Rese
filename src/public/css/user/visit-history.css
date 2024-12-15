@@ -6,12 +6,14 @@
 .history-table__group {
     margin: 32px auto 0;
     width: 90%;
-    height: auto;
+    height: 500px;
     overflow-x: scroll;
+    overflow-y: scroll;
 }
 
 .history-table__group::-webkit-scrollbar {
-    height: 2px;
+    width: 4px;
+    height: 4px;
 }
 
 .history-table__group::-webkit-scrollbar-track {
@@ -33,6 +35,28 @@
     padding: 8px 16px;
     color: #fff;
     background-color: #305dff;
+    position: sticky;
+    top: 0;
+
+    &:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border-top: 1px solid #000;
+    }
+
+    &:after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border-bottom: 1px solid #000;
+    }
 }
 
 .history-table__item {
@@ -91,6 +115,7 @@
     width: 100%;
     height: 100%;
     opacity: 0;
+    z-index: 1;
 }
 
 .modal__inner {
