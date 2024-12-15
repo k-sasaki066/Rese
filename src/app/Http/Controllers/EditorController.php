@@ -21,7 +21,7 @@ use Carbon\Carbon;
 
 class EditorController extends Controller
 {
-    public function index() {
+    public function getEditorForm() {
         $formatter = function($datetime){
             return $datetime->format('H:i');
         };
@@ -46,7 +46,7 @@ class EditorController extends Controller
         return view('editor/store-editor-form', compact('option_times', 'areas', 'genres', 'shop'));
     }
 
-    public function edit(EditorRequest $request) {
+    public function postEditorForm(EditorRequest $request) {
 // dd($request);
         $holiday = serialize($request->holiday);
 
@@ -128,7 +128,7 @@ class EditorController extends Controller
         return redirect('/mypage')->with('result', '店舗情報を更新しました');
     }
 
-    public function list() {
+    public function getReservationList() {
         $display = Carbon::now()->format('Y-m-d');
         $info = Auth::user()->shopRepresentative;
 
@@ -142,7 +142,7 @@ class EditorController extends Controller
         return view('editor/reservation-list', compact('display', 'reservations'));
     }
 
-    public function date(Request $request) {
+    public function getReservationDate(Request $request) {
         $info = Auth::user()->shopRepresentative;
         $date = Carbon::parse($request->display);
         $display = $request->display;

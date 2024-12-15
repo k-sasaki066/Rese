@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Validator;
 
 class RatingController extends Controller
 {
-    public function history()
+    public function getHistory()
     {
         $counter = 1;
         $today = Carbon::now()->format('Y-m-d');

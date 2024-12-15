@@ -22,7 +22,7 @@ class ShopController extends Controller
         return view('user/index');
     }
 
-    public function detail($shop_id){
+    public function getDetail($shop_id){
         $shop = Shop::with(['area', 'genre', 'menus'])
         ->find($shop_id);
         $holidays = unserialize($shop->holiday);
@@ -111,7 +111,7 @@ class ShopController extends Controller
         return redirect('/mypage')->with('result', '予約をキャンセルしました');
     }
 
-    public function confirm($reservation_id)
+    public function reservationConfirm($reservation_id)
     {
         $reservation = Reservation::with('user')->find($reservation_id);
         $reservation->status = '2';

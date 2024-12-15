@@ -7,7 +7,7 @@
 
 @section('content')
 @if (session('result'))
-    <div class="flash_success-message">
+    <div class="flash_error-message">
         {{ session('result') }}
     </div>
 @endif

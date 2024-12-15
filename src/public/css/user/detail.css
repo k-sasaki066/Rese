@@ -219,9 +219,9 @@
     border-bottom-right-radius: 3px;
     position: absolute;
     width: 100%;
-    top: 97%;
+    bottom: 0;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translateX(-50%);
     background-color: #0438ff;
     color: #fff;
     transition: .3s;
@@ -237,7 +237,7 @@
 }
 
 /* ---レビュー--- */
-.store-rating__group {
+.store-rating__container {
     display: grid;
     grid-column: 1/3;
     grid-row: 3/4;
@@ -250,8 +250,27 @@
     gap: 12px;
 }
 
-.store-rating__item {
+.store-rating__group {
     width: 80%;
+    height: 500px;
+    overflow-y: scroll;
+}
+
+.store-rating__group::-webkit-scrollbar {
+    width: 4px;
+    height: 2px;
+}
+
+.store-rating__group::-webkit-scrollbar-track {
+    background: #333;
+}
+
+.store-rating__group::-webkit-scrollbar-thumb {
+    background: #999;
+}
+
+.store-rating__item {
+    width: 100%;
     padding: 16px;
     border: 1px solid #a8988b;
     border-radius: 5px;
@@ -347,10 +366,6 @@
         position: relative;
     }
 
-    .reservation-form__submit {
-        top: 97%;
-    }
-
     .store-detail__group {
         grid-column: 1/1;
         grid-row: 1/2;
@@ -361,9 +376,13 @@
         grid-row: 2/3;
     }
 
-    .store-rating__group {
+    .store-rating__container {
         grid-column: 1/1;
         grid-row: 4/5;
+    }
+
+    .store-rating__group {
+        width: 100%;
     }
 
     .store-info__table {

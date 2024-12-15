@@ -110,12 +110,13 @@
 'option_numbers'=>$option_numbers,
 'shop'=>$shop])
 
-<div class="store-rating__group">
+<div class="store-rating__container">
     <div class="store-rating__heading">
         <h3>レビュー</h3>
         <span class="store-rating__count">全{{ $rating_count }}件</span>
     </div>
 
+    <div class="store-rating__group">
     @foreach($ratings as $rating)
     <div class="store-rating__item">
         <div class="rating__user">
@@ -135,6 +136,7 @@
         </div>
     </div>
     @endforeach
+    </div>
 </div>
 
 @endsection
