@@ -46,7 +46,7 @@ Route::post('/admin/register', [AuthController::class, 'postAdminRegister']);
 Route::prefix('admin')->middleware(['auth', 'role:admin', 'verified'])->group(function () {
     Route::get('/register/representative', [AdminController::class, 'getEditorRegister']);
     Route::post('/register/representative', [AdminController::class, 'postEditorRegister']);
-    Route::get('/user/index', [AdminController::class, 'list']);
+    Route::get('/user/index', [AdminController::class, 'getAdminList']);
     Route::get('/email', [AdminController::class, 'getSendView']);
     Route::post('/email', [AdminController::class, 'sendNotification']);
 });

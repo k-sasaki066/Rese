@@ -4,7 +4,7 @@
         @csrf
         <button wire:click="delete({{ $shop['id'] }})" wire:model.live="favoriteIn">
             <img class="store-list__favorite"
-            src="../images/heart-red.svg" alt="">
+            src="{{ asset('/images/heart-red.svg') }}" alt="">
         </button>
     </form>
 </div>

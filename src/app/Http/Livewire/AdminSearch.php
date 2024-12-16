@@ -25,14 +25,14 @@ class AdminSearch extends Component
     protected $query;
 
     public function mount() {
-        $this->search();
+        $this->getAdminSearch();
     }
 
     public function render()
     {
         $this->shops = Shop::select(['id', 'name'])->get();
         $this->roles = Role::all();
-        $this->search();
+        $this->getAdminSearch();
 
         return view('livewire.admin-search', [
             'users'=>$this->users]);
@@ -41,27 +41,27 @@ class AdminSearch extends Component
     // 検索フォームの値が更新するたびにsearchアクションを呼び出す
     public function updatedRoleSearch()
     {
-        $this->search();
+        $this->getAdminSearch();
     }
 
     public function updatedStoreSearch()
     {
-        $this->search();
+        $this->getAdminSearch();
     }
 
     public function updatedWordSearch()
     {
-        $this->search();
+        $this->getAdminSearch();
     }
 
     // 検索機能
-    public function search()
+    public function getAdminSearch()
     {
         $this->query = User::with('roles', 'shopRepresentative');
         $this->getRoleSearch();
         $this->getStoreSearch();
         $this->getWordSearch();
-        $this->users = $this->query->paginate(10);
+        $this->users = $this->query->get();
     }
 
     public function getRoleSearch() {

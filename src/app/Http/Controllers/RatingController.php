@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use App\Models\Shop;
 use App\Models\Rating;
 use App\Models\Reservation;
-use App\Http\Requests\RatingRequest;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Validator;
