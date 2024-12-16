@@ -19,7 +19,7 @@
     <form class="register-form" action="/register" method="post">
         @csrf
         <div class="form-group">
-            <img class="register-icon" src="../images/username.svg" alt="name">
+            <img class="register-icon" src="{{ asset('/images/username.svg') }}" alt="name">
             <div class="form-group__item">
                 <input class="form-group__input" type="text" name="name" placeholder="Username" value="{{ old('name') }}">
                 <div class="error-message">
@@ -31,7 +31,7 @@
         </div>
 
         <div class="form-group">
-            <img class="register-icon" src="../images/email.svg" alt="email">
+            <img class="register-icon" src="{{ asset('/images/email.svg') }}" alt="email">
             <div class="form-group__item">
                 <input class="form-group__input" type="text" name="email" placeholder="Email" value="{{ old('email') }}">
                 <div class="error-message">
@@ -43,7 +43,7 @@
         </div>
 
         <div class="form-group">
-            <img class="register-icon" src="../images/password.svg" alt="password">
+            <img class="register-icon" src="{{ asset('/images/password.svg') }}" alt="password">
             <div class="form-group__item">
                 <input class="form-group__input" type="password" name="password" placeholder="Password" value="{{ old('password') }}">
                 <div class="error-message">

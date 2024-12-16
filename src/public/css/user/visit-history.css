@@ -6,7 +6,7 @@
 .history-table__group {
     margin: 32px auto 0;
     width: 90%;
-    height: 500px;
+    max-height: 500px;
     overflow-x: scroll;
     overflow-y: scroll;
 }

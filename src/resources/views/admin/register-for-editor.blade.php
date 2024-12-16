@@ -20,7 +20,7 @@
     <form class="register-form" action="/admin/register/representative" method="post">
         @csrf
         <div class="form-group">
-            <img class="register-icon" src="../../images/username.svg" alt="name">
+            <img class="register-icon" src="{{ asset('/images/username.svg') }}" alt="name">
             <div class="form-group__item">
                 <input class="form-group__input" type="text" name="name" placeholder="Username" value="{{ old('name') }}">
                 <div class="error-message">
@@ -32,7 +32,7 @@
         </div>
 
         <div class="form-group">
-            <img class="register-icon" src="../../images/email.svg" alt="email">
+            <img class="register-icon" src="{{ asset('/images/email.svg') }}" alt="email">
             <div class="form-group__item">
                 <input class="form-group__input" type="text" name="email" placeholder="Email" value="{{ old('email') }}">
                 <div class="error-message">
@@ -44,7 +44,7 @@
         </div>
 
         <div class="form-group">
-            <img class="register-icon" src="../../images/password.svg" alt="password">
+            <img class="register-icon" src="{{ asset('/images/password.svg') }}" alt="password">
             <div class="form-group__item">
                 <input class="form-group__input" type="password" name="password" placeholder="Password" value="{{ old('password') }}">
                 <div class="error-message">
@@ -56,7 +56,7 @@
         </div>
 
         <div class="form-group__select">
-            <img class="register-icon" src="../../images/shop.svg" alt="shop">
+            <img class="register-icon" src="{{ asset('/images/shop.svg') }}" alt="shop">
             <div class="form-group__item form__select-inner">
                 <select class="register-editor__select" name="shop_id" id="">
                     <option value="">店舗を選択してください</option>

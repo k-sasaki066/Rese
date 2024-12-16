@@ -27,7 +27,7 @@
             </div>
 
             <div class="word-search__item">
-                <img class="search-icon" src="../images/search.svg" alt="">
+                <img class="search-icon" src="{{ asset('/images/search.svg') }}" alt="">
                 <input class="word-search__input" type="text" name="wordSearch" placeholder="Search ..." wire:model.live.debounce.500ms="wordSearch" value="{{ request('wordSearch') }}">
             </div>
         </form>
@@ -62,17 +62,17 @@
                                 <button wire:click="delete({{ $shop['id'] }})"
                                 wire:model.live= "favoriteIn">
                                     <img class="store-list__favorite"
-                                    src="../images/heart-red.svg" alt="">
+                                    src="{{ asset('/images/heart-red.svg') }}" alt="">
                                 </button>
                         @elseif(!$favoriteIn)
                                 <button wire:click="favorite({{ $shop['id'] }})"
                                 wire:model.live= "favoriteIn">
-                                    <img class="store-list__favorite" src="../images/heart.svg" alt="">
+                                    <img class="store-list__favorite" src="{{ asset('/images/heart.svg') }}" alt="">
                                 </button>
                         @endif
                     @else
                         <button class="login-information" wire:click="openModal()">
-                            <img class="store-list__favorite" src="../images/heart.svg" alt="">
+                            <img class="store-list__favorite" src="{{ asset('/images/heart.svg') }}" alt="">
                         </button>
                     @endif
                 </div>

@@ -23,12 +23,12 @@
         @foreach($reservations as $reservation)
         <div class="reservation-status__content common-shadow">
             <div class="reservation-status__text">
-                <img class="reservation-status__icon" src="../images/time.svg" alt="時計">
+                <img class="reservation-status__icon" src="{{ asset('/images/time.svg') }}" alt="時計">
                 <p class="reservation-status__number">
                     予約{{$counter}}
                 </p>
                 <a href="#{{ $reservation['id'] }}">
-                    <img class="reservation-cancel__btn-img" src="../images/close-btn.svg" alt="">
+                    <img class="reservation-cancel__btn-img" src="{{ asset('/images/close-btn.svg') }}" alt="">
                 </a>
             </div>
 
@@ -69,7 +69,7 @@
             @if($reservation['date'] !== $today)
             <div class="reservation__edit-group">
                 <a class="common-btn reservation__edit-btn" href="#edit{{ $reservation['id'] }}">
-                    <img class="edit-icon" src="../images/edit.svg" alt="pen">edit
+                    <img class="edit-icon" src="{{ asset('/images/edit.svg') }}" alt="pen">edit
                 </a>
             </div>
             @else

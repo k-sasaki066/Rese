@@ -20,7 +20,7 @@
         @csrf
         @method('PATCH')
         <div class="form-group">
-            <img class="register-icon" src="../images/email.svg" alt="email">
+            <img class="register-icon" src="{{ asset('/images/email.svg') }}" alt="email">
             <div class="form-group__item">
                 <input class="form-group__input" type="text" name="email" placeholder="登録しているメールアドレス" value="{{ old('email') }}">
                 <div class="error-message">
@@ -32,7 +32,7 @@
         </div>
 
         <div class="form-group">
-            <img class="register-icon" src="../images/password.svg" alt="password">
+            <img class="register-icon" src="{{ asset('/images/password.svg') }}" alt="password">
             <div class="form-group__item">
                 <input class="form-group__input" type="password" name="oldPassword" placeholder="現在のパスワード" value="{{ old('oldPassword') }}">
                 <div class="error-message">
@@ -44,7 +44,7 @@
         </div>
 
         <div class="form-group">
-            <img class="register-icon" src="../images/password.svg" alt="password">
+            <img class="register-icon" src="{{ asset('/images/password.svg') }}" alt="password">
             <div class="form-group__item">
                 <input class="form-group__input" type="password" name="newPassword" placeholder="新しいパスワード" value="{{ old('newPassword') }}">
                 <div class="error-message">

@@ -8,6 +8,7 @@
 
         <div class="admin-search__group">
             <form class="admin-search__form" action="">
+                @csrf
                 <div class="admin-search__item">
                     <select class="admin-search__input" wire:model.live.debounce.500ms="roleSearch" name="roleSearch">
                         <option value="">全権限</option>
@@ -33,7 +34,7 @@
                 </div>
 
                 <div class="word-search__item">
-                    <img class="search-icon" src="../../images/search.svg" alt="">
+                    <img class="search-icon" src="{{ asset('/images/search.svg') }}" alt="">
                     <input class="word-search__input" type="text" name="wordSearch" placeholder="Search ..." wire:model.live.debounce.500ms="wordSearch" value="{{ request('wordSearch') }}">
                 </div>
             </form>
@@ -62,7 +63,7 @@
                 </tr>
 
                 @php
-                    $list_item =($users->currentPage()-1)*$this->users->perPage()+1;
+                    $list_item =1;
                 @endphp
 
                 @foreach($users as $user)
@@ -114,10 +115,6 @@
 
                 @endforeach
             </table>
-        </div>
-
-        <div class="pagination__group">
-            {{ $users->appends(request()->query())->links('vendor.pagination.custom') }}
         </div>
 
         @if($showModal)

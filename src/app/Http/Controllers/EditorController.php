@@ -134,11 +134,10 @@ class EditorController extends Controller
 
         if($info !== null) {
         $shop_id = $info->shop_id;
-        $reservations = Reservation::with('user')->where('shop_id', $shop_id)->whereDate('date', $display)->orderBy('time', 'asc')->get();
+        $reservations = Reservation::with('user', 'menu')->where('shop_id', $shop_id)->whereDate('date', $display)->orderBy('time', 'asc')->get();
         }else {
             $reservations = [];
         }
-        
         return view('editor/reservation-list', compact('display', 'reservations'));
     }
 
@@ -157,19 +156,25 @@ class EditorController extends Controller
 
         if($info !== null) {
         $shop_id = Auth::user()->shopRepresentative->shop_id;
-        $reservations = Reservation::with('user')->where('shop_id', $shop_id)->whereDate('date', $display)->orderBy('time', 'asc')->simplePaginate(10);
+        $reservations = Reservation::with('user', 'menu')->where('shop_id', $shop_id)->whereDate('date', $display)->orderBy('time', 'asc')->simplePaginate(10);
         }else {
             $reservations = [];
         }
-
+        
         return view('editor/reservation-list', compact('display', 'reservations'));
     }
 
     public function getMenu() {
         $user = User::with('shopRepresentative')->find(Auth::user()->id);
-        $shop_id = $user['shopRepresentative']['shop_id'];
 
-        $menus = Menu::where('shop_id', $shop_id)->get();
+        if($user->shopRepresentative !== null) {
+            $shop_id = $user['shopRepresentative']['shop_id'];
+
+            $menus = Menu::where('shop_id', $shop_id)->get();
+        }else {
+            $menus = null;
+            $shop_id = null;
+        }
 
         return view('editor/menu-editor-form', compact('shop_id', 'menus'));
     }

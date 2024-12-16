@@ -75,10 +75,12 @@
 /* ---admin-table--- */
 .admin-list__table-container {
     width: 100%;
-    height: auto;
+    max-height: 600px;
     overflow-x: scroll;
+    overflow-y: scroll;
     margin: 32px auto 0;
 }
+
 .admin-list__table {
     width: 100%;
     border-collapse: collapse;
@@ -87,7 +89,8 @@
 }
 
 .admin-list__table-container::-webkit-scrollbar {
-    height: 2px;
+    width: 4px;
+    height: 4px;
 }
 
 .admin-list__table-container::-webkit-scrollbar-track {
@@ -102,6 +105,28 @@
     padding: 8px 16px;
     color: #fff;
     background-color: #305dff;
+    position: sticky;
+    top: 0;
+
+    &:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border-top: 1px solid #000;
+    }
+
+    &:after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border-bottom: 1px solid #000;
+    }
 }
 
 .admin-list__table-item {
@@ -139,6 +164,7 @@
     left: 0;
     width: 100%;
     height: 100%;
+    z-index: 1;
 }
 
 .modal__inner {
@@ -221,5 +247,9 @@
         height: 1px;
         transform: rotateY(-50%);
         content: "";
+    }
+
+    .modal__inner {
+        width: 80%;
     }
 }

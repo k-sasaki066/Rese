@@ -25,6 +25,13 @@
                 <th class="history-table__heading">店舗名</th>
                 <th class="history-table__heading"></th>
             </tr>
+            @if($reservations -> isEmpty())
+            <tr class="history-table__row">
+                <td class="history-table__item" colspan="5">
+                    来店履歴はありません
+                </td>
+            </tr>
+            @else
             @foreach($reservations as $reservation)
             <tr class="history-table__row">
                 <td class="history-table__item">
@@ -106,6 +113,7 @@
                 </div>
             </div>
             @endforeach
+            @endif
         </table>
     </div>
 </div>

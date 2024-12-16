@@ -49,7 +49,7 @@ class AdminController extends Controller
         return redirect('/admin/user/index')->with('result', '店舗管理者を登録しました');
     }
 
-    public function list() {
+    public function getAdminList() {
         
         return view('admin/admin-list');
     }

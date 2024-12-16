@@ -120,7 +120,7 @@
     @foreach($ratings as $rating)
     <div class="store-rating__item">
         <div class="rating__user">
-            <img class="rating__user-img" src="../images/username.svg" alt="user">
+            <img class="rating__user-img" src="{{ asset('/images/username.svg') }}" alt="user">
             <p class="rating__user-name">{{ $rating['user']['name'] }}</p>
             <div class="rating__star-group">
                 <span class="rating__star" data-rate="{{ $rating['rating'] }}">
