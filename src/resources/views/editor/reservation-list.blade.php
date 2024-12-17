@@ -39,10 +39,13 @@
                 <th class="reservation-list__table-heading">
                     Payment
                 </th>
+                <th class="reservation-list__table-heading">
+                    Status
+                </th>
             </tr>
             @if(empty($reservations) || $reservations -> isEmpty())
                 <tr class="reservation-list__table-row">
-                    <td class="date-table__item-empty" colspan="6">
+                    <td class="date-table__item-empty" colspan="7">
                         該当データはありません
                     </td>
                 </tr>
@@ -74,6 +77,13 @@
                     現地決済
                     @else
                     クレジットカード決済
+                    @endif
+                </td>
+                <td class="reservation-list__table-item">
+                    @if($reservation['status'] == 1)
+                    予約
+                    @else
+                    来店
                     @endif
                 </td>
             </tr>

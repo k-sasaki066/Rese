@@ -21,17 +21,27 @@
             @csrf
             <div class="notification__address">
                 <select name="address" id="" class="notification__address-select">
-                    <option value="all" selected disabled>宛先を選択してください</option>
-                    <option value="all">全員</option>
-                    <option value="user">一般ユーザー</option>
-                    <option value="editor">店舗代表者</option>
-                    <option value="admin">管理者</option>
+                    <option value="">宛先を選択してください</option>
+                    <option value="all" {{ old('address') == 'all' ? 'selected' : '' }}>全員</option>
+                    <option value="user" {{ old('address') == 'user' ? 'selected' : '' }}>一般ユーザー</option>
+                    <option value="editor" {{ old('address') == 'editor' ? 'selected' : '' }}>店舗代表者</option>
+                    <option value="admin" {{ old('address') == 'admin' ? 'selected' : '' }}>管理者</option>
                 </select>
             </div>
+            <div class="error-message">
+                    @error('address')
+                    {{ $message }}
+                    @enderror
+                </div>
 
             <div class="notification__content-textarea">
-                <textarea class="notification__textarea-input" name="text" rows="10" required placeholder="本文を入力してください"></textarea>
+                <textarea class="notification__textarea-input" name="text" rows="10" placeholder="本文を入力してください">{{ old('text') }}</textarea>
             </div>
+            <div class="error-message">
+                    @error('text')
+                    {{ $message }}
+                    @enderror
+                </div>
             <div class="notification-form__button">
                 <a href="#send" class="send__button common-btn">メール送信</a>
                 <a href="/mypage" class="back__button">戻る</a>
