@@ -17,12 +17,12 @@ class ReservationsTableSeeder extends Seeder
      */
     public function run()
     {
-        $start = '2024-12-13';
-        $end = '2024-12-14';
+        $start = '2024-12-15';
+        $end = '2024-12-18';
 
-        for ($id = 1; $id <= 20; $id++) {
+        for ($id = 1; $id <= 3; $id++) {
             for ($i = new DateTime($start); $i <= new DateTimeImmutable($end); $i->modify('+1 day')) {
-                for ($t = 13; $t <= 17; $t++)
+                for ($t = 15; $t <= 19; $t++)
                     DB::table('reservations')->insert([
                         'user_id' => mt_rand(1,30),
                         'shop_id' => $id,
