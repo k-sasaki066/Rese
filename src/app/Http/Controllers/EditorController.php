@@ -47,7 +47,6 @@ class EditorController extends Controller
     }
 
     public function postEditorForm(EditorRequest $request) {
-// dd($request);
         $holiday = serialize($request->holiday);
 
         $info = Auth::user()->shopRepresentative;
@@ -160,7 +159,7 @@ class EditorController extends Controller
         }else {
             $reservations = [];
         }
-        
+
         return view('editor/reservation-list', compact('display', 'reservations'));
     }
 
