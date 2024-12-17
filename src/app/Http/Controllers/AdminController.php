@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\EditorRegisterRequest;
+use App\Http\Requests\SendMailRequest;
 use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
@@ -59,7 +60,7 @@ class AdminController extends Controller
         return view('admin/email-notification');
     }
 
-    public function sendNotification(Request $request)
+    public function sendNotification(SendMailRequest $request)
     {
         $address = $request->input('address');
         $text = $request->input('text');

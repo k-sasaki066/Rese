@@ -1,4 +1,4 @@
-.notification__container {
+.notification__header {
     text-align: center;
 }
 
@@ -66,6 +66,10 @@
 
 .back__button {
     color: #fff;
+}
+
+.error-message {
+    color: #a22626;
 }
 
 /* ---modal--- */
