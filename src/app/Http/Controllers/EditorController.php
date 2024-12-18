@@ -174,7 +174,7 @@ class EditorController extends Controller
             $shop_id = null;
         }
 
-        return view('editor/menu-editor-form', compact('shop_id', 'menus'));
+        return view('editor/menu-editor-form', compact('shop_id', 'menus', 'user'));
     }
 
     public function postMenu(MenuRequest $request) {
