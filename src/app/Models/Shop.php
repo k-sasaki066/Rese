@@ -37,9 +37,9 @@ class Shop extends Model
         return $this->hasMany(Favorite::class);
     }
 
-    public function shopRepresentative()
+    public function shopRepresentatives()
     {
-        return $this->hasOne(Shop_representative::class);
+        return $this->hasMany(Shop_representative::class);
     }
 
     public function ratings() {
