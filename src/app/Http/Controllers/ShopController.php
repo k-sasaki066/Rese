@@ -27,12 +27,10 @@ class ShopController extends Controller
         ->find($shop_id);
         $holidays = unserialize($shop->holiday);
 
-        // 店舗ごとの予約可能人数取得
         for($i=1; $i <= $shop['max_number'] ; $i++) {
             $option_numbers[] = $i;
         }
 
-        // 予約可能時間を60分間隔で取得
         $formatter = function($datetime){
             return $datetime->format('H:i');
         };
@@ -43,7 +41,6 @@ class ShopController extends Controller
             new DateTime($shop['closing_time'])
         )));
 
-        // 直前のurlを取得
         $prev = url()->previous();
 
         $record = Rating::with('reservation', 'user')->where('shop_id', $shop_id)->orderBy('created_at', 'desc');
@@ -55,7 +52,6 @@ class ShopController extends Controller
 
     public function done()
     {
-        // 直前のurlを取得
         $prev = url()->previous();
 
         return view('user/done', compact('prev'));

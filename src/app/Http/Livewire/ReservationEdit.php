@@ -37,12 +37,10 @@ class ReservationEdit extends Component
         $shop_id = $this->reservation->shop_id;
         $this->shop = Shop::find($shop_id);
 
-        // 店舗ごとの予約可能人数取得
         for($i=1; $i <= $this->shop['max_number'] ; $i++) {
             $this->option_numbers[] = $i;
         }
 
-        // 予約可能時間を60分間隔で取得
         $formatter = function($datetime){
             return $datetime->format('H:i');
         };
@@ -62,7 +60,6 @@ class ReservationEdit extends Component
         return view('livewire.reservation-edit');
     }
 
-    // ReservationRequestを取得
     protected function rules(): array
     {
         return (new ReservationEditRequest())->rules();
@@ -73,7 +70,6 @@ class ReservationEdit extends Component
         return (new ReservationEditRequest())->messages();
     }
 
-    // 各項目を入力次第バリデーションする
     public function updatedDate($date)
     {
         $this->validateOnly('date');
@@ -89,13 +85,11 @@ class ReservationEdit extends Component
         $this->validateOnly('number');
     }
 
-    // 予約情報更新処理
     public function update($reservation_id)
     {
         $user_id = Auth::user()->id;
         $this->validate();
 
-        // 予約状況を取得（同日、同時間帯の合計人数を算出）
         $this->totals = DB::table('reservations')
             ->where('shop_id', $this->shop->id)
             ->where('date', $this->date)
@@ -116,19 +110,16 @@ class ReservationEdit extends Component
             return back()->withInput();
 
         } else{
-            // 入力したデータに対してログインユーザーの予約状況を取得
             $this->user = Reservation::where('user_id', $user_id)
             ->where([['date', '!=', $this->reservation->date], ['time', '!=', $this->reservation->time.':00']])
             ->where('date', $this->date)
             ->where('time', $this->time.':00')
             ->exists();
 
-            // 店舗定休日を取得
             $holidays = unserialize($this->shop->holiday);
-            // 入力データから曜日を取得
             $day = new Carbon($this->date);
             $compare = $day->isoFormat('ddd');
-            // 店舗定休日に含まれているか判定
+
             $result = in_array($compare, $holidays);
             $isHoliday = $day->isHoliday();
 
@@ -145,7 +136,6 @@ class ReservationEdit extends Component
                 return back()->withInput();
             }
 
-            // 予約可能人数を算出
             if($this->totals !== null) {
                 $num = $this->shop->max_number - $this->totals->actual_number;
             } else {
@@ -153,7 +143,6 @@ class ReservationEdit extends Component
             }
         }
 
-        // 予約可能人数と入力データを比較
         if($num - $this->number >= 0) {
             Reservation::find($reservation_id)
             ->update([

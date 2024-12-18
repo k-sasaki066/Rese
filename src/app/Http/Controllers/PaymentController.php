@@ -16,7 +16,6 @@ class PaymentController extends Controller
     {
         $reservation = Reservation::with('menu')->find($reservation_id);
         $total = $reservation['menu']['price'] * $reservation['number'];
-        // dd($reservation);
 
         return view('user/payment', compact('reservation', 'total'));
     }
@@ -24,7 +23,7 @@ class PaymentController extends Controller
     public function postCharge(Request $request, $total)
     {
         Stripe::setApiKey(config('services.stripe.secret'));
-        //シークレットキー
+
         $user = Auth::user();
 
         if (!$user->stripe_id) {

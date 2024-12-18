@@ -83,7 +83,7 @@
 
     <div class="menu-list__group">
         <h3 class="menu-list__heading">登録済みメニュー編集</h3>
-        @if($menus->isEmpty() || $menus == null)
+        @if($menus == null || $menus ->isEmpty())
         <p class="menu-info__text">登録済みのメニューはありません</p>
         @else
         @foreach($menus as $menu)

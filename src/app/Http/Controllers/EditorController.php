@@ -36,7 +36,6 @@ class EditorController extends Controller
         $genres = Genre::all();
 
         $info = Auth::user()->shopRepresentative;
-        // dd($info);
         if($info !== null) {
             $shop = Shop::find($info['shop_id']);
         }else {
@@ -189,7 +188,7 @@ class EditorController extends Controller
     }
 
     public function updateMenu(Request $request, $menu_id) {
-        // ルールの設定
+
         $validator = Validator::make($request->all(), [
             'editName' => 'required',
             'editPrice' => 'required | regex:/^[0-9]+$/',
@@ -201,14 +200,12 @@ class EditorController extends Controller
             'editDetail.required'=>'説明を入力してください',
         ]);
 
-        // バリデーションエラー発生時にリダイレクトする
         if ($validator->fails()) {
                 return redirect( '/editor/shop/menu'.'#' .'update' .$request->menu_id)
                 ->withErrors($validator)
                 ->withInput();
             }
 
-        // バリデーション済みデータの取得
         $validated = $validator->validated();
 
         Menu::find($menu_id)->update([

@@ -18,7 +18,6 @@ class FavoriteForm extends Component
         return view('livewire.favorite-form');
     }
 
-    // お気に入り削除
     public function delete($shop_id)
     {
         $user=Auth::user()->favorites()->where('shop_id', $shop_id)->delete();
