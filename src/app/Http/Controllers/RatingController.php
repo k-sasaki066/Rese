@@ -28,7 +28,6 @@ class RatingController extends Controller
 
     public function postRating(Request $request) {
 
-        // ルールの設定
         $validator = Validator::make($request->all(), [
             'rating' => 'required | integer | min:1 | max:5',
             'comment' => 'required',
@@ -40,17 +39,15 @@ class RatingController extends Controller
             'comment.required' => 'コメントを入力してください',
         ]);
 
-        // バリデーションエラー発生時にリダイレクトする
         if ($validator->fails()) {
                 return redirect( '/history'.'#' .$request->reservation_id)
                 ->withErrors($validator)
                 ->withInput();
             }
 
-            // バリデーション済みデータの取得
-            $validated = $validator->validated();
+        $validated = $validator->validated();
 
-            $user_id = Auth::user()->id;
+        $user_id = Auth::user()->id;
 
         Rating::create([
             'shop_id'=>$request->shop_id,

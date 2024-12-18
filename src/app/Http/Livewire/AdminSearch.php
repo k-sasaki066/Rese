@@ -38,7 +38,6 @@ class AdminSearch extends Component
             'users'=>$this->users]);
     }
 
-    // 検索フォームの値が更新するたびにsearchアクションを呼び出す
     public function updatedRoleSearch()
     {
         $this->getAdminSearch();
@@ -54,7 +53,6 @@ class AdminSearch extends Component
         $this->getAdminSearch();
     }
 
-    // 検索機能
     public function getAdminSearch()
     {
         $this->query = User::with('roles', 'shopRepresentative');
@@ -95,15 +93,12 @@ class AdminSearch extends Component
         }
     }
 
-
-    // 検索ワードをurlに反映
     protected $queryString = [
         'roleSearch' => ['except' => ''],
         'storeSearch' => ['except' => ''],
         'wordSearch' => ['except' => '']
     ];
 
-    // モーダル画面
     public function openModal($user_id)
     {
         $this->delUser = User::with('roles')->find($user_id);

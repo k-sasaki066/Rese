@@ -31,7 +31,7 @@ class ReservationForm extends Component
         $this->min_date = Carbon::now()->addDay()->format('Y-m-d');
         $this->max_date = Carbon::now()->addMonth(2)->format('Y-m-d');
     }
-    // ReservationRequestを取得
+
     protected function rules(): array
     {
         return (new ReservationRequest())->rules();
@@ -48,7 +48,6 @@ class ReservationForm extends Component
         return view('livewire.reservation-form');
     }
 
-    // 各項目を入力次第バリデーションする
     public function updatedDate($date)
     {
         $this->validateOnly('date');
@@ -64,18 +63,15 @@ class ReservationForm extends Component
         $this->validateOnly('number');
     }
 
-    // 予約処理
     public function reservation($shop_id)
     {
         $user_id = Auth::user()->id;
         $this->validate();
         
-        // 店舗定休日を取得
         $holidays = unserialize($this->shop->holiday);
-        // 入力データから曜日を取得
         $day = new Carbon($this->date);
         $compare = $day->isoFormat('ddd');
-        // 店舗定休日に含まれているか判定
+
         $result = in_array($compare, $holidays);
         $isHoliday = $day->isHoliday();
         if($result == true) {
@@ -87,7 +83,6 @@ class ReservationForm extends Component
         }
     }
 
-        // 入力したデータに対してログインユーザーの予約状況を取得
         $user = Reservation::where('user_id', $user_id)
         ->where('date', $this->date)
         ->where('time', $this->time.':00')
@@ -97,7 +92,6 @@ class ReservationForm extends Component
             return back()->withInput()->with('result', '既に同じ時間帯で別の予約が成立しています。予約状況をご確認ください');
         }
 
-        // 予約状況を取得（同日、同時間帯の合計人数を算出）
         $this->totals = DB::table('reservations')
         ->where('shop_id', $shop_id)
         ->where('date', $this->date)
@@ -107,14 +101,12 @@ class ReservationForm extends Component
         ->groupBy('time')
         ->first();
 
-        // 予約可能人数を算出
         if($this->totals !== null) {
             $num = $this->shop->max_number - $this->totals->actual_number;
         } else {
             $num = $this->shop->max_number;
         }
 
-        // 予約可能人数と入力データを比較
         if($num - $this->number < 0) {
             return back()->withInput()->with('result', '申し訳ございません。すでに予約でいっぱいのため別の日、別の時間帯をご利用ください');
         }elseif($num - $this->number >= 0) {
