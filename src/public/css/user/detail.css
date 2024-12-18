@@ -96,7 +96,7 @@
     background-color: #305dff;
     display: flex;
     flex-direction: column;
-    height: 880px;
+    height: auto;
 }
 
 .reservation__title {
@@ -113,7 +113,7 @@
 }
 
 .reservation-form {
-    padding: 32px 28px 0;
+    padding: 32px 28px 150px;
     flex-grow: 1;
     position: relative;
 }
@@ -357,14 +357,13 @@
     }
 
     .reservation__group {
-        height: 880px;
         margin-top: 0;
         grid-column: 1/1;
         grid-row: 3/4;
     }
 
     .reservation-form {
-        padding: 32px 28px 0;
+        padding: 32px 28px 120px;
         position: relative;
     }
 

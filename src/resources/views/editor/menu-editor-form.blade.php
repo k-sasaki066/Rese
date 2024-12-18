@@ -6,6 +6,11 @@
 @endsection
 
 @section('content')
+@if($user->shopRepresentative == null)
+    <div class="flash_error-message">
+        先に店舗情報を登録してください
+    </div>
+@endif
 @if (session('result'))
     <div class="flash_success-message">
         {{ session('result') }}
@@ -64,7 +69,7 @@
         </table>
 
         <div class="store-edit__btn-group">
-            <a class="store-edit__btn" href="#editor">保存</a>
+            <a class="store-edit__btn" href="{{ $user->shopRepresentative == null ? '' : '#editor' }}">保存</a>
         </div>
 
         <div class="modal__group" id="editor">
