@@ -16,7 +16,7 @@ class RatingsTableSeeder extends Seeder
      */
     public function run()
     {
-        $reservations = Reservation::where('user_id', '<=', 10)->get();
+        $reservations = Reservation::where('user_id', '<=', 100)->get();
         $now = Carbon::now()->format('Y-m-d H:i:s');
         foreach($reservations as $reservation) {
             DB::table('ratings')->insert([

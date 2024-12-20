@@ -17,14 +17,14 @@ class ReservationsTableSeeder extends Seeder
      */
     public function run()
     {
-        $start = Carbon::now()->subDay(2)->format('Y-m-d');
-        $end = Carbon::now()->addDay(3)->format('Y-m-d');
+        $start = Carbon::now()->subDay(7)->format('Y-m-d');
+        $end = Carbon::now()->addDay(14)->format('Y-m-d');
 
         for ($id = 1; $id <= 20; $id++) {
             for ($i = new DateTime($start); $i <= new DateTimeImmutable($end); $i->modify('+1 day')) {
-                for ($t = 15; $t <= 19; $t++)
+                for ($t = 12; $t <= 19; $t++)
                     DB::table('reservations')->insert([
-                        'user_id' => mt_rand(1,30),
+                        'user_id' => mt_rand(1,1000),
                         'shop_id' => $id,
                         'date' => $i->format('Y-m-d'),
                         'time' => $t.':00',

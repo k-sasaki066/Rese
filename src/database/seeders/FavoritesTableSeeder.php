@@ -16,7 +16,7 @@ class FavoritesTableSeeder extends Seeder
     public function run()
     {
         $now = Carbon::now()->format('Y-m-d H:i:s');
-        for ($id = 1; $id <= 10; $id++) {
+        for ($id = 1; $id <= 1000; $id++) {
             DB::table('favorites')->insert([
                 'user_id' => $id,
                 'shop_id' => mt_rand(1,20),

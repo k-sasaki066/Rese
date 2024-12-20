@@ -7,7 +7,7 @@
     <h1>Reseからのお知らせ</h1>
     <p>いつもReseをご利用いただきありがとうございます。</p>
     <br>
-    <p>{{ $text }}</p>
-
+    <div>{!! nl2br(e($text)) !!}</div>
+    <br>
     <p>Thanks,{{ config('app.name') }}</p>
 </body>
