@@ -79,6 +79,12 @@ Laravel Framework 8.83.8
 <br>
 Laravel Livewire
 <br>
+Laravel Fortify
+<br>
+Laravel Permission
+<br>
+Stripe
+<br>
 HTML/CSS
 <br>
 Javascript
@@ -134,14 +140,14 @@ mysql:
 
   <br>
   
-  3. .env.example ファイルをコピーして.env ファイルを作成し、環境変数を変更する(docker-compose.ymlを参照)
+  3. .env.example ファイルをコピーして.env ファイルを作成し、環境変数を変更する
   
   ```
   cp .env.example .env
   ```
 
   <br>
-  mysqlの設定
+  mysqlの設定(docker-compose.ymlを参照)
   
   ```
   DB_CONNECTION=mysql
@@ -161,6 +167,9 @@ mysql:
   MAIL_FROM_ADDRESS="送信元アドレス（例：rese@example.com）"
   ```
   <br>
+  <img width="406" alt="MailHog設定" src="https://github.com/user-attachments/assets/42b41b17-70d0-4f1d-be26-9caf82cf254d" />
+  <br>
+  <br>
   stripeのアカウント設定
 　<br>
   stripe公式ページ(https://stripe.com/jp)
@@ -175,7 +184,7 @@ mysql:
   STRIPE_SECRET=シークレットキーを貼り付け
   ```
 
-  
+  <br>
   4. アプリケーションキーを取得
   
   ```
