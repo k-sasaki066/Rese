@@ -29,19 +29,19 @@
                 </select>
             </div>
             <div class="error-message">
-                    @error('address')
-                    {{ $message }}
-                    @enderror
-                </div>
+                @error('address')
+                {{ $message }}
+                @enderror
+            </div>
 
             <div class="notification__content-textarea">
                 <textarea class="notification__textarea-input" name="text" rows="10" placeholder="本文を入力してください">{{ old('text') }}</textarea>
             </div>
             <div class="error-message">
-                    @error('text')
-                    {{ $message }}
-                    @enderror
-                </div>
+                @error('text')
+                {{ $message }}
+                @enderror
+            </div>
             <div class="notification-form__button">
                 <a href="#send" class="send__button common-btn">メール送信</a>
                 <a href="/mypage" class="back__button">戻る</a>

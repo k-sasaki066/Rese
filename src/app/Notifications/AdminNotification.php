@@ -19,7 +19,7 @@ class AdminNotification extends Notification
     public function __construct($user, $text)
     {
         $this->user = $user;
-        $this->text = str_replace("\n"," \n",$text);
+        $this->text = $text;
     }
 
     /**

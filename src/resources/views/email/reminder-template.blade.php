@@ -18,6 +18,6 @@
     <p>ご来店いただきましたら、下記QRコードを提示してください。</p>
     <br>
     {!! $qrCode !!}
-
+    <br>
     <p>Thanks,{{ config('app.name') }}</p>
 </body>
