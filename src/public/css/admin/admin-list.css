@@ -71,6 +71,10 @@
     z-index: 1;
 }
 
+.word-search__input {
+    width: 85%;
+}
+
 
 /* ---admin-table--- */
 .admin-list__table-container {
