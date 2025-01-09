@@ -71,6 +71,7 @@
 .store-list__group {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
     margin-top: 40px;
     gap: 32px 16px;
 }

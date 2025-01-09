@@ -21,10 +21,6 @@ use App\Http\Livewire\Search;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-
 Route::post('/register', [RegisteredUserController::class, 'store']);
 Route::get('/', [ShopController::class, 'index']);
 Route::get('/detail/{shop_id}', [ShopController::class, 'getDetail']);

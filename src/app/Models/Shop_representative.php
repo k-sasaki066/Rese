@@ -16,11 +16,11 @@ class Shop_representative extends Model
 
     public function user()
     {
-        return $this->BelongsTo(User::class);
+        return $this->belongsTo(User::class);
     }
 
     public function shop()
     {
-        return $this->BelongsTo(Shop::class);
+        return $this->belongsTo(Shop::class);
     }
 }
